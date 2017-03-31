@@ -1,0 +1,10 @@
+{ {1 , 0 , 1 , 0 , 1 , 0 , 1 , 0 , 1 , 0 , 1 , 0 }, 6957910250 , 24 }, 
+{ {1 , 0 , 1 , 0 , 1 , 0 , 1 , 0 , 0 }, 7087918132 , 24 }, 
+{ {1 , 0 , 1 , 0 , 0 , 0 , 1 }, 7087934132 , 14 }, 
+{ {0 , 0 , 1 , 0 , 1 , 0 , 1 }, 7931923464 , 18 }, 
+{ {0 , 0 , 1 , 0 , 0 , 0 , 0 }, 9119236366 , 27 }, 
+{ {1 , 1 , 0 , 1 , 0 , 1 , 0 , 1 , 0 , 1 , 0 }, 9506549492 , 32 }, 
+{ {0 , 0 , 0 , 0 , 1 , 1 , 1 }, 9973156266 , 22 }, 
+Nombre de machines qui se sont certainement arrêtées : 7923765320
+Nombre de machines qui ont certainement bouclé : 39797347004
+Nombre de machines qui s'arrêteront ou qui boucleront ou qui ont nesté : 10407476

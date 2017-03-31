@@ -1,0 +1,294 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      8576,        285]
+NotebookOptionsPosition[      7984,        264]
+NotebookOutlinePosition[      8560,        284]
+CellTagsIndexPosition[      8517,        281]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ StyleBox[
+  RowBox[{"Q", "=", 
+   RowBox[{
+    RowBox[{
+     SubsuperscriptBox["\[Integral]", "0", "t"], 
+     RowBox[{"f", 
+      RowBox[{"(", 
+       RowBox[{"v", "-", "V"}], ")"}], 
+      RowBox[{"\[DifferentialD]", "\[Tau]"}]}]}], "=", 
+    RowBox[{
+     FractionBox["1", "2"], 
+     FractionBox[
+      RowBox[{"M", " ", "m"}], 
+      RowBox[{"M", "+", "m"}]], 
+     SubsuperscriptBox["v", "0", "2"]}]}]}],
+  FontFamily->"Times New Roman",
+  FontSlant->"Italic",
+  FontColor->GrayLevel[0]]], "Input",
+ CellChangeTimes->{{3.6043313935776377`*^9, 3.60433148224671*^9}}],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   SubscriptBox["H", "3"], "=", 
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {"1", "1", "1", "1", "1", "1", "1", "1"},
+      {"1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}]},
+      {"1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}]},
+      {"1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1"},
+      {"1", "1", "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}]},
+      {"1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1"},
+      {"1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1"},
+      {"1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}]}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.7]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}]}],
+  FontFamily->"Times New Roman",
+  FontSlant->"Italic"]], "Input",
+ CellChangeTimes->{{3.604385844563013*^9, 3.6043858627990556`*^9}}],
+
+Cell[BoxData[
+ StyleBox[
+  RowBox[{
+   SubscriptBox["H", "4"], "=", 
+   RowBox[{"(", "\[NoBreak]", GridBox[{
+      {"1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", "1", 
+       "1", "1"},
+      {"1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}]},
+      {"1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}]},
+      {"1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1"},
+      {"1", "1", "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}]},
+      {"1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1"},
+      {"1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1"},
+      {"1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}]},
+      {"1", "1", "1", "1", "1", "1", "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}]},
+      {"1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1"},
+      {"1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1"},
+      {"1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}]},
+      {"1", "1", "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", "1", "1"},
+      {"1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}]},
+      {"1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}]},
+      {"1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1", "1", 
+       RowBox[{"-", "1"}], "1", 
+       RowBox[{"-", "1"}], 
+       RowBox[{"-", "1"}], "1"}
+     },
+     GridBoxAlignment->{
+      "Columns" -> {{Center}}, "ColumnsIndexed" -> {}, "Rows" -> {{Baseline}},
+        "RowsIndexed" -> {}},
+     GridBoxSpacings->{"Columns" -> {
+         Offset[0.27999999999999997`], {
+          Offset[0.7]}, 
+         Offset[0.27999999999999997`]}, "ColumnsIndexed" -> {}, "Rows" -> {
+         Offset[0.2], {
+          Offset[0.4]}, 
+         Offset[0.2]}, "RowsIndexed" -> {}}], "\[NoBreak]", ")"}]}],
+  FontFamily->"Times New Roman",
+  FontSlant->"Italic"]], "Input",
+ CellChangeTimes->{{3.6043859363052597`*^9, 3.6043859603526354`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"L", "=", 
+  RowBox[{
+   FractionBox["1", 
+    SqrtBox["2"]], 
+   RowBox[{"(", 
+    RowBox[{"|", "0"}]}]}]}]], "Input",
+ CellChangeTimes->{{3.604399065384056*^9, 3.604399086624382*^9}, {
+  3.6043991636218147`*^9, 3.60439917374447*^9}}]
+},
+WindowSize->{1153, 834},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+Magnification->1.25,
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->Notebook[{
+   Cell[
+    StyleData[StyleDefinitions -> "Default.nb"]]}, Visible -> False, 
+  FrontEndVersion -> "8.0 for Microsoft Windows (64-bit) (November 7, 2010)", 
+  StyleDefinitions -> "PrivateStylesheetFormatting.nb"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 586, 19, 62, "Input"],
+Cell[1146, 41, 1710, 54, 166, "Input"],
+Cell[2859, 97, 4860, 155, 318, "Input"],
+Cell[7722, 254, 258, 8, 59, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,48 @@
+﻿Build started 28/10/2014 18:03:02.
+     1>Project "C:\Users\User\Desktop\newnew_turing\turing\4statesCuda\4statesCuda.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Touching "Release\4statesCuda.unsuccessfulbuild".
+       AddCudaCompileDeps:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN32 /DNDEBUG /D_CONSOLE /D_MBCS /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" /I. /FIcuda_runtime.h /c C:\Users\User\Desktop\newnew_turing\turing\4statesCuda\kernel.cu 
+       AddCudaCompilePropsDeps:
+       Skipping target "AddCudaCompilePropsDeps" because all output files are up-to-date with respect to the input files.
+       CudaBuild:
+         Compiling CUDA source file kernel.cu...
+         cmd.exe /C "C:\Users\User\AppData\Local\Temp\tmpad6e26e0c7004629945aa9644d160bd6.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_10,code=\"sm_10,compute_10\" --use-local-env --cl-version 2010 -ccbin "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"     --keep-dir Release -maxrregcount=0  --machine 32 --compile -cudart static     -DWIN32 -DNDEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MD  " -o Release\kernel.cu.obj "C:\Users\User\Desktop\newnew_turing\turing\4statesCuda\kernel.cu"
+         
+         C:\Users\User\Desktop\newnew_turing\turing\4statesCuda>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_10,code=\"sm_10,compute_10\" --use-local-env --cl-version 2010 -ccbin "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"     --keep-dir Release -maxrregcount=0  --machine 32 --compile -cudart static     -DWIN32 -DNDEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MD  " -o Release\kernel.cu.obj "C:\Users\User\Desktop\newnew_turing\turing\4statesCuda\kernel.cu" 
+     1>C:/Users/User/Desktop/newnew_turing/turing/4statesCuda/kernel.cu(238): warning : variable "iterationNumber_" was declared but never referenced
+         
+     1>C:/Users/User/Desktop/newnew_turing/turing/4statesCuda/kernel.cu(541): warning : pointless comparison of unsigned integer with zero
+         
+     1>C:/Users/User/Desktop/newnew_turing/turing/4statesCuda/kernel.cu(556): warning : expression has no effect
+         
+     1>C:/Users/User/Desktop/newnew_turing/turing/4statesCuda/kernel.cu(238): warning : variable "iterationNumber_" was declared but never referenced
+         
+     1>C:/Users/User/Desktop/newnew_turing/turing/4statesCuda/kernel.cu(541): warning : pointless comparison of unsigned integer with zero
+         
+     1>C:/Users/User/Desktop/newnew_turing/turing/4statesCuda/kernel.cu(556): warning : expression has no effect
+         
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\User\Desktop\newnew_turing\turing\Release\4statesCuda.exe" /NOLOGO /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\Win32" cudart.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"Release\4statesCuda.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\User\Desktop\newnew_turing\turing\Release\4statesCuda.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\User\Desktop\newnew_turing\turing\Release\4statesCuda.lib" /MACHINE:X86 Release\kernel.cu.obj
+         LINK : /LTCG specified but no code generation required; remove /LTCG from the link command line to improve linker performance
+         4statesCuda.vcxproj -> C:\Users\User\Desktop\newnew_turing\turing\Release\4statesCuda.exe
+       Manifest:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\User\Desktop\newnew_turing\turing\Release\4statesCuda.exe;#1" /manifest Release\4statesCuda.exe.intermediate.manifest
+       PostBuildEvent:
+         echo copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\Users\User\Desktop\newnew_turing\turing\Release\"
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\Users\User\Desktop\newnew_turing\turing\Release\"
+         :VCEnd
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\Users\User\Desktop\newnew_turing\turing\Release\"
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart32_55.dll
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart64_55.dll
+                 2 fichier(s) copié(s).
+       FinalizeBuildStatus:
+         Deleting file "Release\4statesCuda.unsuccessfulbuild".
+         Touching "Release\4statesCuda.lastbuildstate".
+     1>Done Building Project "C:\Users\User\Desktop\newnew_turing\turing\4statesCuda\4statesCuda.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:11.02

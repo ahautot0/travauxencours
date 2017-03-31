@@ -1,0 +1,152 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      3968,        142]
+NotebookOptionsPosition[      3437,        118]
+NotebookOutlinePosition[      3779,        133]
+CellTagsIndexPosition[      3736,        130]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Simplify", "[", 
+  RowBox[{
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+    SuperscriptBox["2", 
+     RowBox[{"-", 
+      RowBox[{"n", "^", "2"}]}]]}], "-", 
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"n", "=", "1"}], "\[Infinity]"], 
+    SuperscriptBox["2", 
+     RowBox[{
+      RowBox[{"-", 
+       RowBox[{"n", "^", "2"}]}], "-", "n"}]]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.609433223232663*^9, 3.609433287613976*^9}},
+ FontSize->24],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", "2"], " ", 
+  RowBox[{"(", 
+   RowBox[{"1", "-", 
+    RowBox[{
+     SuperscriptBox["2", 
+      RowBox[{"1", "/", "4"}]], " ", 
+     RowBox[{"EllipticTheta", "[", 
+      RowBox[{"2", ",", "0", ",", 
+       FractionBox["1", "2"]}], "]"}]}], "+", 
+    RowBox[{"EllipticTheta", "[", 
+     RowBox[{"3", ",", "0", ",", 
+      FractionBox["1", "2"]}], "]"}]}], ")"}]}]], "Output",
+ CellChangeTimes->{{3.609433241219495*^9, 3.6094332884251776`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"N", "[", 
+  RowBox[{
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      RowBox[{
+       SuperscriptBox["2", 
+        RowBox[{"1", "/", "4"}]], " ", 
+       RowBox[{"EllipticTheta", "[", 
+        RowBox[{"2", ",", "0", ",", 
+         FractionBox["1", "2"]}], "]"}]}], "+", 
+      RowBox[{"EllipticTheta", "[", 
+       RowBox[{"3", ",", "0", ",", 
+        FractionBox["1", "2"]}], "]"}]}], ")"}]}], ",", "20"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6094333055384073`*^9, 3.609433315382025*^9}}],
+
+Cell[BoxData["0.2985983183750722109158079597281441439327750005583092529625`20.\
+"], "Output",
+ CellChangeTimes->{3.609433316208826*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"RealDigits", "[", 
+  RowBox[{
+   RowBox[{
+    FractionBox["1", "2"], " ", 
+    RowBox[{"(", 
+     RowBox[{"1", "-", 
+      RowBox[{
+       SuperscriptBox["2", 
+        RowBox[{"1", "/", "4"}]], " ", 
+       RowBox[{"EllipticTheta", "[", 
+        RowBox[{"2", ",", "0", ",", 
+         FractionBox["1", "2"]}], "]"}]}], "+", 
+      RowBox[{"EllipticTheta", "[", 
+       RowBox[{"3", ",", "0", ",", 
+        FractionBox["1", "2"]}], "]"}]}], ")"}]}], ",", "2", ",", "25"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.6094333892169547`*^9, 3.609433400106774*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "0", ",", "0", ",", "1", ",", "1", ",", "0", ",", "0", ",", "0",
+      ",", "1", ",", "1", ",", "1", ",", "0", ",", "0", ",", "0", ",", "0", 
+     ",", "1", ",", "1", ",", "1", ",", "1", ",", "0", ",", "0", ",", "0", 
+     ",", "0", ",", "0", ",", "1"}], "}"}], ",", 
+   RowBox[{"-", "1"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6094333945687637`*^9, 3.6094334005435743`*^9}}]
+}, Open  ]]
+},
+WindowSize->{707, 817},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 531, 17, 85, "Input"],
+Cell[1113, 41, 484, 14, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[1634, 60, 563, 17, 47, "Input"],
+Cell[2200, 79, 135, 2, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2372, 86, 582, 17, 74, "Input"],
+Cell[2957, 105, 464, 10, 30, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

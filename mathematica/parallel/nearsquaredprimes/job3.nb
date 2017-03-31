@@ -1,0 +1,125 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4422,        116]
+NotebookOptionsPosition[      4083,         99]
+NotebookOutlinePosition[      4449,        115]
+CellTagsIndexPosition[      4406,        112]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"t", "=", 
+   RowBox[{"AbsoluteTime", "[", "]"}]}], ";", 
+  RowBox[{"result3", "=", 
+   RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"threestatesreducedset", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"Prime", "[", "n", "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"n", ",", "3", ",", "5000000", ",", "8"}], "}"}]}], "]"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"If", "[", 
+     RowBox[{
+      RowBox[{"IntegerQ", "[", 
+       SqrtBox[
+        RowBox[{
+         RowBox[{"threestatesreducedset", "[", 
+          RowBox[{"[", "k", "]"}], "]"}], "-", "1"}]], "]"}], ",", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"result3", ",", 
+        RowBox[{"threestatesreducedset", "[", 
+         RowBox[{"[", "k", "]"}], "]"}]}], "]"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", 
+      RowBox[{"Length", "[", "threestatesreducedset", "]"}]}], "}"}]}], "]"}],
+   ";"}], "\[IndentingNewLine]", 
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"AbsoluteTime", "[", "]"}], "-", "t"}], ",", "result3"}], 
+  "}"}]}], "Input",
+ CellChangeTimes->{{3.58685848035581*^9, 3.586858488467825*^9}, {
+   3.586858635498083*^9, 3.5868586519249115`*^9}, {3.5868586909561806`*^9, 
+   3.586858698350593*^9}, {3.5868594017402287`*^9, 3.586859404345433*^9}, 
+   3.5868599579124055`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"10.4988184`8.472685417210108", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "5", ",", "677", ",", "1297", ",", "4357", ",", "5477", ",", "7057", ",", 
+     "8101", ",", "13457", ",", "25601", ",", "30977", ",", "98597", ",", 
+     "122501", ",", "197137", ",", "246017", ",", "287297", ",", "331777", 
+     ",", "414737", ",", "495617", ",", "682277", ",", "1110917", ",", 
+     "1378277", ",", "1705637", ",", "2056357", ",", "2483777", ",", 
+     "2689601", ",", "3182657", ",", "3496901", ",", "4946177", ",", 
+     "5107601", ",", "5134757", ",", "5225797", ",", "6728837", ",", 
+     "7290001", ",", "7452901", ",", "7650757", ",", "8122501", ",", 
+     "8386817", ",", "8503057", ",", "8561477", ",", "9821957", ",", 
+     "10666757", ",", "10824101", ",", "10916417", ",", "11062277", ",", 
+     "12180101", ",", "13322501", ",", "13808657", ",", "14092517", ",", 
+     "14107537", ",", "14318657", ",", "14976901", ",", "15085457", ",", 
+     "17106497", ",", "17139601", ",", "17472401", ",", "18576101", ",", 
+     "19044497", ",", "19061957", ",", "19096901", ",", "19131877", ",", 
+     "21160001", ",", "21622501", ",", "23001617", ",", "23775377", ",", 
+     "23951237", ",", "24364097", ",", "24443137", ",", "25140197", ",", 
+     "25765777", ",", "26563717", ",", "26728901", ",", "27625537", ",", 
+     "28515601", ",", "28729601", ",", "28836901", ",", "29484901", ",", 
+     "30647297", ",", "31181057", ",", "31248101", ",", "33339077", ",", 
+     "33802597", ",", "34222501", ",", "35331137", ",", "35808257", ",", 
+     "36192257", ",", "40195601", ",", "41216401", ",", "42902501", ",", 
+     "44036497", ",", "48720401", ",", "48944017", ",", "51322897", ",", 
+     "52070657", ",", "54967397", ",", "55056401", ",", "55591937", ",", 
+     "56310017", ",", "60372901", ",", "65286401", ",", "67174417", ",", 
+     "69288977", ",", "70157377", ",", "70324997", ",", "74545957", ",", 
+     "76737601"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{3.5868589774818835`*^9, 3.586859533794461*^9, 
+  3.586860056520179*^9}]
+}, Open  ]]
+},
+Evaluator->"kern3",
+WindowSize->{678, 196},
+WindowMargins->{{356, Automatic}, {272, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 1406, 40, 154, "Input"],
+Cell[1988, 64, 2079, 32, 278, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

@@ -1,0 +1,401 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     10992,        392]
+NotebookOptionsPosition[     10207,        365]
+NotebookOutlinePosition[     10552,        380]
+CellTagsIndexPosition[     10509,        377]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{"Q", "=", 
+  RowBox[{
+   RowBox[{
+    SubsuperscriptBox["\[Integral]", "0", "t"], 
+    RowBox[{"f", 
+     RowBox[{"(", 
+      RowBox[{"v", "-", "V"}], ")"}], 
+     RowBox[{"\[DifferentialD]", "\[Tau]"}]}]}], "=", 
+   RowBox[{
+    FractionBox["1", "2"], 
+    FractionBox[
+     RowBox[{"M", " ", "m"}], 
+     RowBox[{"M", "+", "m"}]], 
+    SubsuperscriptBox["v", "0", "2"]}]}]}]], "Input",
+ CellChangeTimes->{
+  3.60475228423296*^9, {3.604752333618785*^9, 3.6047523908470583`*^9}},
+ FontFamily->"Times New Roman",
+ FontSize->14,
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{"E", "=", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     SubsuperscriptBox["I", "2", "2"], "+", 
+     SubsuperscriptBox["I", "3", "2"], "-", 
+     SuperscriptBox["\[Mu]", "2"]}], ")"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"2", 
+     SubsuperscriptBox["I", "1", "2"]}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.6047533862069893`*^9, 3.6047534335776987`*^9}, {
+  3.6047536723083534`*^9, 3.604753698487851*^9}},
+ FontFamily->"Times New Roman",
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{"r", "=", 
+  FractionBox[
+   SubsuperscriptBox["I", "1", "2"], 
+   RowBox[{"\[Mu]", "+", 
+    RowBox[{
+     SubscriptBox["I", "3"], "sin\[Theta]"}], "+", 
+    RowBox[{
+     SubscriptBox["I", "2"], "cos\[Theta]"}]}]]}]], "Input",
+ CellChangeTimes->{{3.604753708282411*^9, 3.604753763457567*^9}},
+ FontFamily->"Times New Roman",
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["I", "4"], "=", 
+  RowBox[{"t", "-", 
+   RowBox[{"\[Integral]", 
+    RowBox[{
+     FractionBox[
+      SubsuperscriptBox["I", "1", "3"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Mu]", "+", 
+         RowBox[{
+          SubscriptBox["I", "3"], "sin\[Theta]"}], "+", 
+         RowBox[{
+          SubscriptBox["I", "2"], "cos\[Theta]"}]}], ")"}], "2"]], 
+     RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}]}]}]], "Input",
+ CellChangeTimes->{{3.6047537827966733`*^9, 3.6047538598150787`*^9}},
+ FontFamily->"Times New Roman",
+ FontSlant->"Italic"],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{"x", "=", 
+     RowBox[{"d", "+", 
+      RowBox[{"a1", " ", "cos", 
+       FractionBox[
+        RowBox[{"2", "\[Pi]", " ", "t"}], "T"]}]}]}]},
+   {
+    RowBox[{"y", "=", 
+     RowBox[{"0", "+", 
+      RowBox[{"b1", " ", "sin", 
+       FractionBox[
+        RowBox[{"2", "\[Pi]", " ", "t"}], "T"]}]}]}]}
+  }]], "Input",
+ FontFamily->"Times New Roman",
+ FontSlant->"Italic"],
+
+Cell[BoxData[GridBox[{
+   {
+    RowBox[{"x", "=", 
+     RowBox[{"d", "+", 
+      RowBox[{"a1", " ", "cos", 
+       FractionBox[
+        RowBox[{"2", "\[Pi]t"}], "T"]}], "+", 
+      RowBox[{"a2", " ", "cos", 
+       FractionBox[
+        RowBox[{"4", "\[Pi]", " ", "t"}], "T"]}]}]}]},
+   {
+    RowBox[{"y", "=", 
+     RowBox[{"0", "+", 
+      RowBox[{"b1", " ", "sin", 
+       FractionBox[
+        RowBox[{"2", "\[Pi]t"}], "T"]}], "+", 
+      RowBox[{"b1", " ", "sin", 
+       FractionBox[
+        RowBox[{"4", "\[Pi]", " ", "t"}], "T"]}]}]}]}
+  }]], "Input",
+ CellChangeTimes->{{3.604753923913745*^9, 3.6047539954878387`*^9}, {
+  3.6047540353871202`*^9, 3.6047540676559663`*^9}, {3.6047545961361933`*^9, 
+  3.604754598244314*^9}},
+ FontFamily->"Times New Roman",
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{"H", "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", "G"}], 
+    FractionBox[
+     RowBox[{
+      SubscriptBox["m", "1"], 
+      SubscriptBox["m", "2"]}], 
+     SubscriptBox["r", "12"]]}], "-", 
+   RowBox[{"G", 
+    FractionBox[
+     RowBox[{
+      SubscriptBox["m", "1"], 
+      SubscriptBox["m", "3"]}], 
+     SubscriptBox["r", "13"]]}], "-", 
+   RowBox[{"G", 
+    FractionBox[
+     RowBox[{
+      SubscriptBox["m", "2"], 
+      SubscriptBox["m", "3"]}], 
+     SubscriptBox["r", "23"]]}], "+", 
+   FractionBox[
+    SubsuperscriptBox["p", "1", "2"], 
+    RowBox[{"2", 
+     SubscriptBox["m", "1"]}]], "+", 
+   FractionBox[
+    SubsuperscriptBox["p", "2", "2"], 
+    RowBox[{"2", 
+     SubscriptBox["m", "2"]}]], "+", 
+   FractionBox[
+    SubsuperscriptBox["p", "3", "2"], 
+    RowBox[{"2", 
+     SubscriptBox["m", "3"]}]]}]}]], "Input",
+ CellChangeTimes->{{3.6047540830318456`*^9, 3.60475422001068*^9}},
+ FontFamily->"Times New Roman",
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"H", 
+   FractionBox[
+    SuperscriptBox["T", "2"], 
+    SuperscriptBox["MR", "2"]]}], "=", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"-", 
+     FractionBox[
+      SuperscriptBox["GMT", "2"], 
+      SuperscriptBox["R", "3"]]}], 
+    RowBox[{"(", 
+     RowBox[{
+      FractionBox[
+       RowBox[{
+        SubscriptBox["\[Mu]", "1"], 
+        SubscriptBox["\[Mu]", "2"]}], 
+       SubscriptBox["\[Rho]", "12"]], "+", 
+      FractionBox[
+       RowBox[{
+        SubscriptBox["\[Mu]", "1"], 
+        SubscriptBox["\[Mu]", "3"]}], 
+       SubscriptBox["\[Rho]", "13"]], "+", 
+      FractionBox[
+       RowBox[{
+        SubscriptBox["\[Mu]", "2"], 
+        SubscriptBox["\[Mu]", "3"]}], 
+       SubscriptBox["\[Rho]", "23"]]}], ")"}]}], "+", 
+   FractionBox[
+    SubsuperscriptBox["\[Pi]", "1", "2"], 
+    RowBox[{"2", 
+     SubscriptBox["\[Mu]", "1"]}]], "+", 
+   FractionBox[
+    SubsuperscriptBox["\[Pi]", "2", "2"], 
+    RowBox[{"2", 
+     SubscriptBox["\[Mu]", "2"]}]], "+", 
+   FractionBox[
+    SubsuperscriptBox["\[Pi]", "3", "2"], 
+    RowBox[{"2", 
+     SubscriptBox["\[Mu]", "3"]}]]}]}]], "Input",
+ CellChangeTimes->{{3.604754236949649*^9, 3.6047544373781133`*^9}},
+ FontFamily->"Times New Roman",
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"6.6723", " ", 
+   SuperscriptBox["10", 
+    RowBox[{"-", "11"}]]}], "=", 
+  FractionBox[
+   SubsuperscriptBox["R", "m", "3"], 
+   RowBox[{
+    SubscriptBox["M", "kg"], 
+    SubsuperscriptBox["T", "s", "2"]}]]}]], "Input",
+ CellChangeTimes->{{3.604754452342969*^9, 3.6047545280392985`*^9}},
+ FontFamily->"Times New Roman",
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["I", "4"], "=", 
+  RowBox[{"t", "-", 
+   RowBox[{"\[Integral]", 
+    RowBox[{
+     FractionBox[
+      SubsuperscriptBox["I", "1", "3"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Mu]", "+", 
+         RowBox[{
+          SubscriptBox["I", "3"], "sin\[Theta]"}], "+", 
+         RowBox[{
+          SubscriptBox["I", "2"], "cos\[Theta]"}]}], ")"}], "2"]], 
+     RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}]}]}]], "Input",
+ FontFamily->"Times New Roman",
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["I", "4"], "=", 
+  RowBox[{"t", "-", 
+   RowBox[{"\[Integral]", 
+    RowBox[{
+     FractionBox[
+      SubsuperscriptBox["I", "1", "3"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Mu]", "+", 
+         RowBox[{
+          SubscriptBox["I", "3"], "sin\[Theta]"}], "+", 
+         RowBox[{
+          SubscriptBox["I", "2"], "cos\[Theta]"}]}], ")"}], "2"]], 
+     RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}]}]}]], "Input",
+ FontFamily->"Times New Roman",
+ FontSize->14,
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["I", "4"], "=", 
+  RowBox[{"t", "-", 
+   RowBox[{"\[Integral]", 
+    RowBox[{
+     FractionBox[
+      SubsuperscriptBox["I", "1", "3"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Mu]", "+", 
+         RowBox[{
+          SubscriptBox["I", "3"], "sin\[Theta]"}], "+", 
+         RowBox[{
+          SubscriptBox["I", "2"], "cos\[Theta]"}]}], ")"}], "2"]], 
+     RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}]}]}]], "Input",
+ FontFamily->"Times New Roman",
+ FontSize->16,
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{
+  SubscriptBox["I", "4"], "=", 
+  RowBox[{"t", "-", 
+   RowBox[{"\[Integral]", 
+    RowBox[{
+     FractionBox[
+      SubsuperscriptBox["I", "1", "3"], 
+      SuperscriptBox[
+       RowBox[{"(", 
+        RowBox[{"\[Mu]", "+", 
+         RowBox[{
+          SubscriptBox["I", "3"], "sin\[Theta]"}], "+", 
+         RowBox[{
+          SubscriptBox["I", "2"], "cos\[Theta]"}]}], ")"}], "2"]], 
+     RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}]}]}]], "Input",
+ FontFamily->"Times New Roman",
+ FontSize->18,
+ FontSlant->"Italic"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"I_", "4"}], "=", 
+   RowBox[{"t", "-", 
+    RowBox[{
+     RowBox[{"\\", "int", "\\", "frac"}], 
+     RowBox[{"{", 
+      RowBox[{"I_", 
+       RowBox[{"1", "^", "3"}]}], "}"}], 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"\\", "left"}], 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"\\", "mu"}], "+", 
+          RowBox[{"I_", 
+           RowBox[{"3", "\\", "text"}], 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"sin$", "\\", "theta"}], " ", "$"}], "}"}]}], "+", 
+          RowBox[{"I_", 
+           RowBox[{"2", "\\", "text"}], 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"cos$", "\\", "theta"}], " ", "$"}], "}"}], "\\r", 
+           "ight"}]}], ")"}], 
+        RowBox[{
+         RowBox[{"{", "}"}], "^", "2"}]}], "}"}], "\\"}]}]}]}], ",", 
+  RowBox[{"d", "\\", "theta"}]}]], "Input",
+ CellChangeTimes->{{3.604777443306218*^9, 3.604777443308218*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  RowBox[{
+   SubscriptBox["I", "4"], "=", 
+   RowBox[{"t", "-", 
+    RowBox[{"\[Integral]", 
+     RowBox[{
+      FractionBox[
+       SubsuperscriptBox["I", "1", "3"], 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{"\[Mu]", "+", 
+          RowBox[{
+           SubscriptBox["I", "3"], " ", "sin\[Theta]"}], "+", 
+          RowBox[{
+           SubscriptBox["I", "2"], " ", "cos\[Theta]"}]}], ")"}], "2"]], " ", 
+      RowBox[{"\[DifferentialD]", "\[Theta]"}]}]}]}]}],
+  "MathMLPresentationTag",
+  AutoDelete->True]], "Input",
+ FontFamily->"Times New Roman",
+ FontSize->16,
+ FontSlant->"Italic"]
+},
+WindowSize->{931, 933},
+WindowMargins->{{289, Automatic}, {-8, Automatic}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 571, 19, 52, "Input"],
+Cell[1131, 41, 486, 14, 34, "Input"],
+Cell[1620, 57, 371, 11, 55, "Input"],
+Cell[1994, 70, 599, 18, 55, "Input"],
+Cell[2596, 90, 411, 15, 68, "Input"],
+Cell[3010, 107, 783, 24, 68, "Input"],
+Cell[3796, 133, 979, 36, 55, "Input"],
+Cell[4778, 171, 1251, 43, 55, "Input"],
+Cell[6032, 216, 378, 12, 57, "Input"],
+Cell[6413, 230, 529, 17, 55, "Input"],
+Cell[6945, 249, 544, 18, 57, "Input"],
+Cell[7492, 269, 544, 18, 67, "Input"],
+Cell[8039, 289, 544, 18, 72, "Input"],
+Cell[8586, 309, 983, 31, 52, "Input"],
+Cell[9572, 342, 631, 21, 67, "Input"]
+}
+]
+*)
+
+(* End of internal cache information *)

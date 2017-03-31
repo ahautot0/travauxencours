@@ -1,0 +1,895 @@
+(*:Version: Mathematica 2.0 *)
+
+(*:Name: Miscellaneous`Audio *)
+
+(*:Title: Audio Functions *)
+
+(*:Author: Arun Chandra, with the generous help of Matt Cook, 
+    Ben Cox, Theodore Gray, and Matthew Markert (Wolfram Research). 
+    March, 1992.  
+*)
+
+(*:Legal: Copyright (c) 1992, Wolfram Research, Inc.  *)
+
+(*:Reference: usage messages only. *)
+
+(*:Summary: Functions for the manipulation and synthesis of sounds.  *)
+
+(*:Keywords: sound, music, synthesis, composition *)
+
+(*:Requirements: A system on which Mathematica can produce sound. *)
+
+(*:Warning: None. *)
+
+(*:Sources: 
+    Brun, Herbert. 1992. My Words and Where I Want Them. London:
+        Princelet Editions.
+    Dodge, Charles. 1985. Computer Music.  New York: Schirmer Books.
+    Hiller, Lejaren A. 1963-66. Lectures on Musical Acoustics. Unpublished.
+    Mathews, Max V. 1969. The Technology of Computer Music. 
+        Cambridge, MA: MIT Press.
+    Moore, F. Richard. 1990. Elements of Computer Music. 
+        Englewood Cliffs, NJ: Prentice-Hall.
+    Olson, Harry F. 1967. Music, Physics, and Engineering. 
+        New York: Dover Publications, Inc.
+    Wells, Thomas H. 1981. The Technology of Electronic Music. 
+        New York: Schirmer Books.
+*)
+
+BeginPackage["Audio`"] ;
+
+Wave::usage =
+"Wave[Type, Frequency, Duration] plays a wave 
+of the specified Type with a fundamental of Frequency, 
+for Duration number of seconds.
+Defined types are: Sine, Sawtooth, Triangle, and Square.";
+
+FourierWave::usage =
+"FourierWave[Type, Frequency, Partials, Duration] plays
+a wave of the specified Type with a fundamental of Frequency,
+Partials number of partials, for Duration number of seconds. 
+Defined types are: Sawtooth, Triangle, and Square.";
+
+Sine::usage = "Sine is a wave Type for Wave.";
+Sawtooth::usage = "Sawtooth is a wave Type for Wave and FourierWave.";
+Square::usage = "Square is a wave Type for Wave and FourierWave.";
+Triangle::usage = "Triangle is a wave Type for Wave and FourierWave.";
+
+MakeWave::usage =
+"MakeWave[{{h1,a1},{h2,a2},...,{hx,ax}}, Frequency, Duration]
+plays a wave with a fundamental of Frequency, for Duration number of
+seconds. The first argument is a list of
+pairs of numbers, specifying the partial number and its relative amplitude."
+
+AmplitudeModulation::usage =
+"AmplitudeModulation[Carrier, Modulator, ModIndex, Duration] plays an amplitude
+modulated carrier, where Carrier and Modulator frequencies are given in Hertz
+and Duration is given in seconds."; 
+
+RingModulation::usage =
+"RingModulation[Carrier, Modulator, ModIndex, Duration] plays a ring
+modulated carrier, where Carrier and Modulator frequencies are given in Hertz
+and Duration is given in seconds.";
+
+FrequencyModulation::usage =
+"FrequencyModulation[Carrier, Modulator, PeakDeviation, Duration] plays a
+frequency modulated carrier, where Carrier and Modulator frequencies are given
+in Hertz and Duration is given in seconds.";
+
+CascadeFM::usage =
+"CascadeFM[fc, fm1, fm2, pd1, pd2, dur] plays a cascade
+frequency modulated carrier. The carrier (fc) is modulated by fm1, which is
+modulated by fm2. pd1 and pd2 are the peak deviations for fm1 and fm2,
+respectively.";
+
+ParallelFM::usage =
+"ParallelFM[fc, fm1, fm2, pd1, pd2, dur] plays a parallel
+frequency modulated carrier. The carrier (fc) is modulated by two frequencies
+(fm1, fm2), neither of which affects the other.  pd1 and pd2 are the peak
+deviation for fm1 and fm2, respectively.";
+
+ReadSoundfile::usage =
+"ReadSoundfile[\"soundfile\"] reads the specified soundfile, and returns a
+list of amplitudes between -32768 and +32767.";
+
+SoundList::usage =
+"SoundList[{s1, s2, ..., sx}] plays the given list of sounds without any break
+between them.  Sounds must be all mono, or all stereo.";
+
+Scale::usage = "Scale[IntervalList, Frequency,
+Duration] plays a list of intervals, measured in cents, starting at
+Frequency in Hertz for Duration number of seconds.
+Pre-defined IntervalLists are: PythagoreanChromatic,
+PythagoreanMajor, JustMajor, JustMinor, MeanChromatic, MeanMajor,
+MeanMinor, TemperedChromatic, TemperedMajor, TemperedMinor,
+QuarterTone, SixthTone.";
+
+PythagoreanChromatic::usage = "PythagoreanChromatic is an IntervalList
+that is an extension of the PythagoreanMajor scale.  It has 21
+notes, since the complete scale requires 7 \"natural\" notes, 7
+\"flat\" notes, and 7 \"sharp\" notes.  The scale intervals are
+{0, 24, 90, 114, 204, 294, 318, 384, 408, 498, 522, 588, 612, 702,
+798, 816, 906, 996, 1020, 1086, 1110, 1200}.";
+
+PythagoreanMajor::usage = "PythagoreanMajor is an IntervalList in
+which the members of the scale are derived from a sequence of
+octaves and fifths, where a fifth is the ratio of 3/2 (702 cents)
+and an octave is the ratio of 2/1 (1200 cents).  The scale is built
+by successive fifth addition and octave subtraction.  The scale
+intervals are {0, 204, 408, 498, 702, 906, 1110, 1200}."; (* As
+far as we know, PythagoreanMajor was invented in the 3rd or 4th
+century, B.C.. *)
+
+JustMajor::usage = "JustMajor is an IntervalList in which the ratio
+of the 3rd, 6th, and 7th intervals is simplified from the Pythagorean
+model. Whereas in the Pythagorean scale the ratios are: 3rd: 81/64,
+6th: 27/16, 7th: 243/128, in Just Intonation, the ratios are 3rd:
+5/4, 6th: 5/3, 7th: 15/8.  The other intervals are the same as the
+Pythagorean scale.  JustMajor was invented by theorist Zarlino in
+the 16th century to allow for simultaneously sounding tones to have
+simple ratios.  The scale intervals are {0, 204, 386.4, 498, 702,
+884.4, 1088.4, 1200}.";
+
+JustMinor::usage = "JustMinor is an IntervalList, and the minor
+version of the JustMajor scale.  The scale intervals are {0, 204,
+315.6, 498, 702, 813.7, 996.1, 1200}."
+
+MeanChromatic::usage = "MeanChromatic is an IntervalList, in which
+696.6 cents is used as the definition of a fifth, instead of 702
+cents as in the Pythagorean and Just Intonation systems.  This
+scale was invented in the 18th century by Gottfried Silbermann to
+correct for intonation problems due to enharmonic change.  The
+scale intervals are {0, 76, 193.2, 310.3, 386.3, 503.4, 579.5,
+696.6, 772.6, 889.7, 1006.8, 1082.9, 1200}.";
+
+MeanMajor::usage = "MeanMajor is an IntervalList derived from the
+MeanChromatic scale.  The scale intervals are {0, 193.2, 386.3,
+503.4, 696.6, 889.7, 1082.9, 1200}.";
+
+MeanMinor::usage = "MeanMinor is an IntervalList derived from the
+MeanChromatic scale.  The scale intervals are {0, 193.2, 310.3,
+503.4, 696.6, 772.6, 1006.8, 1200}.";
+
+TemperedChromatic::usage = "TemperedChromatic is an IntervalList.
+In Equal Temperment, the octave is divided into 12 equal sub-divisions,
+each of which is a tempered semi-tone (100 cents). This is equivalent
+to making 12 fifths equal to 7 octaves, so an equal-tempered fifth
+is equal to 700 cents. (The Just Intonation and Pythagorean fifths
+are 702 cents, and the Mean Tone fifth is 696.6 cents.) This process
+guarantees equivalence between pitches, and allows intervals to be
+the same in all keys. However, except for the octave, none of the
+intervals is in tune with regard to mathematical ratios and the
+logic Pythagoras developed from proportional lengths of strings.
+The scale intervals are {0, 100, 200, 300, 400, 500, 600, 700, 800,
+900, 1000, 1100, 1200}.";
+
+TemperedMajor::usage = "TemperedMajor is an IntervalList derived
+from the TemperedChromatic scale.  The scale intervals are {0, 200,
+400, 500, 700, 900, 1100, 1200}.";
+
+TemperedMinor::usage = "TemperedMinor is an IntervalList derived
+from the TemperedChromatic scale.  The scale intervals are {0, 200,
+300, 500, 700, 800, 1000, 1200}.";
+
+QuarterTone::usage = "QuarterTone is an IntervalList in which each
+semi-tone (100 cents) is split in two.  The scale intervals are
+{0, 50, 100, 150, 200, 250, 300, 350, 400, 450, 500, 550, 600, 650,
+700, 750, 800, 850, 900, 950, 1000, 1050, 1100, 1150, 1200}.";
+
+SixthTone::usage = "SixthTone is an IntervalList in which each
+semi-tone (100 cents) is split in three.  The scale intervals are
+{0, 33, 66, 100, 133, 166, 200, 233, 266, 300, 333, 366, 400, 433,
+466, 500, 533, 566, 600, 633, 666, 700, 733, 766, 800, 833, 866,
+900, 933, 966, 1000, 1033, 1066, 1100, 1133, 1166, 1200}.";
+
+(*
+
+    List of defined pitches
+
+*)
+
+A0 = 27.5;
+As0 = 29.135235 ;
+Bf0 = 29.135235 ;
+B0 = 30.867706 ;
+Cf0 = 30.867706 ;
+Bs0 = 32.703197 ;
+C0 = 32.703197 ;
+Cs0 = 34.647831 ;
+Df0 = 34.647831 ;
+D0 = 36.708099 ;
+Ds0 = 38.890877 ;
+Ef0 = 38.890877 ;
+E0 = 41.203449 ;
+Ff0 = 41.203449 ;
+Es0 = 43.653534 ;
+F0 = 43.653534 ;
+Fs0 = 46.24931 ;
+Gf0 = 46.24931 ;
+G0 = 48.999435 ;
+Gs0 = 51.913094 ;
+Af0 = 51.913094 ;
+A1 = 55;
+As1 = 58.27047 ;
+Bf1 = 58.27047 ;
+B1 = 61.735413 ;
+Cf1 = 61.735413 ;
+Bs1 = 65.406395 ;
+C1 = 65.406395 ;
+Cs1 = 69.295662 ;
+Df1 = 69.295662 ;
+D1 = 73.416199 ;
+Ds1 = 77.781754 ;
+Ef1 = 77.781754 ;
+E1 = 82.406898 ;
+Ff1 = 82.406898 ;
+Es1 = 87.307068 ;
+F1 = 87.307068 ;
+Fs1 = 92.498619 ;
+Gf1 = 92.498619 ;
+G1 = 97.998871 ;
+Gs1 = 103.826187 ;
+Af1 = 103.826187 ;
+A2 = 110;
+As2 = 116.540939 ;
+Bf2 = 116.540939 ;
+B2 = 123.470825 ;
+Cf2 = 123.470825 ;
+Bs2 = 130.81279 ;
+C2 = 130.81279 ;
+Cs2 = 138.591324 ;
+Df2 = 138.591324 ;
+D2 = 146.832397 ;
+Ds2 = 155.563507 ;
+Ef2 = 155.563507 ;
+E2 = 164.813797 ;
+Ff2 = 164.813797 ;
+Es2 = 174.614136 ;
+F2 = 174.614136 ;
+Fs2 = 184.997238 ;
+Gf2 = 184.997238 ;
+G2 = 195.997742 ;
+Gs2 = 207.652374 ;
+Af2 = 207.652374 ;
+A3 = 220;
+As3 = 233.081879 ;
+Bf3 = 233.081879 ;
+B3 = 246.94165 ;
+Cf3 = 246.94165 ;
+Bs3 = 261.62558 ;
+C3 = 261.62558 ;
+Cs3 = 277.182648 ;
+Df3 = 277.182648 ;
+D3 = 293.664795 ;
+Ds3 = 311.127014 ;
+Ef3 = 311.127014 ;
+E3 = 329.627594 ;
+Ff3 = 329.627594 ;
+Es3 = 349.228271 ;
+F3 = 349.228271 ;
+Fs3 = 369.994476 ;
+Gf3 = 369.994476 ;
+G3 = 391.995483 ;
+Gs3 = 415.304749 ;
+Af3 = 415.304749 ;
+A4 = 440;
+As4 = 466.163757 ;
+Bf4 = 466.163757 ;
+B4 = 493.883301 ;
+Cf4 = 493.883301 ;
+Bs4 = 523.25116 ;
+C4 = 523.25116 ;
+Cs4 = 554.365295 ;
+Df4 = 554.365295 ;
+D4 = 587.32959 ;
+Ds4 = 622.254028 ;
+Ef4 = 622.254028 ;
+E4 = 659.255188 ;
+Ff4 = 659.255188 ;
+Es4 = 698.456543 ;
+F4 = 698.456543 ;
+Fs4 = 739.988953 ;
+Gf4 = 739.988953 ;
+G4 = 783.990967 ;
+Gs4 = 830.609497 ;
+Af4 = 830.609497 ;
+A5 = 880;
+As5 = 932.327515 ;
+Bf5 = 932.327515 ;
+B5 = 987.766602 ;
+Cf5 = 987.766602 ;
+Bs5 = 1046.502319 ;
+C5 = 1046.502319 ;
+Cs5 = 1108.730591 ;
+Df5 = 1108.730591 ;
+D5 = 1174.65918 ;
+Ds5 = 1244.508057 ;
+Ef5 = 1244.508057 ;
+E5 = 1318.510376 ;
+Ff5 = 1318.510376 ;
+Es5 = 1396.913086 ;
+F5 = 1396.913086 ;
+Fs5 = 1479.977905 ;
+Gf5 = 1479.977905 ;
+G5 = 1567.981934 ;
+Gs5 = 1661.218994 ;
+Af5 = 1661.218994 ;
+A6 = 1760;
+As6 = 1864.655029 ;
+Bf6 = 1864.655029 ;
+B6 = 1975.533203 ;
+Cf6 = 1975.533203 ;
+Bs6 = 2093.004639 ;
+C6 = 2093.004639 ;
+Cs6 = 2217.461182 ;
+Df6 = 2217.461182 ;
+D6 = 2349.318359 ;
+Ds6 = 2489.016113 ;
+Ef6 = 2489.016113 ;
+E6 = 2637.020752 ;
+Ff6 = 2637.020752 ;
+Es6 = 2793.826172 ;
+F6 = 2793.826172 ;
+Fs6 = 2959.955811 ;
+Gf6 = 2959.955811 ;
+G6 = 3135.963867 ;
+Gs6 = 3322.437988 ;
+Af6 = 3322.437988 ;
+A7 = 3520;
+As7 = 3729.310059 ;
+Bf7 = 3729.310059 ;
+B7 = 3951.066406 ;
+Cf7 = 3951.066406 ;
+Bs7 = 4186.009277 ;
+C7 = 4186.009277 ;
+Cs7 = 4434.922363 ;
+Df7 = 4434.922363 ;
+D7 = 4698.636719 ;
+Ds7 = 4978.032227 ;
+Ef7 = 4978.032227 ;
+E7 = 5274.041504 ;
+Ff7 = 5274.041504 ;
+Es7 = 5587.652344 ;
+F7 = 5587.652344 ;
+Fs7 = 5919.911621 ;
+Gf7 = 5919.911621 ;
+G7 = 6271.927734 ;
+Gs7 = 6644.875977 ;
+Af7 = 6644.875977 ;
+
+
+    
+Begin["`Private`"] ;
+
+(*
+
+    Set the default values for SampleRate, SampleDepth, and PlayRange.
+
+*)
+
+{sr, sd} = Switch[ $System,
+                    "NeXT", {44100, 16},
+                    "SPARC", {8000, 8},
+                    "Macintosh", {22254.5454, 8},
+                    _, {8192, 8}
+            ];
+
+Map[(Options[#] = {SampleRate -> sr, SampleDepth -> sd, PlayRange -> All})&,
+    {Wave, FourierWave, MakeWave, FrequencyModulation, CascadeFM, ParallelFM}];
+Map[(Options[#] = {SampleRate -> sr, SampleDepth -> sd, PlayRange -> {-1,1}})&,
+    {AmplitudeModulation, RingModulation}];
+
+(*
+
+    Efficient generation of waveforms
+
+*)
+
+Fract[x_ ] := x - Floor[x] ;
+
+Wave::wtype = "Unrecognized type: `1`";
+
+Wave[Type_,
+    Frequency_?((NumberQ[N[#]])&), 
+    Duration_?((NumberQ[N[#]])&), 
+    opts___Rule ] := 
+    Block[{t, sr, sd, pr},
+
+        {sr, sd, pr} = {SampleRate, SampleDepth, PlayRange} /.
+                            {opts} /. Options[Wave];
+
+        Switch[Type,
+            Sine, Play[Evaluate[Sin[2 Pi Frequency t]], 
+                {t,0,Duration}, 
+                SampleRate->sr, SampleDepth->sd, PlayRange->pr],
+            Sawtooth, Play[Evaluate[Fract[-t * Frequency]], 
+                {t,0,Duration}, 
+                SampleRate->sr, SampleDepth->sd, PlayRange->pr],
+            Triangle, Play[Evaluate[2 * Abs[Fract[t * Frequency] - 1/2]], 
+                {t,0,Duration}, 
+                SampleRate->sr, SampleDepth->sd, PlayRange->pr],
+            Square, Play[Evaluate[1/2(Sign[Fract[t * Frequency]-1/2]+1)], 
+                {t,0,Duration}, 
+                SampleRate->sr, SampleDepth->sd, PlayRange->pr],
+            _, Message[Wave::wtype, Type]
+        ]
+    ];
+
+
+
+(*
+
+        Fourier Synthesis of waveforms
+
+*)
+
+FourierWave::wtype = "Unrecognized type: `1`";
+FourierWave::warn =
+"Warning: requested number of partials exceeds SamplingRate / (2 Frequency).
+Partials reset to `1`.";
+
+FourierWave[
+    Type_,
+    Frequency_?((NumberQ[N[#]])&),
+    Partials_?((NumberQ[N[#]])&),
+    Duration_?((NumberQ[N[#]])&),
+    opts___Rule ] :=
+    Block[{omega, maxpartials, partials, i, t, sr, sd, pr},
+
+        {sr, sd, pr} = {SampleRate, SampleDepth, PlayRange} /.
+                            {opts} /. Options[FourierWave];
+
+        omega = N[2 Pi Frequency] ;
+        maxpartials = Floor[N[sr/2/Frequency]] ;
+        partials = Partials ;
+
+        (* Confirm requested number of partials won't cause aliasing.  *)
+
+        Switch[Type,
+            Sawtooth, If[ Partials > maxpartials,
+                partials = maxpartials; 
+                Message[FourierWave::warn, partials]],
+            Triangle, If[(2 Partials + 1) > maxpartials,
+                partials = Floor[maxpartials/2];
+                Message[FourierWave::warn, partials]],
+            Square, If[(2 Partials + 1) > maxpartials,
+                partials = Floor[maxpartials/2];
+                Message[FourierWave::warn, partials]]
+        ];
+
+        Switch[Type,
+            Sawtooth, Play[Evaluate[
+                Sum[1.0/i * Sin[i * omega t ], {i,1,partials}]],
+                    {t,0,Duration}, 
+                    SampleRate->sr, SampleDepth->sd, PlayRange->pr],
+            Triangle, Play[Evaluate[
+                Sum[1.0 / (2 i + 1)^2 * Cos[(2 i + 1) * omega t],
+                    {i, 0, partials}]],{t,0,Duration}, 
+                    SampleRate->sr, SampleDepth->sd, PlayRange->pr],
+            Square, Play[Evaluate[
+                Sum[(1.0/(2 i + 1)) * Sin[(2 i + 1) * omega t],
+                    {i,0,partials}]],{t,0,Duration}, 
+                    SampleRate->sr, SampleDepth->sd, PlayRange->pr],
+            _, Message[FourierWave::wtype, Type]
+          ]
+    ];
+
+
+(* 
+
+    MakeWave
+
+*)
+
+
+MakeWave::wtype = "Unrecognized type: `1`";
+
+MakeWave::badp =
+"Warning: partials `1` would cause aliasing.
+Removing bad partials from partials list.";
+
+MakeWaveTypeCheck[Type_] :=
+    If[ Head[ Type ] == List
+        && Union[Head /@ Type] == { List }
+        && Union[Length /@ Type] == { 2 }
+        && Union[NumberQ /@ N[Flatten[Type]]] == { True },
+    True,
+    Message[MakeWave::wtype, Type]; Return[False]
+];
+
+MakeWave[
+    Type_List?(MakeWaveTypeCheck[#]&),
+    Frequency_?((NumberQ[N[#]])&),
+    Duration_?((NumberQ[N[#]])&),
+    opts___Rule ] :=
+    Block[{omega, NumberOfPartials, maxpartials, PartialsList, badpartials, 
+        t, sr, sd, pr},
+
+    {sr, sd, pr} = {SampleRate, SampleDepth, PlayRange} /.
+                            {opts} /. Options[MakeWave];
+
+    omega = 2 Pi Frequency ;
+    maxpartials = Floor[N[sr/2/Frequency]] ;
+
+    PartialsList = Take[Type, Length[Type]];
+
+    (* Check to see if any of the partials exceeds the value of maxpartials *)
+
+    badpartials = Select[PartialsList, (First[#] > maxpartials)&];
+
+    (* Remove badpartials from PartialsList *)
+
+    If[ badpartials != {},
+        Message[MakeWave::badp, badpartials];
+        PartialsList = Select[PartialsList, (First[#] <= maxpartials)&]
+    ];
+
+    NumberOfPartials = Length[PartialsList];
+
+    Play[Evaluate[
+        Sum[ PartialsList[[i,2]] * Sin[ PartialsList[[i,1]] * omega t],
+            {i, 1, NumberOfPartials}]],
+        {t, 0, Duration}, 
+        SampleRate->sr, SampleDepth->sd, PlayRange->pr]
+];
+
+
+
+
+
+(* 
+
+    Amplitude modulation
+    Ring modulation
+
+*)
+
+
+AmplitudeModulation[Carrier_?((NumberQ[N[#]])&), 
+    Modulator_?((NumberQ[N[#]])&), 
+    ModIndex_?((NumberQ[N[#]])&), 
+    Duration_?((NumberQ[N[#]])&), 
+    opts___Rule ] := 
+
+    Module[ {fc, fm, t, sr, sd, pr},
+
+        {sr, sd, pr} = {SampleRate, SampleDepth, PlayRange} /.
+                            {opts} /. Options[AmplitudeModulation];
+
+        fc = N[2 Pi Carrier] ;
+        fm = N[2 Pi Modulator] ;
+
+        Play[Evaluate[ 
+            (1.0 + ModIndex * Cos[fm t]) * Cos[fc t]],
+                {t,0,Duration},
+                SampleRate->sr, SampleDepth->sd,PlayRange->pr] 
+    ];
+
+RingModulation[Carrier_?((NumberQ[N[#]])&), 
+    Modulator_?((NumberQ[N[#]])&), 
+    ModIndex_?((NumberQ[N[#]])&), 
+    Duration_?((NumberQ[N[#]])&),
+    opts___Rule ] := 
+
+    Block[ {fc, fm, t, sr, sd, pr},
+
+        {sr, sd, pr} = {SampleRate, SampleDepth, PlayRange} /.
+                    {opts} /.  Options[RingModulation];
+
+        fc = N[2 Pi Carrier] ;
+        fm = N[2 Pi Modulator] ;
+
+        Play[Evaluate[ 
+            (ModIndex * Cos[fm t]) * Cos[fc t]],
+                {t,0,Duration}, SampleRate->sr, SampleDepth->sd,
+                    PlayRange->pr]
+    ];
+
+
+
+(* 
+
+    Frequency modulation
+
+*)
+
+FrequencyModulation[Carrier_?((NumberQ[N[#]])&), 
+    Modulator_?((NumberQ[N[#]])&), 
+    PeakDeviation_?((NumberQ[N[#]])&), 
+    Duration_?((NumberQ[N[#]])&), 
+    opts___Rule ] := 
+
+    Block[ {fc, fm, mi, t, sr, sd, pr},
+
+        {sr, sd, pr} = {SampleRate, SampleDepth, PlayRange} /.
+                            {opts} /. Options[FrequencyModulation];
+
+        fc = N[2 Pi Carrier] ;
+        fm = N[2 Pi Modulator] ;
+        mi = N[PeakDeviation / Modulator] ;
+
+        Play[Evaluate[
+            Sin[fc t + mi * Sin[fm t]]], 
+            {t,0,Duration}, 
+            SampleRate->sr, SampleDepth->sd, PlayRange->pr] 
+    ] ;
+
+CascadeFM[Carrier_?((NumberQ[N[#]])&), 
+    Mod1_?((NumberQ[N[#]])&), 
+    Mod2_?((NumberQ[N[#]])&), 
+    PeakD1_?((NumberQ[N[#]])&), 
+    PeakD2_?((NumberQ[N[#]])&), 
+    Duration_?((NumberQ[N[#]])&), 
+    opts___Rule ] :=
+
+    Block[ {fc, fm1, fm2, pd1, pd2, t, sr, sd, pr},
+
+        {sr, sd, pr} = {SampleRate, SampleDepth, PlayRange} /.
+                            {opts} /. Options[CascadeFM];
+
+        fc = N[2 Pi Carrier];
+        fm1 = N[2 Pi Mod1];
+        fm2 = N[2 Pi Mod2];
+        pd1 = N[PeakD1/Mod1];
+        pd2 = N[PeakD2/Mod2];
+
+        Play[Evaluate[
+            Sin[fc t + pd1 * Sin[fm1 t + pd2 * Sin[fm2 t]]]],
+                {t,0,Duration}, 
+                SampleRate->sr, SampleDepth->sd, PlayRange->pr]
+    ];
+
+ParallelFM[Carrier_?((NumberQ[N[#]])&), 
+    Mod1_?((NumberQ[N[#]])&), 
+    Mod2_?((NumberQ[N[#]])&), 
+    PeakD1_?((NumberQ[N[#]])&), 
+    PeakD2_?((NumberQ[N[#]])&), 
+    Duration_?((NumberQ[N[#]])&), 
+    opts___Rule ] :=
+
+    Block[ {fc, fm1, fm2, pd1, pd2, t, sr, sd, pr},
+
+        {sr, sd, pr} = {SampleRate, SampleDepth, PlayRange} /.
+                            {opts} /. Options[ParallelFM];
+
+        fc = N[2 Pi Carrier];
+        fm1 = N[2 Pi Mod1];
+        fm2 = N[2 Pi Mod2];
+        pd1 = N[PeakD1/Mod1];
+        pd2 = N[PeakD2/Mod2];
+    
+        Play[Evaluate[
+            Sin[fc t + pd1 * Sin[fm1 t] + pd2 * Sin[fm2 t]]],
+                {t,0,Duration}, 
+                SampleRate->sr, SampleDepth->sd, PlayRange->pr]
+    ];
+
+
+
+(*
+
+    Scale: All the following scales represent their intervals in
+    cents, where 1200 cents == 1 octave.
+
+*)
+
+PythagoreanChromatic = {0,24,90,114,204,294,318,384,408,498,
+    522,588,612,702,798,816,906,996,1020,1086,1110,1200};
+PythagoreanMajor = {0,204,408,498,702,906,1110,1200};
+
+JustMajor = {0,204,386.4,498,702,884.4,1088.4,1200};
+JustMinor = {0,204,315.6,498,702,813.7,996.1,1200};
+
+MeanChromatic = {0,76,193.2,310.3,386.3,503.4,579.5,
+                696.6,772.6,889.7,1006.8,1082.9,1200};
+MeanMajor = {0,193.2,386.3,503.4,696.6,889.7,1082.9,1200};
+MeanMinor = {0,193.2,310.3,503.4,696.6,772.6,1006.8,1200};
+
+TemperedChromatic = {0,100,200,300,400,500,600,700, 800,900,1000,1100,1200};
+TemperedMajor = {0,200,400,500,700,900,1100,1200};
+TemperedMinor = {0,200,300,500,700,800,1000,1200};
+
+QuarterTone = {0,50,100,150,200,250,300,350,400,450,500,550,
+                600,650,700,750,800,850,900,950,1000,1050,
+                1100,1150,1200};
+
+SixthTone = {0,33,66,100,133,166,200,233,266,300,333,366,
+            400,433,466,500,533,566,600,633,666,700,733,
+            766,800,833,866,900,933,966,1000,1033,1066,1100,
+            1133,1166,1200};
+
+Scale::stype = "IntervalList `` is not a list having a minimum \
+of two members."
+
+Scale[Intervals_,
+    startingFreq_?((NumberQ[N[#]])&),
+    totalDuration_?((NumberQ[N[#]])&)] :=
+
+  Module[
+    {intervalList,noteDuration},
+
+    If[ (!VectorQ[Intervals]) || (Length[Intervals] < 2), 
+        Message[Scale::stype, Intervals]; 
+        Return[]
+    ];
+
+    intervalList = Map[(N[startingFreq * 10^(#/(1200/Log[10,2]))])&, Intervals];
+    noteDuration = Length[intervalList]/totalDuration;
+
+    Play[ Sin[ 2 Pi t intervalList[[ 1+Floor[t * noteDuration] ]] ],
+          {t,0,totalDuration-.000001}]
+  ];
+
+
+(*
+
+    ReadSoundfile: read in a NeXT soundfile
+
+*)
+
+ReadSoundfile::error1 = "Not a NeXT soundfile: `1`.";
+
+ReadSoundfile[name_String] := Block[
+
+    {magicNumber, dataLocation, dataSize, dataFormat, samplingRate, dataType,
+    channelCount, binaryData, shortData,
+    sf, header, samples, sizeofheader, NeXTsfID},
+
+    NeXTsfID = 779316836 ;    (* magic number for NeXT soundfiles *)
+    sizeofheader = 24 ; (* minimum size of NeXT soundfile header *)
+    
+    sf = OpenRead[name] ;    (* quit if file not found *)
+    If[ sf == $Failed, (Close[sf]; Return[$Failed])];
+    
+    header = ReadList[sf,Byte,sizeofheader];
+    
+    magicNumber = ((((header[[1]] * 256) +
+                        header[[2]]) * 256) +
+                            header[[3]]) * 256 +
+                                header[[4]] ;
+
+    (* quit if file is not a NeXT soundfile *)
+
+    If[ magicNumber != NeXTsfID , (
+        Message[ReadSoundfile::error1, name];
+        Close[sf];
+        Return[];)
+    ];
+
+    (* location of data *)
+
+    dataLocation = ((((header[[5]] * 256) +
+                        header[[6]]) * 256) +
+                            header[[7]]) * 256 +
+                                header[[8]] ;
+                        
+    (* size of data in bytes *)
+    dataSize = ((((header[[9]] * 256) +
+                    header[[10]]) * 256) +
+                        header[[11]]) * 256 +
+                            header[[12]] ;
+                            
+    (* NeXT format of data *)
+    dataFormat = ((((header[[13]] * 256) +
+                        header[[14]]) * 256) +
+                            header[[15]]) * 256 +
+                                header[[16]] ;
+
+    Switch[ dataFormat, 
+            1, dataType = "8-bit mulaw",
+            2, dataType = "8-bit linear",
+            3, dataType = "16-bit linear",
+            4, dataType = "24-bit linear",
+            5, dataType = "32-bit linear",
+            6, dataType = "float",
+            7, dataType = "double",
+            8, dataType = "indirect",
+            9, dataType = "nested",
+            10, dataType = "DSP core ",
+            11, dataType = "DSP data 8",
+            12, dataType = "DSP data 16",
+            13, dataType = "DSP data 24",
+            14, dataType = "DSP data 32",
+            16, dataType = "display",
+            17, dataType = "mulaw squelch",
+            18, dataType = "emphasized",
+            19, dataType = "compressed",
+            20, dataType = "compressed-emphasized",
+            21, dataType = "DSP commands",
+            22, dataType = "DSP commands samples"];
+                            
+    (* sampling rate *)
+    samplingRate = ((((header[[17]] * 256) +
+                        header[[18]]) * 256) +
+                            header[[19]]) * 256 +
+                                header[[20]] ;
+    
+    (* number of sound channels *)
+    channelCount = ((((header[[21]] * 256) +
+                        header[[22]]) * 256) +
+                            header[[23]]) * 256 +
+                                header[[24]] ;
+    
+    (* calculate number of samples *)
+    samples = dataSize / 2 / channelCount ;
+    
+    (* display information *)
+
+    Print["Soundfile: ", name];
+    Print["Size: ",dataSize," bytes"];
+    Print["Samples: ", samples];
+    Print["Duration: ",N[samples/samplingRate]," seconds"];
+    Print["Format: ",dataType];
+    Print["SamplingRate: ",samplingRate];
+    Print["Channels: ",channelCount];
+
+    (* Stop here if the format is not 16-bit linear *)
+    
+    If[ dataFormat != 3,(Close[sf]; Return[];)];
+        
+    (* skip over Info string *)
+    
+    If[ dataLocation > sizeofheader,    
+        Skip[sf,Byte,(dataLocation - sizeofheader)]]; 
+    
+    binaryData = ReadList[sf,Byte];
+
+    (* Convert data to signed ints *)
+    (* bigendian: high-order byte: #1, low-order byte: #2 *)
+
+    Print["Converting to signed 16-bit integers."];
+    
+    shortData = Apply[ If[ #1 > 127,
+                        ( #1 - 256 ) * 256 + #2,
+                        ( #1 * 256 ) + #2]&,
+                    Partition[binaryData,2],{1}];
+                    
+    Close[sf];
+    
+    (* if the soundfile is stereo, return two lists *)
+    
+    If[ channelCount == 2,
+        (Print["Returning stereo data."];
+        Return[Transpose[Partition[shortData,2]]]),
+        (Print["Returning mono data."]; Return[shortData])
+    ];
+]
+
+
+(*
+
+    SoundList
+
+*)
+
+Attributes[SoundList] = {HoldFirst};
+
+SoundList[list_List] := Block[
+    {llist},
+    Block[
+        {$DisplayFunction = Identity,
+         $SoundDisplayFunction = Identity},
+          llist = list;
+      ];
+    Show[Sound[Map[First, llist]]]
+]
+
+
+(*
+
+        Protect all user-accessible functions.
+
+*)
+
+Protect[Wave, FourierWave, Sine, Sawtooth, Square, Triangle, MakeWave,
+    AmplitudeModulation, RingModulation, FrequencyModulation, CascadeFM, 
+    ParallelFM, ReadSoundfile, SoundList,
+    Scale, PythagoreanChromatic, PythagoreanMajor, JustMajor, JustMinor,
+    MeanChromatic, MeanMajor, MeanMinor, TemperedChromatic, TemperedMajor,
+    TemperedMinor, QuarterTone, SixthTone];
+
+End[] ;
+
+EndPackage[] ;
+
+

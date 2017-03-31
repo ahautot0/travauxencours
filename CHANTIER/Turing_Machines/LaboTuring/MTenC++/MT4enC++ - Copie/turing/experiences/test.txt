@@ -1,0 +1,3 @@
+Nombre de machines qui se sont arrêtées : 0
+Nombre de machines qui ont bouclé : 0
+Nombre de machines qui ont nesté : 0

@@ -1,0 +1,1117 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[     41620,       1108]
+NotebookOptionsPosition[     39366,       1029]
+NotebookOutlinePosition[     39772,       1046]
+CellTagsIndexPosition[     39729,       1043]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["\<\
+Mon mat\[EAcute]riel :
+Hardware : Processor Intel Core i7-3820QM@2.70GHz
+GPU nVIDIA GeForce GTX770\
+\>", "Subtitle",
+ CellChangeTimes->{{3.591889581675366*^9, 3.5918895964843435`*^9}}],
+
+Cell["\<\
+Les machines de Turing (MT), r\[EAcute]duites \[AGrave] leur plus simple \
+expression, utilisent : 
+   une bande semi-infinie disons vers la gauche et une t\[EHat]te qui se d\
+\[EAcute]place le long de cette bande, une case \[AGrave] la fois,
+   2 caract\[EGrave]res (0 = blanc et 1 = noir) et 
+   s \[EAcute]tats (de 0 \[AGrave] s-1), o\[UGrave] s prend une des valeurs \
+2, 3, 4, ... ,
+   une table d\[CloseCurlyQuote]instructions.
+    
+La bande est initialement peupl\[EAcute]e de 0, elle est donc toute blanche. 
+La t\[EHat]te est initialement dans l\[CloseCurlyQuote]\[EAcute]tat 0 en face \
+de la derni\[EGrave]re case \[AGrave] l\[CloseCurlyQuote]extr\[EAcute]mit\
+\[EAcute] fixe de la bande (Cette case porte le n\[Degree] n=0).  
+Les cases situ\[EAcute]es plus \[AGrave] gauche sont \
+num\[EAcute]rot\[EAcute]es n=-1, -2, ... .  n=1 d\[EAcute]signe la premi\
+\[EGrave]re case situ\[EAcute]e \[AGrave] droite mais elle est en zone \
+interdite. 
+
+Les MT sont diff\[EAcute]renci\[EAcute]es par leur table \
+d\[CloseCurlyQuote]instructions : 
+{\[EAcute]tat actuel, caract\[EGrave]re lu} -> {nouvel \[EAcute]tat, caract\
+\[EGrave]re \[EAcute]crit, d\[EAcute]placement de la t\[EHat]te (0 = \
+\[AGrave] gauche et 1 = \[AGrave] droite)}.
+
+Cette table est appliqu\[EAcute]e it\[EAcute]rativement jusqu\
+\[CloseCurlyQuote]\[AGrave] ce que la t\[EHat]te tente \
+d\[CloseCurlyQuote]entrer en zone interdite auquel cas elle s\
+\[CloseCurlyQuote]arr\[EHat]te, par convention. Si cela se produit (ce qui n\
+\[CloseCurlyQuote]est pas certain), on lit le r\[EAcute]sultat \
+imprim\[EAcute] sur la bande, de gauche \[AGrave] droite, \[AGrave] partir de \
+la position la plus \[AGrave] gauche atteinte par la t\[EHat]te jusqu\
+\[CloseCurlyQuote]\[AGrave] l\[CloseCurlyQuote]extr\[EAcute]mit\[EAcute] fixe.\
+\>", "Subtitle",
+ CellChangeTimes->{{3.591808588984067*^9, 3.591808689786833*^9}, {
+   3.5918088559577494`*^9, 3.5918089695252447`*^9}, {3.5918896203672104`*^9, 
+   3.591889640396268*^9}, {3.591894518625803*^9, 3.5918945191968355`*^9}, {
+   3.591894553602803*^9, 3.5918945925070286`*^9}, {3.591894730236906*^9, 
+   3.59189482051807*^9}, {3.591895197974659*^9, 3.591895367436352*^9}, {
+   3.59189540954076*^9, 3.5918955234342747`*^9}, {3.591895886093017*^9, 
+   3.591895891652335*^9}, 3.591977232994212*^9, {3.5919772699194775`*^9, 
+   3.5919772901995125`*^9}, {3.5919773960768986`*^9, 3.591977506946294*^9}, {
+   3.5919775383023486`*^9, 3.59197754482316*^9}, {3.5919775750092134`*^9, 
+   3.591977597457652*^9}, {3.5919808805614185`*^9, 3.59198091559908*^9}, {
+   3.591981704383266*^9, 3.591981744787337*^9}, {3.5919818407899055`*^9, 
+   3.591982077832322*^9}}],
+
+Cell["\<\
+Pour fixer les id\[EAcute]es consid\[EAcute]rons les MT \[AGrave] s=3 \
+\[EAcute]tats : chaque MT \[AGrave] 3 \[EAcute]tats a besoin d\
+\[CloseCurlyQuote]une table contenant 2s=6 instructions afin de couvrir tous \
+les cas {\[EAcute]tat actuel, caract\[EGrave]re lu}. Les voici dans l\
+\[CloseCurlyQuote]ordre suivant, admis par tout le monde :
+
+{0,1}->{s1,k1,d1} ; {0,0}->{s2,k2,d2} ; {1,1}->{s3,k3,d3} ; {1,0}->{s4,k4,d4} \
+; {2,1}->{s5,k5,d5} ; {2,0}->{s6,k6,d6},
+
+Puisque cet ordre ne changera jamais, les triplets des membres de droite, \
+pris dans cet ordre, suffisent \[AGrave] caract\[EAcute]riser la MT. 
+La premi\[EGrave]re instruction activ\[EAcute]e est toujours \
+{0,0}->{s2,k2,d2} puisque initialement l\[CloseCurlyQuote]\[EAcute]tat est 0 \
+et le caract\[EGrave]re lu est 0. Les sj valent 0,1 ou 2 (puisque s=3) et les \
+kj et les dj valent toujours 0 ou 1.\
+\>", "Subtitle",
+ CellChangeTimes->{{3.591889673248022*^9, 3.5918897276051073`*^9}, {
+  3.591890137808908*^9, 3.5918901793845463`*^9}, {3.5918946427849045`*^9, 
+  3.5918946919167147`*^9}, {3.5918949016477103`*^9, 3.5918949659273868`*^9}, {
+  3.5918956311644363`*^9, 3.5918957325382347`*^9}, {3.5918957656191263`*^9, 
+  3.591895845594701*^9}, {3.5918959360268736`*^9, 3.591895999883526*^9}, {
+  3.5918962571702414`*^9, 3.5918962984476023`*^9}, {3.591977648344942*^9, 
+  3.591977775516365*^9}, {3.591977815234035*^9, 3.5919778651385226`*^9}, {
+  3.591980964239966*^9, 3.591980969325575*^9}}],
+
+Cell["\<\
+R\[EAcute]sumons : toute MT (\[AGrave] s=3 \[EAcute]tats) est \
+caract\[EAcute]ris\[EAcute]e par ses 2s=6 triplets :\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5918920509745436`*^9, 3.591892194940505*^9}, {
+   3.59189223953494*^9, 3.5918925378270216`*^9}, {3.591892567843733*^9, 
+   3.591892578371394*^9}, 3.591894887502901*^9, {3.591977977084319*^9, 
+   3.591978022620799*^9}}],
+
+Cell["\<\
+{{s1,k1,d1},{s2,k2,d2},{s3,k3,d3},{s4,k4,d4},{s5,k5,d5},{s6,k6,d6}}
+
+Voici les triplets des premi\[EGrave]res et des derni\[EGrave]res MT :
+MT n\[Degree]0 : {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0}}
+MT n\[Degree]1 : {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,1}}
+MT n\[Degree]2 : {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,1,0}}
+MT n\[Degree]3 : {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,1,1}}
+MT n\[Degree]4 : {{0,0,0},{0,0,0},{0,0,0},{0,0,0},{0,0,0},{1,0,0}}
+...
+MT n\[Degree]2985981 : {{2,1,1},{2,1,1},{2,1,1},{2,1,1},{2,1,1},{2,0,1}}
+MT n\[Degree]2985982 : {{2,1,1},{2,1,1},{2,1,1},{2,1,1},{2,1,1},{2,1,0}}
+MT n\[Degree]2985983 : {{2,1,1},{2,1,1},{2,1,1},{2,1,1},{2,1,1},{2,1,1}}\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5918926636039534`*^9, 3.591892831794037*^9}, {
+  3.5918928893174205`*^9, 3.5918929894102077`*^9}, {3.5918960720176516`*^9, 
+  3.5918961122609534`*^9}, {3.5918961722653856`*^9, 3.591896208382451*^9}, {
+  3.5919779698459063`*^9, 3.5919779726071115`*^9}, {3.591978031388015*^9, 
+  3.591978039375229*^9}}],
+
+Cell["\<\
+Pourquoi ces num\[EAcute]ros et pourquoi 2985984 MT lorsque s=3 ?  
+R\[EAcute]ponse : il existe 4s=12 triplets distincts que \
+l\[CloseCurlyQuote]on \[EAcute]num\[EGrave]re dans l\[CloseCurlyQuote]ordre \
+naturel suivant : 
+
+{0,0,0} {0,0,1} {0,1,0} {0,1,1} {1,0,0} {1,0,1} {1,1,0} {1,1,1} {2,0,0} \
+{2,0,1} {2,1,0} {2,1,1}
+    0         1         2         3         4         5         6         7   \
+      8         9         10       11
+    
+Chaque ensemble de triplets peut donc \[EHat]tre vu comme un entier en base \
+4s=12 (chiffres de 0 \[AGrave] 11), par exemple :
+MT n\[Degree]2985981 : {{2,1,1},{2,1,1},{2,1,1},{2,1,1},{2,1,1},{2,0,1}} -> \
+11 11 11 11 11 9 = 11 12^5+11 12^4+11 12^3+11 12^2+11 12^1+9 12^0 = 2985981.\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5918930154931087`*^9, 3.5918933561095905`*^9}, {
+  3.591893634038207*^9, 3.5918937200581274`*^9}, {3.59189375332803*^9, 
+  3.5918941322077007`*^9}, {3.591894230032296*^9, 3.5918943227555995`*^9}, {
+  3.591895077550771*^9, 3.5918950830150843`*^9}, {3.591978071948086*^9, 
+  3.591978145408615*^9}, {3.5919782283539605`*^9, 3.5919783191929197`*^9}, {
+  3.5919810323028855`*^9, 3.591981039385298*^9}, {3.5919821940681257`*^9, 
+  3.5919821984517336`*^9}}],
+
+Cell["\<\
+Puisqu\[CloseCurlyQuote]il existe 4s triplets distincts et qu\
+\[CloseCurlyQuote]il en faut 2s pour caract\[EAcute]riser une MT, il existe \
+(4s)^(2s) MT distinctes \[AGrave] s \[EAcute]tats, soit respectivement, 4096 \
+(s = 2), 2985984 (s = 3), 4294967296 (s = 4), 10240000000000 (s = 5), etc.   \
+\>", "Subtitle",
+ CellChangeTimes->{{3.591808756032034*^9, 3.591808813031294*^9}, {
+   3.591808979193798*^9, 3.591809122887017*^9}, {3.591809863281365*^9, 
+   3.5918098982413645`*^9}, {3.5918943305000424`*^9, 3.591894416162942*^9}, 
+   3.591978278773249*^9, {3.591978324340929*^9, 3.5919783451045656`*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5918944805896273`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Voici, pour info, ce que Mathematica est capable de faire : OLD NUMBERING !!!\
+\>", "Subtitle",
+ CellChangeTimes->{{3.59197846124677*^9, 3.5919785191228714`*^9}, {
+  3.606068650957351*^9, 3.6060686578224564`*^9}}],
+
+Cell["\<\
+Table d\[CloseCurlyQuote]instructions de la MT (\[AGrave] 3 \[EAcute]tats) \
+particuli\[EGrave]re, n\[Degree] 1377015 :\
+\>", "Subtitle",
+ CellChangeTimes->{{3.591809264931141*^9, 3.591809295446886*^9}, {
+   3.5918099066848474`*^9, 3.5918099081019287`*^9}, {3.591978414212687*^9, 
+   3.5919784400619326`*^9}, 3.5919785267980847`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"shiftedinstructions", "[", 
+   RowBox[{"tmnumber_", ",", 
+    RowBox[{"{", 
+     RowBox[{"s_", ",", "k_"}], "}"}]}], "]"}], ":=", 
+  RowBox[{"Flatten", "[", 
+   RowBox[{"MapIndexed", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1", ",", 
+           RowBox[{"-", "1"}]}], "}"}], " ", 
+         TagBox["#2",
+          #& ,
+          SyntaxForm->"a"]}], "+", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"-", "1"}], ",", "k"}], "}"}]}], "\[Rule]", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1", ",", "1", ",", "1"}], "}"}], " ", 
+         RowBox[{"Mod", "[", 
+          RowBox[{
+           RowBox[{"Quotient", "[", 
+            RowBox[{
+             TagBox["#1",
+              #& ,
+              SyntaxForm->"a"], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"2", " ", "k"}], ",", "2", ",", "1"}], "}"}]}], "]"}], 
+           ",", 
+           RowBox[{"{", 
+            RowBox[{"s", ",", "k", ",", "2"}], "}"}]}], "]"}]}], "+", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "0", ",", "0"}], "}"}]}]}], "&"}], ",", 
+     RowBox[{"Partition", "[", 
+      RowBox[{
+       RowBox[{"IntegerDigits", "[", 
+        RowBox[{"tmnumber", ",", 
+         RowBox[{"2", " ", "s", " ", "k"}], ",", 
+         RowBox[{"s", " ", "k"}]}], "]"}], ",", "k"}], "]"}], ",", 
+     RowBox[{"{", "2", "}"}]}], "]"}], "]"}]}]], "Input",
+ CellChangeTimes->{3.591889855065815*^9},
+ FontSize->16],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"rule", "=", 
+  RowBox[{"shiftedinstructions", "[", 
+   RowBox[{"1377015", ",", 
+    RowBox[{"{", 
+     RowBox[{"3", ",", "2"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.591807361917883*^9, 3.591807419622184*^9}, {
+  3.591898092534072*^9, 3.591898094187166*^9}},
+ FontSize->16],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1"}], "}"}], "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0", ",", "1"}], "}"}]}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"0", ",", "0"}], "}"}], "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1", ",", "0"}], "}"}]}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1"}], "}"}], "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"1", ",", "0"}], "}"}], "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"2", ",", "1", ",", "0"}], "}"}]}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"2", ",", "1"}], "}"}], "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], ",", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{"2", ",", "0"}], "}"}], "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", "1", ",", "1"}], "}"}]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.591807388210387*^9, 3.5918074205382357`*^9}, 
+   3.5918076842913218`*^9, 3.5918082691277723`*^9, {3.591897574223426*^9, 
+   3.5918975788206887`*^9}, {3.5918980971993384`*^9, 3.5918981022006245`*^9}, 
+   3.591898139595763*^9, {3.5918983071584234`*^9, 3.5918983247586937`*^9}, 
+   3.591904391509323*^9, 3.591940564973046*^9, 3.5919408557156754`*^9},
+ FontSize->16]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Evolution de cette MT (par convention l\[CloseCurlyQuote]arr\[EHat]t se \
+produit lorsque la t\[EHat]te franchit la ligne rouge) : \
+\>", "Subtitle",
+ CellChangeTimes->{{3.5918091569529653`*^9, 3.591809201832532*^9}, 
+   3.5919784872052155`*^9, {3.5919785452529173`*^9, 3.5919785509781275`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nb", "=", "1377015"}], ";", 
+  RowBox[{"s", "=", "3"}], ";", 
+  RowBox[{"k", "=", "2"}], ";", 
+  RowBox[{"limit", "=", "22"}], ";", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Clear", "[", "tm", "]"}], ";", 
+    RowBox[{"tm", "=", 
+     RowBox[{"TuringMachine", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"nb", ",", "s", ",", "k"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "}"}], ",", "0"}], "}"}]}], "}"}], ",", "limit"}], 
+      "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"step", "=", 
+     RowBox[{
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"MemberQ", "[", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{
+             RowBox[{"Transpose", "[", "tm", "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}], "[", 
+           RowBox[{"[", "3", "]"}], "]"}], ",", "1"}], "]"}], ",", 
+        RowBox[{
+         RowBox[{"First", "[", 
+          RowBox[{"Position", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Transpose", "[", 
+              RowBox[{
+               RowBox[{"Transpose", "[", "tm", "]"}], "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}], "[", 
+             RowBox[{"[", "3", "]"}], "]"}], ",", "1"}], "]"}], "]"}], "[", 
+         RowBox[{"[", "1", "]"}], "]"}], ",", "limit"}], "]"}], "-", "1"}]}], 
+    ";", 
+    RowBox[{"Clear", "[", "tm", "]"}], ";", 
+    RowBox[{"tm", "=", 
+     RowBox[{"TuringMachine", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{"nb", ",", "s", ",", "k"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"1", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", "}"}], ",", "0"}], "}"}]}], "}"}], ",", "step"}], 
+      "]"}]}], ";", "\[IndentingNewLine]", 
+    RowBox[{"delta", "=", 
+     RowBox[{"If", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"1", "-", 
+         RowBox[{"Min", "[", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{
+             RowBox[{"Transpose", "[", "tm", "]"}], "[", 
+             RowBox[{"[", "1", "]"}], "]"}], "]"}], "[", 
+           RowBox[{"[", "3", "]"}], "]"}], "]"}]}], ">", "0"}], ",", 
+       RowBox[{"1", "-", 
+        RowBox[{"Min", "[", 
+         RowBox[{
+          RowBox[{"Transpose", "[", 
+           RowBox[{
+            RowBox[{"Transpose", "[", "tm", "]"}], "[", 
+            RowBox[{"[", "1", "]"}], "]"}], "]"}], "[", 
+          RowBox[{"[", "3", "]"}], "]"}], "]"}]}], ",", "0"}], "]"}]}], ";", 
+    "\[IndentingNewLine]", 
+    RowBox[{"tm12", "=", 
+     RowBox[{
+      RowBox[{"Transpose", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "tm", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "]"}], "[", 
+      RowBox[{"[", "2", "]"}], "]"}]}], ";", 
+    RowBox[{"tm11", "=", 
+     RowBox[{
+      RowBox[{"Transpose", "[", 
+       RowBox[{
+        RowBox[{"Transpose", "[", "tm", "]"}], "[", 
+        RowBox[{"[", "1", "]"}], "]"}], "]"}], "[", 
+      RowBox[{"[", "1", "]"}], "]"}]}], ";", 
+    RowBox[{
+     RowBox[{"f", "[", "nb", "]"}], "=", 
+     RowBox[{"ArrayPlot", "[", 
+      RowBox[{
+       RowBox[{"Last", "/@", "tm"}], ",", 
+       RowBox[{"Mesh", "\[Rule]", "True"}], ",", 
+       RowBox[{"PlotLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"s", ",", "k", ",", "nb"}], "}"}]}], ",", 
+       RowBox[{"LabelStyle", "\[Rule]", 
+        RowBox[{"Directive", "[", "Bold", "]"}]}], ",", 
+       RowBox[{"Epilog", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"Red", ",", "Thick", ",", 
+            RowBox[{"Line", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"{", 
+                RowBox[{"delta", ",", "0"}], "}"}], ",", 
+               RowBox[{"{", 
+                RowBox[{"delta", ",", 
+                 RowBox[{"step", "+", "1"}]}], "}"}]}], "}"}], "]"}]}], "}"}],
+           ",", "Orange", ",", 
+          RowBox[{"Thickness", "[", 
+           RowBox[{"0.15", "/", 
+            RowBox[{"(", 
+             RowBox[{"step", "+", "1"}], ")"}]}], "]"}], ",", 
+          RowBox[{"Arrowheads", "[", 
+           RowBox[{"0.5", "/", 
+            RowBox[{"(", 
+             RowBox[{"step", "+", "1"}], ")"}]}], "]"}], ",", 
+          RowBox[{"Table", "[", 
+           RowBox[{
+            RowBox[{"Rotate", "[", 
+             RowBox[{
+              RowBox[{"Arrow", "[", 
+               RowBox[{"{", 
+                RowBox[{
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "1"}], "/", "2"}], "+", 
+                    RowBox[{"tm12", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+                   RowBox[{
+                    RowBox[{"2", "/", "10"}], "+", "1", "+", "step", "-", 
+                    "i"}]}], "}"}], ",", 
+                 RowBox[{"{", 
+                  RowBox[{
+                   RowBox[{
+                    RowBox[{
+                    RowBox[{"-", "1"}], "/", "2"}], "+", 
+                    RowBox[{"tm12", "[", 
+                    RowBox[{"[", "i", "]"}], "]"}]}], ",", 
+                   RowBox[{
+                    RowBox[{"4", "/", "5"}], "+", "1", "+", "step", "-", 
+                    "i"}]}], "}"}]}], "}"}], "]"}], ",", 
+              RowBox[{
+               RowBox[{"-", "2"}], 
+               RowBox[{"\[Pi]", "/", "s"}], 
+               RowBox[{"(", 
+                RowBox[{
+                 RowBox[{"tm11", "[", 
+                  RowBox[{"[", "i", "]"}], "]"}], "-", "1"}], ")"}]}]}], 
+             "]"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"i", ",", 
+              RowBox[{"step", "+", "1"}]}], "}"}]}], "]"}]}], "}"}]}]}], 
+      "]"}]}]}], "}"}], ";", 
+  RowBox[{"f", "[", "nb", "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.5918067932263556`*^9, {3.591806831043519*^9, 3.591806856394969*^9}, 
+   3.5918072931769514`*^9, {3.5919447651052303`*^9, 3.5919448177241225`*^9}, 
+   3.5919449424463415`*^9},
+ FontSize->16],
+
+Cell[BoxData[
+ GraphicsBox[{
+   RasterBox[{{0, 0, 0, 0, 1, 1}, {0, 0, 0, 0, 0, 1}, {0, 0, 0, 1, 0, 1}, {0, 
+    0, 0, 1, 1, 1}, {0, 0, 0, 0, 1, 1}, {0, 0, 1, 0, 1, 1}, {0, 0, 1, 1, 1, 
+    1}, {0, 0, 0, 1, 1, 1}, {0, 1, 0, 1, 1, 1}, {0, 1, 1, 1, 1, 1}, {0, 0, 1, 
+    1, 1, 1}, {1, 0, 1, 1, 1, 1}, {1, 1, 1, 1, 1, 1}, {1, 1, 0, 1, 1, 1}, {1, 
+    1, 0, 0, 1, 1}, {1, 1, 0, 0, 1, 1}, {1, 1, 0, 1, 1, 1}, {1, 1, 0, 1, 0, 
+    1}, {1, 1, 0, 0, 0, 1}, {1, 1, 1, 0, 0, 1}, {1, 1, 1, 1, 0, 1}, {1, 1, 1, 
+    1, 1, 1}}, {{0, 0}, {6, 22}}, {0, 1}], {
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 22}, {6, 22}}, {{0, 21}, {6, 21}}, {{0, 20}, {6, 20}}, {{
+       0, 19}, {6, 19}}, {{0, 18}, {6, 18}}, {{0, 17}, {6, 17}}, {{0, 16}, {6,
+        16}}, {{0, 15}, {6, 15}}, {{0, 14}, {6, 14}}, {{0, 13}, {6, 13}}, {{0,
+        12}, {6, 12}}, {{0, 11}, {6, 11}}, {{0, 10}, {6, 10}}, {{0, 9}, {6, 
+       9}}, {{0, 8}, {6, 8}}, {{0, 7}, {6, 7}}, {{0, 6}, {6, 6}}, {{0, 5}, {6,
+        5}}, {{0, 4}, {6, 4}}, {{0, 3}, {6, 3}}, {{0, 2}, {6, 2}}, {{0, 1}, {
+       6, 1}}, {{0, 0}, {6, 0}}}],
+      Antialiasing->False]}, 
+    {GrayLevel[
+      NCache[-1 + GoldenRatio, 0.6180339887498949]], 
+     StyleBox[
+      LineBox[{{{0, 0}, {0, 22}}, {{1, 0}, {1, 22}}, {{2, 0}, {2, 22}}, {{3, 
+       0}, {3, 22}}, {{4, 0}, {4, 22}}, {{5, 0}, {5, 22}}, {{6, 0}, {6, 22}}}],
+      Antialiasing->False]}}},
+  Epilog->{{
+     RGBColor[1, 0, 0], 
+     Thickness[Large], 
+     LineBox[{{5, 0}, {5, 22}}]}, 
+    RGBColor[1, 0.5, 0], 
+    Thickness[0.006818181818181818], 
+    Arrowheads[0.022727272727272728`], {
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[9, 2], 
+          Rational[106, 5]}, {
+          Rational[9, 2], 
+          Rational[109, 5]}}, {{4.5, 21.2}, {4.5, 21.8}}]], {{{1, 0}, {0, 1}},
+        Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[7, 2], 
+          Rational[101, 5]}, {
+          Rational[7, 2], 
+          Rational[104, 5]}}, {{3.5, 20.2}, {3.5, 20.8}}]], {{{-0.5, 
+       0.8660254037844386}, {-0.8660254037844386, -0.5}}, Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[5, 2], 
+          Rational[96, 5]}, {
+          Rational[5, 2], 
+          Rational[99, 5]}}, {{2.5, 19.2}, {2.5, 
+        19.8}}]], {{{-0.5, -0.8660254037844386}, {0.8660254037844386, -0.5}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[7, 2], 
+          Rational[91, 5]}, {
+          Rational[7, 2], 
+          Rational[94, 5]}}, {{3.5, 18.2}, {3.5, 18.8}}]], {{{1, 0}, {0, 1}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[9, 2], 
+          Rational[86, 5]}, {
+          Rational[9, 2], 
+          Rational[89, 5]}}, {{4.5, 17.2}, {4.5, 17.8}}]], {{{-0.5, 
+       0.8660254037844386}, {-0.8660254037844386, -0.5}}, Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[7, 2], 
+          Rational[81, 5]}, {
+          Rational[7, 2], 
+          Rational[84, 5]}}, {{3.5, 16.2}, {3.5, 16.8}}]], {{{-0.5, 
+       0.8660254037844386}, {-0.8660254037844386, -0.5}}, Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[5, 2], 
+          Rational[76, 5]}, {
+          Rational[5, 2], 
+          Rational[79, 5]}}, {{2.5, 15.2}, {2.5, 
+        15.8}}]], {{{-0.5, -0.8660254037844386}, {0.8660254037844386, -0.5}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[7, 2], 
+          Rational[71, 5]}, {
+          Rational[7, 2], 
+          Rational[74, 5]}}, {{3.5, 14.2}, {3.5, 14.8}}]], {{{-0.5, 
+       0.8660254037844386}, {-0.8660254037844386, -0.5}}, Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[5, 2], 
+          Rational[66, 5]}, {
+          Rational[5, 2], 
+          Rational[69, 5]}}, {{2.5, 13.2}, {2.5, 13.8}}]], {{{-0.5, 
+       0.8660254037844386}, {-0.8660254037844386, -0.5}}, Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[3, 2], 
+          Rational[61, 5]}, {
+          Rational[3, 2], 
+          Rational[64, 5]}}, {{1.5, 12.2}, {1.5, 12.8}}]], {{{-0.5, 
+       0.8660254037844386}, {-0.8660254037844386, -0.5}}, Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[1, 2], 
+          Rational[56, 5]}, {
+          Rational[1, 2], 
+          Rational[59, 5]}}, {{0.5, 11.2}, {0.5, 
+        11.8}}]], {{{-0.5, -0.8660254037844386}, {0.8660254037844386, -0.5}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[3, 2], 
+          Rational[51, 5]}, {
+          Rational[3, 2], 
+          Rational[54, 5]}}, {{1.5, 10.2}, {1.5, 10.8}}]], {{{1, 0}, {0, 1}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[5, 2], 
+          Rational[46, 5]}, {
+          Rational[5, 2], 
+          Rational[49, 5]}}, {{2.5, 9.2}, {2.5, 9.8}}]], {{{-0.5, 
+       0.8660254037844386}, {-0.8660254037844386, -0.5}}, Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[3, 2], 
+          Rational[41, 5]}, {
+          Rational[3, 2], 
+          Rational[44, 5]}}, {{1.5, 8.2}, {1.5, 
+        8.8}}]], {{{-0.5, -0.8660254037844386}, {0.8660254037844386, -0.5}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[5, 2], 
+          Rational[36, 5]}, {
+          Rational[5, 2], 
+          Rational[39, 5]}}, {{2.5, 7.2}, {2.5, 7.8}}]], {{{1, 0}, {0, 1}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[7, 2], 
+          Rational[31, 5]}, {
+          Rational[7, 2], 
+          Rational[34, 5]}}, {{3.5, 6.2}, {3.5, 6.8}}]], {{{-0.5, 
+       0.8660254037844386}, {-0.8660254037844386, -0.5}}, Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[5, 2], 
+          Rational[26, 5]}, {
+          Rational[5, 2], 
+          Rational[29, 5]}}, {{2.5, 5.2}, {2.5, 
+        5.8}}]], {{{-0.5, -0.8660254037844386}, {0.8660254037844386, -0.5}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[7, 2], 
+          Rational[21, 5]}, {
+          Rational[7, 2], 
+          Rational[24, 5]}}, {{3.5, 4.2}, {3.5, 4.8}}]], {{{1, 0}, {0, 1}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[9, 2], 
+          Rational[16, 5]}, {
+          Rational[9, 2], 
+          Rational[19, 5]}}, {{4.5, 3.2}, {4.5, 3.8}}]], {{{-0.5, 
+       0.8660254037844386}, {-0.8660254037844386, -0.5}}, Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[7, 2], 
+          Rational[11, 5]}, {
+          Rational[7, 2], 
+          Rational[14, 5]}}, {{3.5, 2.2}, {3.5, 
+        2.8}}]], {{{-0.5, -0.8660254037844386}, {0.8660254037844386, -0.5}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[9, 2], 
+          Rational[6, 5]}, {
+          Rational[9, 2], 
+          Rational[9, 5]}}, {{4.5, 1.2}, {4.5, 1.8}}]], {{{1, 0}, {0, 1}}, 
+       Center}], 
+     GeometricTransformationBox[
+      ArrowBox[
+       NCache[{{
+          Rational[11, 2], 
+          Rational[1, 5]}, {
+          Rational[11, 2], 
+          Rational[4, 5]}}, {{5.5, 0.2}, {5.5, 0.8}}]], {{{-0.5, 
+       0.8660254037844386}, {-0.8660254037844386, -0.5}}, Center}]}},
+  Frame->False,
+  FrameLabel->{None, None},
+  FrameTicks->{{None, None}, {None, None}},
+  LabelStyle->Directive[Bold],
+  PlotLabel->FormBox[
+    RowBox[{"{", 
+      RowBox[{"3", ",", "2", ",", "1377015"}], "}"}], 
+    TraditionalForm]]], "Output",
+ CellChangeTimes->{{3.5919447908140755`*^9, 3.591944818472924*^9}, 
+   3.5919449427427425`*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Fin de l\[CloseCurlyQuote]info.", "Subtitle",
+ CellChangeTimes->{{3.5919814490108175`*^9, 3.591981452115223*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5919413735642943`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Organigramme du probl\[EGrave]me \[AGrave] parall\[EAcute]liser :\
+\>", "Subtitle",
+ CellChangeTimes->{{3.591809328322767*^9, 3.591809389836285*^9}, {
+   3.5918099385076675`*^9, 3.5918099603569174`*^9}, {3.591978595282205*^9, 
+   3.591978620211049*^9}, {3.5919786842959614`*^9, 3.5919786866359653`*^9}, 
+   3.59197874611887*^9, {3.5919802356874866`*^9, 3.5919802596959286`*^9}}],
+
+Cell["\<\
+Initialisation du cas S=3 (\[EAcute]tats) et d\[EAcute]tail des 12 triplets \
+possibles :\
+\>", "Subtitle",
+ CellChangeTimes->{{3.591978756929689*^9, 3.59197881438459*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"S", "=", "3"}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"triplets", "[", "0", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "0"}], "}"}]}], ";", 
+  RowBox[{
+   RowBox[{"triplets", "[", "1", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0", ",", "1"}], "}"}]}], ";", " ", 
+  RowBox[{
+   RowBox[{"triplets", "[", "2", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "0"}], "}"}]}], ";", " ", 
+  RowBox[{
+   RowBox[{"triplets", "[", "3", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", "1", ",", "1"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"triplets", "[", "4", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "0"}], "}"}]}], ";", 
+  RowBox[{
+   RowBox[{"triplets", "[", "5", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "0", ",", "1"}], "}"}]}], ";", " ", 
+  RowBox[{
+   RowBox[{"triplets", "[", "6", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "0"}], "}"}]}], ";", " ", 
+  RowBox[{
+   RowBox[{"triplets", "[", "7", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"1", ",", "1", ",", "1"}], "}"}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"triplets", "[", "8", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "0", ",", "0"}], "}"}]}], ";", 
+  RowBox[{
+   RowBox[{"triplets", "[", "9", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "0", ",", "1"}], "}"}]}], ";", 
+  RowBox[{
+   RowBox[{"triplets", "[", "10", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "1", ",", "0"}], "}"}]}], ";", 
+  RowBox[{
+   RowBox[{"triplets", "[", "11", "]"}], "=", 
+   RowBox[{"{", 
+    RowBox[{"2", ",", "1", ",", "1"}], "}"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.591953009159649*^9, 3.591953170916333*^9}, 
+   3.5919540721055164`*^9, {3.591954114599991*^9, 3.5919541149587917`*^9}, 
+   3.5919787234988303`*^9, {3.5919788182845964`*^9, 3.591979128225941*^9}},
+ FontSize->18],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.5919577730248165`*^9, 3.5919577752244205`*^9}, {
+  3.5919773454704103`*^9, 3.591977352911623*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Corps du programme :
+
+1) Pour toute MT de num\[EAcute]ro nb (nb allant de 0 \[AGrave] 2985983), \
+calculer les 6 chiffres de la repr\[EAcute]sentation de nb en base 12 (Compl\
+\[EAcute]ter \[EAcute]ventuellement par des 0 \[AGrave] gauche pour atteindre \
+le total de 6).  Exemple, si nb=1377015 :\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5919792046816754`*^9, 3.591979403535225*^9}, {
+   3.59198027766716*^9, 3.5919802789463625`*^9}, 3.5919804806547165`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"nb", "=", "1377015"}], ";", 
+  RowBox[{"chiffres", "=", 
+   RowBox[{"{", "}"}]}], ";", 
+  RowBox[{"Do", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"reste", "=", 
+       RowBox[{"Mod", "[", 
+        RowBox[{"nb", ",", "12"}], "]"}]}], ",", 
+      RowBox[{"AppendTo", "[", 
+       RowBox[{"chiffres", ",", "reste"}], "]"}], ",", 
+      RowBox[{"nb", "=", 
+       FractionBox[
+        RowBox[{"nb", "-", "reste"}], "12"]}]}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", "6"}], "}"}]}], "]"}], ";", 
+  RowBox[{"Reverse", "[", "chiffres", "]"}]}]], "Input",
+ CellChangeTimes->{{3.591965050991404*^9, 3.5919650574498158`*^9}, {
+  3.591965476279187*^9, 3.5919655616737375`*^9}, {3.59196559171939*^9, 
+  3.5919656382542715`*^9}, {3.591965684461553*^9, 3.591965723212021*^9}, {
+  3.591981481037674*^9, 3.5919814957485*^9}},
+ FontSize->18],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"5", ",", "6", ",", "4", ",", "10", ",", "7", ",", "3"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.5919650602422204`*^9, 3.5919656389250727`*^9, {3.5919656888139606`*^9, 
+   3.5919657242104225`*^9}, 3.591980309616016*^9, 3.6060683194360094`*^9},
+ FontSize->18]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5919798759040546`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+2) Pour chaque MT, commencer par l\[CloseCurlyQuote]initialisation suivante : \
+la t\[EHat]te est dans l\[CloseCurlyQuote]\[EAcute]tat initial s=0, en face \
+de la case n=0 et toute la bande est blanche a[_]=0.  Les triplets de cette \
+MT (ici n\[Degree] 1377015) sont choisis sur base du r\[EAcute]sultat trouv\
+\[EAcute] au point 1 :\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5919796448208485`*^9, 3.59197964564765*^9}, {
+  3.591979703086951*^9, 3.591979865467636*^9}, {3.591980010766291*^9, 
+  3.5919800240731144`*^9}, {3.5919811428290796`*^9, 3.591981158444707*^9}, {
+  3.5919812043711877`*^9, 3.5919812056971903`*^9}, {3.591981532673764*^9, 
+  3.591981545699787*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"s", "=", "0"}], ";", 
+  RowBox[{"n", "=", "0"}], ";", 
+  RowBox[{"nmin", "=", "0"}], ";", 
+  RowBox[{"j", "=", "0"}], ";", 
+  RowBox[{
+   RowBox[{"a", "[", "_", "]"}], ":=", "0"}], ";", 
+  RowBox[{"T", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"triplets", "[", "5", "]"}], ",", 
+     RowBox[{"triplets", "[", "6", "]"}], ",", 
+     RowBox[{"triplets", "[", "4", "]"}], ",", 
+     RowBox[{"triplets", "[", "10", "]"}], ",", 
+     RowBox[{"triplets", "[", "7", "]"}], ",", 
+     RowBox[{"triplets", "[", "3", "]"}]}], "}"}]}], ";"}]], "Input",
+ FontSize->18],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5919798783064585`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+3) Pour cette MT, effectuer la boucle simple : tant que n \
+n\[CloseCurlyQuote]atteint pas la valeur 1 (qui signale \
+l\[CloseCurlyQuote]arr\[EHat]t) et que le nombre de pas \
+n\[CloseCurlyQuote]atteint pas 21 (on sait qu\[CloseCurlyQuote]une MT \
+\[AGrave] 3 \[EAcute]tats qui ne s\[CloseCurlyQuote]est pas arr\[EHat]t\
+\[EAcute]e apr\[EGrave]s 21 pas ne s\[CloseCurlyQuote]arr\[EHat]tera jamais), \
+appliquer it\[EAcute]rativement la table d\[CloseCurlyQuote]instructions.
+(nmin actualise en permanence la position la plus \[AGrave] gauche jamais \
+atteinte par la t\[EHat]te).\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5919794239244604`*^9, 3.5919796363812337`*^9}, {
+  3.5919798919720826`*^9, 3.591979896870491*^9}, {3.59198161568151*^9, 
+  3.591981654353978*^9}, {3.5919823367303762`*^9, 3.5919823478219957`*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"While", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"n", "<", "1"}], " ", "&&", " ", 
+    RowBox[{"j", "<", "21"}]}], ",", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"k", "=", 
+       RowBox[{"a", "[", "n", "]"}]}], ";", 
+      RowBox[{
+       RowBox[{"a", "[", "n", "]"}], "=", 
+       RowBox[{"T", "[", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{"6", "-", 
+           RowBox[{"2", "s"}], "-", "k"}], ",", "2"}], "]"}], "]"}]}], ";", 
+      RowBox[{"n", "=", 
+       RowBox[{"n", "-", "1", "+", 
+        RowBox[{"2", 
+         RowBox[{"T", "[", 
+          RowBox[{"[", 
+           RowBox[{
+            RowBox[{"6", "-", 
+             RowBox[{"2", "s"}], "-", "k"}], ",", "3"}], "]"}], "]"}]}]}]}], 
+      ";", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{"n", "<", "nmin"}], ",", 
+        RowBox[{"nmin", "=", 
+         RowBox[{"nmin", "-", "1"}]}]}], "]"}], ";", 
+      RowBox[{"s", "=", 
+       RowBox[{"T", "[", 
+        RowBox[{"[", 
+         RowBox[{
+          RowBox[{"6", "-", 
+           RowBox[{"2", "s"}], "-", "k"}], ",", "1"}], "]"}], "]"}]}], ";", 
+      RowBox[{"Print", "[", 
+       RowBox[{"{", 
+        RowBox[{"s", ",", "n", ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"a", "[", "i", "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"i", ",", "nmin", ",", "0"}], "}"}]}], "]"}]}], "}"}], 
+       "]"}]}], "}"}], ";", "\[IndentingNewLine]", 
+    RowBox[{"j", "++"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.591953194612775*^9, 3.5919532143624096`*^9}, {
+   3.591953245874465*^9, 3.591953469984459*^9}, {3.591953635148749*^9, 
+   3.5919536536035814`*^9}, {3.5919538920968*^9, 3.5919539504097023`*^9}, 
+   3.591954191570526*^9, {3.5919544045733004`*^9, 3.5919544103609104`*^9}, {
+   3.591954481138235*^9, 3.591954483556239*^9}, 3.5919545306059217`*^9, {
+   3.591954600915245*^9, 3.591954611070863*^9}, 3.591954644267721*^9, {
+   3.5919546841101913`*^9, 3.5919546922534056`*^9}, {3.5919547771019545`*^9, 
+   3.591954826819242*^9}, {3.5919548958805633`*^9, 3.5919548975497665`*^9}, {
+   3.59195495118266*^9, 3.591954965285085*^9}, 3.591955644494678*^9, 
+   3.5919557264104223`*^9, {3.5919583928413057`*^9, 3.5919584015149207`*^9}, 
+   3.591958432262575*^9, {3.591959057534665*^9, 3.591959061918273*^9}, {
+   3.591959098328737*^9, 3.591959101339542*^9}, {3.591959379597231*^9, 
+   3.591959404557275*^9}, 3.5919596385264854`*^9, {3.5919599736618743`*^9, 
+   3.59196000531433*^9}, 3.5919600985400934`*^9, {3.5919604592233515`*^9, 
+   3.591960498095575*^9}, {3.5919605497795305`*^9, 3.591960559014059*^9}, 
+   3.5919606834711776`*^9, {3.5919796548360662`*^9, 3.591979656458469*^9}, {
+   3.6060683449789014`*^9, 3.606068364342949*^9}},
+ FontSize->18],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", "1", ",", 
+   RowBox[{"{", "1", "}"}]}], "}"}]], "Print",
+ CellChangeTimes->{{3.5919548036064014`*^9, 3.5919548271312428`*^9}, 
+   3.5919548992345695`*^9, 3.5919549682958903`*^9, {3.59195564563348*^9, 
+   3.5919556670991178`*^9}, {3.5919557392804446`*^9, 3.5919557493268623`*^9}, 
+   3.5919584130121408`*^9, 3.591958877135948*^9, 3.5919590680178833`*^9, 
+   3.5919591063315506`*^9, {3.5919593874440446`*^9, 3.591959411078086*^9}, 
+   3.591959644407696*^9, {3.591959986578697*^9, 3.591960011554341*^9}, 
+   3.591960563786332*^9, {3.591980170666572*^9, 3.591980184378996*^9}, 
+   3.5919803143428245`*^9, 3.60606836766675*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+On v\[EAcute]rifie que ce r\[EAcute]sultat correspond \[AGrave] la figure \
+obtenue ci-dessus.  En fait, l\[CloseCurlyQuote]instruction Print est inutile \
+\[AGrave] l\[CloseCurlyQuote]int\[EAcute]rieur de la boucle car seule la fin \
+de la derni\[EGrave]re ligne, {1,1,1,1,0} nous int\[EAcute]resse : c\
+\[CloseCurlyQuote]est la suite que la MT imprime en s\[CloseCurlyQuote]arr\
+\[EHat]tant. J\[CloseCurlyQuote]ai besoin de conna\[IHat]tre toutes les \
+suites imprim\[EAcute]es par les MT qui s\[CloseCurlyQuote]arr\[EHat]tent \
+ainsi que les num\[EAcute]ros de ces MT.\
+\>", "Subtitle",
+ CellChangeTimes->{{3.59197997602503*^9, 3.591979988973053*^9}, {
+  3.591980035227134*^9, 3.591980119139682*^9}, {3.5919803465880814`*^9, 
+  3.5919803839033465`*^9}, {3.5919812573800807`*^9, 3.591981275164112*^9}, {
+  3.5919813063641667`*^9, 3.591981378904294*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.591980597389722*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["\<\
+Remarque.  Rien ne s\[CloseCurlyQuote]opposerait, a priori, \[AGrave] ce qu\
+\[CloseCurlyQuote]on fusionne les \[EAcute]tapes 1 et 2 : il suffirait d\
+\[CloseCurlyQuote]\[EAcute]num\[EAcute]rer les MT non pas \[AGrave] partir de \
+leur num\[EAcute]ro, nb, mais directement \[AGrave] partir des triplets \
+\[EAcute]num\[EAcute]r\[EAcute]s gr\[AHat]ce \[AGrave] 6 boucles imbriqu\
+\[EAcute]es.  On \[EAcute]viterait de devoir calculer la \
+repr\[EAcute]sentation de nb en base 12 mais je ne suis pas s\[UHat]r que \
+cela ne complique pas la parall\[EAcute]lisation.\
+\>", "Subtitle",
+ CellChangeTimes->{{3.5919805894961076`*^9, 3.5919807805652432`*^9}, {
+  3.591981393989521*^9, 3.5919814086847467`*^9}}],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.5919805790440893`*^9}]
+}, Open  ]],
+
+Cell["", "Subtitle"]
+},
+WindowSize->{1561, 1002},
+WindowMargins->{{5, Automatic}, {Automatic, 0}},
+PrintingCopies->1,
+PrintingPageRange->{Automatic, Automatic},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 194, 5, 105, "Subtitle"],
+Cell[776, 29, 2668, 45, 497, "Subtitle"],
+Cell[3447, 76, 1473, 24, 245, "Subtitle"],
+Cell[4923, 102, 385, 7, 49, "Subtitle"],
+Cell[5311, 111, 1049, 18, 357, "Subtitle"],
+Cell[6363, 131, 1229, 22, 273, "Subtitle"],
+Cell[7595, 155, 615, 9, 77, "Subtitle"],
+Cell[8213, 166, 89, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[8339, 172, 223, 4, 49, "Subtitle"],
+Cell[8565, 178, 343, 6, 49, "Subtitle"],
+Cell[8911, 186, 1560, 49, 80, "Input"],
+Cell[CellGroupData[{
+Cell[10496, 239, 309, 8, 33, "Input"],
+Cell[10808, 249, 1350, 38, 33, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12207, 293, 305, 5, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[12537, 302, 6243, 172, 218, "Input"],
+Cell[18783, 476, 8110, 224, 447, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[26942, 706, 119, 1, 49, "Subtitle"],
+Cell[27064, 709, 89, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[27190, 715, 388, 6, 49, "Subtitle"],
+Cell[27581, 723, 182, 4, 49, "Subtitle"],
+Cell[27766, 729, 1965, 57, 145, "Input"],
+Cell[29734, 788, 147, 2, 31, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29918, 795, 468, 9, 133, "Subtitle"],
+Cell[CellGroupData[{
+Cell[30411, 808, 895, 24, 90, "Input"],
+Cell[31309, 834, 303, 7, 35, "Output"]
+}, Open  ]],
+Cell[31627, 844, 89, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31753, 850, 680, 11, 77, "Subtitle"],
+Cell[32436, 863, 598, 17, 36, "Input"],
+Cell[33037, 882, 89, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33163, 888, 826, 13, 105, "Subtitle"],
+Cell[CellGroupData[{
+Cell[34014, 905, 2793, 65, 118, "Input"],
+Cell[36810, 972, 672, 11, 23, "Print"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37531, 989, 865, 13, 105, "Subtitle"],
+Cell[38399, 1004, 87, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38523, 1010, 712, 11, 105, "Subtitle"],
+Cell[39238, 1023, 89, 1, 52, "Input"]
+}, Open  ]],
+Cell[39342, 1027, 20, 0, 49, "Subtitle"]
+}
+]
+*)
+
+(* End of internal cache information *)

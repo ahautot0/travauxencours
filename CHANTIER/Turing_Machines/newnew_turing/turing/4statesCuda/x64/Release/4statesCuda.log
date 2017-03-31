@@ -1,0 +1,75 @@
+﻿Build started 27/04/2014 16:18:30.
+     1>Project "C:\projects\turring\turing\4statesCuda\4statesCuda.vcxproj" on node 2 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Release\4statesCuda.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       AddCudaCompileDeps:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\cl.exe /E /nologo /showIncludes /TP /D__CUDACC__ /DWIN64 /DNDEBUG /D_CONSOLE /D_MBCS /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin" /I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" /I. /FIcuda_runtime.h /c C:\projects\turring\turing\4statesCuda\kernel.cu 
+       AddCudaCompilePropsDeps:
+       Skipping target "AddCudaCompilePropsDeps" because all output files are up-to-date with respect to the input files.
+       CudaBuild:
+         Compiling CUDA source file kernel.cu...
+         cmd.exe /C "C:\Users\jhautot\AppData\Local\Temp\tmp232c4a397ac74b7794c7e546fd13457f.cmd"
+         "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_10,code=\"sm_10,compute_10\" --use-local-env --cl-version 2010 -ccbin "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart static     -DWIN64 -DNDEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MD  " -o x64\Release\kernel.cu.obj "C:\projects\turring\turing\4statesCuda\kernel.cu"
+         
+         C:\projects\turring\turing\4statesCuda>"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\nvcc.exe" -gencode=arch=compute_10,code=\"sm_10,compute_10\" --use-local-env --cl-version 2010 -ccbin "c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64"  -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include" -I"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include"     --keep-dir x64\Release -maxrregcount=0  --machine 64 --compile -cudart static     -DWIN64 -DNDEBUG -D_CONSOLE -D_MBCS -Xcompiler "/EHsc /W3 /nologo /O2 /Zi  /MD  " -o x64\Release\kernel.cu.obj "C:\projects\turring\turing\4statesCuda\kernel.cu" 
+     1>C:/projects/turring/turing/4statesCuda/kernel.cu(228): warning : variable "iterationNumber_" was declared but never referenced
+         
+     1>C:/projects/turring/turing/4statesCuda/kernel.cu(456): warning : pointless comparison of unsigned integer with zero
+         
+     1>C:/projects/turring/turing/4statesCuda/kernel.cu(471): warning : expression has no effect
+         
+     1>C:/projects/turring/turing/4statesCuda/kernel.cu(228): warning : variable "iterationNumber_" was declared but never referenced
+         
+     1>C:/projects/turring/turing/4statesCuda/kernel.cu(456): warning : pointless comparison of unsigned integer with zero
+         
+     1>C:/projects/turring/turing/4statesCuda/kernel.cu(471): warning : expression has no effect
+         
+     1>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/system/cuda/detail/cuda_launch_config.h(159): warning C4267: 'return' : conversion from 'size_t' to 'int', possible loss of data
+                 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/system/cuda/detail/cuda_launch_config.h(272) : see reference to function template instantiation 'L thrust::system::cuda::detail::cuda_launch_config_detail::util::round_i<L,size_t>(const L,const R)' being compiled
+                 with
+                 [
+                     L=int,
+                     R=size_t
+                 ]
+     1>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/system/cuda/detail/cuda_launch_config.h(317): warning C4267: 'argument' : conversion from 'size_t' to 'int', possible loss of data
+                 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/system/cuda/detail/cuda_launch_config.h(338) : see reference to function template instantiation 'size_t thrust::system::cuda::detail::block_size_with_maximum_potential_occupancy<thrust::system::cuda::detail::cuda_launch_config_detail::util::zero_function<T>>(const thrust::system::cuda::detail::function_attributes_t &,const thrust::system::cuda::detail::device_properties_t &,UnaryFunction)' being compiled
+                 with
+                 [
+                     T=unsigned __int64,
+                     UnaryFunction=thrust::system::cuda::detail::cuda_launch_config_detail::util::zero_function<unsigned __int64>
+                 ]
+     1>C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/system/cuda/detail/cuda_launch_config.h(147): warning C4267: 'return' : conversion from 'size_t' to 'int', possible loss of data
+                 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/system/cuda/detail/cuda_launch_config.h(159) : see reference to function template instantiation 'L thrust::system::cuda::detail::cuda_launch_config_detail::util::divide_ri<L,R>(const L,const R)' being compiled
+                 with
+                 [
+                     L=int,
+                     R=size_t
+                 ]
+                 C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\include\thrust/system/cuda/detail/cuda_launch_config.h(272) : see reference to function template instantiation 'L thrust::system::cuda::detail::cuda_launch_config_detail::util::round_i<L,size_t>(const L,const R)' being compiled
+                 with
+                 [
+                     L=int,
+                     R=size_t
+                 ]
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\projects\turring\turing\x64\Release\4statesCuda.exe" /NOLOGO /LIBPATH:"C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\lib\x64" cudart.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Release\4statesCuda.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\projects\turring\turing\x64\Release\4statesCuda.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\projects\turring\turing\x64\Release\4statesCuda.lib" /MACHINE:X64 x64\Release\kernel.cu.obj
+         LINK : /LTCG specified but no code generation required; remove /LTCG from the link command line to improve linker performance
+         4statesCuda.vcxproj -> C:\projects\turring\turing\x64\Release\4statesCuda.exe
+       Manifest:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\projects\turring\turing\x64\Release\4statesCuda.exe;#1" /manifest x64\Release\4statesCuda.exe.intermediate.manifest
+       PostBuildEvent:
+         echo copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\projects\turring\turing\x64\Release\"
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\projects\turring\turing\x64\Release\"
+         :VCEnd
+         copy "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart*.dll" "C:\projects\turring\turing\x64\Release\"
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart32_55.dll
+         C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin\cudart64_55.dll
+                 2 file(s) copied.
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\4statesCuda.unsuccessfulbuild".
+         Touching "x64\Release\4statesCuda.lastbuildstate".
+     1>Done Building Project "C:\projects\turring\turing\4statesCuda\4statesCuda.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:06:32.13

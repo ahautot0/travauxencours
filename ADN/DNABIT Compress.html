@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    
+    <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <!-- AppResources meta begin -->
+        <script type="text/javascript">var ncbi_startTime = new Date();</script>
+        <!-- AppResources meta end -->
+        
+        <!-- TemplateResources meta begin -->
+        <meta name="paf_template" content="" />
+
+        <!-- TemplateResources meta end -->
+        
+        <!-- Logger begin -->
+        <meta name="ncbi_db" content="pmc" /><meta name="ncbi_pdid" content="article" /><meta name="ncbi_acc" content="" /><meta name="ncbi_domain" content="bioinform" /><meta name="ncbi_report" content="record" /><meta name="ncbi_type" content="fulltext" /><meta name="ncbi_objectid" content="" /><meta name="ncbi_pcid" content="/articles/PMC3046040/" /><meta name="ncbi_app" content="pmc" />
+        <!-- Logger end -->
+        
+        <title>DNABIT Compress – Genome compression algorithm</title>
+        
+        <!-- AppResources external_resources begin -->
+        <link rel="stylesheet" href="/core/jig/1.14.8/css/jig.min.css" /><script type="text/javascript" src="/core/jig/1.14.8/js/jig.min.js"></script>
+
+        <!-- AppResources external_resources end -->
+        
+        <!-- Page meta begin -->
+        <meta name="robots" content="INDEX,NOFOLLOW,NOARCHIVE" /><link rel="canonical" href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3046040/" /><link rel="schema.DC" href="http://purl.org/DC/elements/1.0/" /><meta name="citation_journal_title" content="Bioinformation" /><meta name="citation_title" content="DNABIT Compress – Genome compression algorithm" /><meta name="citation_authors" content="Pothuraju Rajarajeswari, Allam Apparao" /><meta name="citation_date" content="2011" /><meta name="citation_issue" content="8" /><meta name="citation_volume" content="5" /><meta name="citation_firstpage" content="350" /><meta name="citation_abstract_html_url" content="/pmc/articles/PMC3046040/?report=abstract" /><meta name="citation_pmid" content="21383923" /><meta name="DC.Title" content="DNABIT Compress – Genome compression algorithm" /><meta name="DC.Type" content="Text" /><meta name="DC.Publisher" content="Biomedical Informatics Publishing Group" /><meta name="DC.Contributor" content="Pothuraju Rajarajeswari" /><meta name="DC.Contributor" content="Allam Apparao" /><meta name="DC.Date" content="2011" /><meta name="DC.Language" content="en" /><meta property="og:title" content="DNABIT Compress – Genome compression algorithm" /><meta property="og:type" content="article" /><meta property="og:description" content="Data compression is concerned with how information is organized in data. Efficient storage means removal of redundancy from the data being stored in &#10;the DNA molecule. Data compression algorithms remove redundancy and are used to understand biologically ..." /><meta property="og:url" content="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3046040/" /><meta property="og:site_name" content="PubMed Central (PMC)" /><meta property="og:image" content="https://www.ncbi.nlm.nih.gov/corehtml/pmc/pmcgifs/pmc-logo-share.png" /><meta name="twitter:card" content="summary" /><meta name="twitter:site" content="@ncbi" /><link rel="stylesheet" href="/corehtml/pmc/css/3.6.2/pmc.min.css" type="text/css" /><link rel="stylesheet" href="/corehtml/pmc/css/3.6.2/pmc_extras_prnt.min.css" type="text/css" media="print" /><script type="text/javascript" src="/corehtml/pmc/js/common.min.js">//</script><script type="text/javascript" src="/corehtml/pmc/js/NcbiTagServer.min.js">//</script><meta name="citationexporter" content="backend:'/pmc/utils/ctxp/'" /><script type="text/javascript" src="/corehtml/pmc/ctxp/jquery.citationexporter.js">//</script><link rel="stylesheet" href="/corehtml/pmc/ctxp/citationexporter.css" type="text/css" /><script type="text/javascript" src="/core/mathjax/2.6.1/MathJax.js?config=/corehtml/pmc/js/mathjax-config-classic.3.4.js"></script><script type="text/javascript" src="/corehtml/pmc/js/large-obj-scrollbars.min.js"></script><script type="text/javascript">window.name="mainwindow";</script><style type="text/css">.pmc-wm {background:transparent repeat-y top left;background-image:url(/corehtml/pmc/pmcgifs/wm-bioinform.gif);background-size: auto, contain}</style><style type="text/css">.print-view{display:block}</style><style type="text/css">
+        div.pmc_para_cit li.highlight,
+        div.pmc_para_cit li.highlight .one_line_source
+        { background: #E0E0E0; }
+        a.bibr.highlight { background: #E0E0E0; } 
+      </style><meta name="cited_in_systematic_reviews" content="" /><link rel="alternate" type="application/epub+zip" href="/pmc/articles/PMC3046040/epub/" /><link rel="alternate" type="application/pdf" href="/pmc/articles/PMC3046040/pdf/97320630005350.pdf" />
+
+        <!-- Page meta end -->
+    <link rel="shortcut icon" href="//www.ncbi.nlm.nih.gov/favicon.ico" /><meta name="ncbi_phid" content="F4FC66A1829BBA310000000000F900F1" /><link type="text/css" rel="stylesheet" href="//static.pubmed.gov/portal/portal3rc.fcgi/4144485/css/3852956/3985586/3808861/4121862/3974050/3917732/251717/4048120/3846471/14534/45193/4113719/3849091/3984811/3751656/4033350/3840896/3577051/3852958/4120508/3881636/3579733/4062871/12930/3964959/3855473/4047625/3854974/3854955/4076335/4128070/9685/3549676/3609192/3609193/3609213/3395586/4143404.css" /><link type="text/css" rel="stylesheet" href="//static.pubmed.gov/portal/portal3rc.fcgi/4144485/css/3411343/3882866/3929378.css" media="print" /></head>
+    <body class="article">
+        <div class="grid">
+            <div class="col twelve_col nomargin shadow">
+                <!-- System messages like service outage or JS required; this is handled by the TemplateResources portlet -->
+                <div class="sysmessages">
+                    <noscript>
+	<p class="nojs">
+	<strong>Warning:</strong>
+	The NCBI web site requires JavaScript to function. 
+	<a href="/guide/browsers/#enablejs" title="Learn how to enable JavaScript" target="_blank">more...</a>
+	</p>
+	</noscript>
+                </div>
+                <!--/.sysmessage-->
+                <div class="wrap">
+                    <div class="page">
+                        <div class="top">
+                            <div class="universal_header" id="universal_header"><ul class="inline_list jig-ncbimenu ui-ncbimenu resources_list" id="navcontent"><li class="ui-ncbimenu-item-leaf ui-ncbimenu-item-first ui-helper-reset ui-ncbimenu-item-no-hlt"><a class="ui-ncbimenu-link-first" href="/" role="banner" title="NCBI Home" id="ncbihome" accesskey="1"><span class="offscreen_noflow">NCBI</span><img src="//static.pubmed.gov/portal/portal3rc.fcgi/4144485/img/28977" class="ncbi_logo" title="NCBI" alt="NCBI Logo" /></a></li><li class="offscreen_noflow ui-ncbimenu-item-skip access"><a href="#maincontent" title="Skip to the content" tabindex="0" accesskey="3">Skip to main
+                        content</a></li><li class="offscreen_noflow ui-ncbimenu-item-skip access"><a href="#navcontent" title="Skip to the navigation" tabindex="0" accesskey="4">Skip to
+                        navigation</a></li><li id="resource-menu" class="topmenu ui-helper-reset ui-ncbimenu-item-first ui-helper-reset"><a class="ui-ncbimenu-first-link-has-submenu ui-ncbimenu-link-first topanchor expandDown" href="/static/header_footer_ajax/submenu/#resources">Resources</a></li><li id="all-howtos-menu" class="topmenu ui-helper-reset ui-ncbimenu-item-first"><a class="ui-ncbimenu-first-link-has-submenu ui-ncbimenu-link-first topanchor expandDown" href="/static/header_footer_ajax/submenu/#howto">How To</a></li><li class="offscreen_noflow ui-ncbimenu-item-skip access"><a href="/guide/browsers/#accesskeys" title="About My NCBI Accesskeys" tabindex="0" accesskey="0">About NCBI Accesskeys</a></li></ul><div class="myncbi"><span id="myncbiusername" style="display:none"><a href="/account/settings/" id="mnu" title="Edit account settings"></a></span><a accesskey="2" href="/myncbi/" id="myncbi" style="display:none">My NCBI</a><a href="/account/" id="sign_in">Sign in to NCBI</a><a href="/account/signout/" id="sign_out" style="display:none">Sign Out</a></div></div>
+                            <div class="header">
+    <div class="res_logo">
+  <h1 class="img_logo"><a href="/pmc/" class="pmc_logo offscreen">PMC</a></h1>
+  <div class="NLMLogo">
+    <a href="https://www.nlm.nih.gov/" title="US National Library of Medicine">US National Library of Medicine</a>
+    <br />
+    <a href="https://www.nih.gov/" title="National Institutes of Health">National Institutes of Health</a>
+  </div>
+</div>
+    <div class="search"><form method="get" action="/pmc/"><div class="search_form"><label for="database" class="offscreen_noflow">Search database</label><select id="database"><optgroup label="Recent"><option value="pmc" selected="selected" class="last" data-ac_dict="pmc-search-autocomplete">PMC</option></optgroup><optgroup label="All"><option value="gquery">All Databases</option><option value="assembly">Assembly</option><option value="bioproject">BioProject</option><option value="biosample">BioSample</option><option value="biosystems">BioSystems</option><option value="books">Books</option><option value="clinvar">ClinVar</option><option value="clone">Clone</option><option value="cdd">Conserved Domains</option><option value="gap">dbGaP</option><option value="dbvar">dbVar</option><option value="nucest">EST</option><option value="gene">Gene</option><option value="genome">Genome</option><option value="gds">GEO DataSets</option><option value="geoprofiles">GEO Profiles</option><option value="nucgss">GSS</option><option value="gtr">GTR</option><option value="homologene">HomoloGene</option><option value="medgen">MedGen</option><option value="mesh">MeSH</option><option value="ncbisearch">NCBI Web Site</option><option value="nlmcatalog">NLM Catalog</option><option value="nuccore">Nucleotide</option><option value="omim">OMIM</option><option value="pmc" data-ac_dict="pmc-search-autocomplete">PMC</option><option value="popset">PopSet</option><option value="probe">Probe</option><option value="protein">Protein</option><option value="proteinclusters">Protein Clusters</option><option value="pcassay">PubChem BioAssay</option><option value="pccompound">PubChem Compound</option><option value="pcsubstance">PubChem Substance</option><option value="pubmed">PubMed</option><option value="pubmedhealth">PubMed Health</option><option value="snp">SNP</option><option value="sparcle">Sparcle</option><option value="sra">SRA</option><option value="structure">Structure</option><option value="taxonomy">Taxonomy</option><option value="toolkit">ToolKit</option><option value="toolkitall">ToolKitAll</option><option value="toolkitbook">ToolKitBook</option><option value="toolkitbookgh">ToolKitBookgh</option><option value="unigene">UniGene</option></optgroup></select><div class="nowrap"><label for="term" class="offscreen_noflow" accesskey="/">Search term</label><div class="nowrap"><input type="text" name="term" id="term" title="Search PMC. Use up and down arrows to choose an item from the autocomplete." value="" class="jig-ncbiclearbutton jig-ncbiautocomplete" data-jigconfig="dictionary:'pmc-search-autocomplete',disableUrl:'NcbiSearchBarAutoComplCtrl'" autocomplete="off" data-sbconfig="ds:'no',pjs:'no',afs:'yes'" /></div><button id="search" type="submit" class="button_search nowrap" cmd="go">Search</button></div></div></form><ul class="searchlinks inline_list"><li>
+                        <a href="/pmc/advanced/">Advanced</a>
+                    </li><li>
+                        <a href="/pmc/journals/">Journal list</a>
+                    </li><li class="help">
+                        <a target="_blank" href="/books/NBK3825/">Help</a>
+                    </li></ul></div>
+</div>
+
+                            
+                            
+                        <!--<component id="Page" label="headcontent"/>-->
+                            
+                        </div>
+                        <div class="content">
+                            <!-- site messages -->
+                            <div class="container">
+    <div id="maincontent" class="content eight_col col">
+        <div class="navlink-box">
+            <ul class="page-breadcrumbs inline_list small"><li class="journal-list"><a href="/pmc/journals/" class="navlink">Journal List</a></li><li class="archive"><a class="navlink" href="/pmc/journals/480/">Bioinformation</a></li><li class="issue-page"><a class="navlink" href="/pmc/issues/194596/">v.5(8); 2011</a></li><li class="accid">PMC3046040</li></ul>
+        </div>
+
+        <!-- Journal banner -->
+        <div class="pmc-page-banner whole_rhythm"><div><img src="/corehtml/pmc/pmcgifs/logo-bioinform.gif" alt="Logo of bioinform" usemap="#logo-imagemap" /><map id="logo-imagemap" name="logo-imagemap"><area alt="Link to Publisher's site" title="Link to Publisher's site" shape="default" coords="0,0,499,74" href="http://www.bioinformation.net/" target="pmc_ext" ref="reftype=publisher&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CBanner&amp;TO=Publisher%7COther%7CN/A&amp;rendering-type=normal" /></map></div> </div>
+        
+        <!--component id='MainPortlet' label='search-reference'/-->
+        
+        <!-- Book content -->
+        <div class="">
+            
+        
+            
+            <div class="hide-overflow article lit-style content pmc-wm slang-all page-box"><!--main-content--><div class="jig-ncbiinpagenav" data-jigconfig="smoothScroll: false, allHeadingLevels: ['h2'], headingExclude: ':hidden'"><div class="fm-sec half_rhythm no_top_margin"><div class="fm-citation half_rhythm no_top_margin clearfix"><div class="small"><div class="inline_block eight_col va_top"><div><div><span class="cit"><span id="pmcmata">Bioinformation</span>. 2011; 5(8): 350–360. </span></div><div><span class="fm-vol-iss-date">Published online 2011 Jan 22. </span>  </div></div></div><div class="inline_block four_col va_top show-overflow align_right"><div class="fm-citation-ids"><div class="fm-citation-pmcid"><span class="fm-citation-ids-label">PMCID: </span><span>PMC3046040</span></div></div></div></div></div><h1 class="content-title">DNABIT Compress &#x02013; Genome compression algorithm</h1><div class="half_rhythm"><div class="contrib-group fm-author"><a href="/pubmed/?term=Rajarajeswari%20P%5BAuthor%5D&amp;cauthor=true&amp;cauthor_uid=21383923">Pothuraju Rajarajeswari</a><sup>1,</sup><sup>*</sup> and  <a href="/pubmed/?term=Apparao%20A%5BAuthor%5D&amp;cauthor=true&amp;cauthor_uid=21383923">Allam Apparao</a><sup>2</sup></div></div><div class="fm-panel small half_rhythm"><div class="fm-authors-info fm-panel hide half_rhythm" id="id859446_ai" style="display:none"><div class="fm-affl" lang="en"><sup>1</sup>DMSSVH college of Engineering, Machilipatnam</div><div class="fm-affl" lang="en"><sup>2</sup>Jawaharlal Nehru Technological University, Kakinada</div><div id="COR1"><sup>*</sup>Pothuraju Rajarajeswari: <span class="before-email-separator"></span><span class="email-label">Email: </span><a href="mailto:dev@null" data-email="moc.liamg@ahtihkilijar" class="oemail">moc.liamg@ahtihkilijar</a></div></div><div class="togglers"><a href="#" class="pmctoggle" rid="id859446_ai">Author information <span>►</span></a> <a href="#" class="pmctoggle" rid="id859446_an">Article notes <span>►</span></a> <a href="#" class="pmctoggle" rid="id859446_cpl">Copyright and License information <span>►</span></a></div><div class="fm-article-notes fm-panel hide half_rhythm" id="id859446_an" style="display:none"><div class="fm-pubdate half_rhythm">Received 2010 Sep 21; Accepted 2010 Oct 29.</div></div><div class="fm-cpl-info fm-panel hide half_rhythm" id="id859446_cpl" style="display:none"><div class="fm-copyright half_rhythm"><a href="/pmc/about/copyright/">Copyright</a> &#x000a9; 2011 Biomedical Informatics Publishing Group</div><div class="fm-copyright half_rhythm">This is an open-access article, which permits unrestricted use, distribution, and reproduction in any medium, 
+		for non-commercial purposes, provided the original author and source are credited.</div></div></div><div id="pmclinksbox" class="links-box fm-panel whole_rhythm"><div class="small"><div>This article has been <a href="/pmc/articles/PMC3046040/citedby/">cited by</a> other articles in PMC.</div></div></div></div><div class="sec"></div><div id="__abstractid157256" lang="en" class="tsec sec"><h2 class="head no_bottom_margin" id="__abstractid157256title">Abstract</h2><!--article-meta--><div><p id="__p1" class="p p-first-last">Data compression is concerned with how information is organized in data. Efficient storage means removal of redundancy from the data being stored in 
+the DNA molecule. Data compression algorithms remove redundancy and are used to understand biologically important molecules. We present a 
+compression algorithm, &#x0201c;DNABIT Compress&#x0201d; for DNA sequences based on a novel algorithm of assigning binary bits for smaller segments of DNA bases 
+to compress both repetitive and non repetitive DNA sequence. Our proposed algorithm achieves the best compression ratio for DNA sequences for larger 
+genome. Significantly better compression results show that &#x0201c;DNABIT Compress&#x0201d; algorithm is the best among the remaining compression algorithms. 
+While achieving the best compression ratios for DNA sequences (Genomes),our new DNABIT Compress algorithm significantly improves the running 
+time of all previous DNA compression programs. Assigning binary bits (Unique BIT CODE)  for (Exact Repeats, Reverse Repeats) fragments of DNA 
+sequence is also a unique concept introduced in this algorithm for the first time in DNA compression. This proposed new algorithm could achieve the best 
+compression ratio as much as 1.58 bits/bases where the existing best methods could not achieve a ratio less than 1.72 bits/bases.</p></div><div class="sec"><strong class="kwd-title">Keywords: </strong><span class="kwd-text">Ziv-Lempel, BioCompress, GenCompress, Arithmetic coding, DNA compress</span></div></div><div id="s1" class="tsec sec"><h2 class="head no_bottom_margin" id="s1title">Background</h2><p id="__p2" class="p p-first">Life is strongly associated with organization and structure 
+[<a href="#R01" rid="R01" class=" bibr popnode">1</a>].With the 
+completion of 1000 genomes project, the project is estimated to generate 
+about 8.2 billion bases per day, with the total sequence to exceed 6 trillion 
+nucleotide bases. The DNA molecule is made up of a concatenation of four 
+different kinds of nucleotides namely: Adenine, Thymine, cytosine and 
+Guanine (A,T,C,G).General purpose compression algorithms do not 
+perform well with biological sequences. Giancarlo <em>et al</em>. 
+[<a href="#R02" rid="R02" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_212802173">2</a>] have provided 
+a review of compression algorithms designed for biological sequences. 
+Finding the characteristics and comparing Genomes is a major task 
+(Koonin 1999[<a href="#R03" rid="R03" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_212802168">3</a>]; Wooley 1999
+[<a href="#R04" rid="R04" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_212802176">4</a>]). In mathematical point of view, 
+compression implies understanding and comprehension (Li and Vitanyi 
+1998)  [<a href="#R05" rid="R05" class=" bibr popnode">5</a>]. 
+Compression is a great tool for Genome comparison and for 
+studying various properties of Genomes. DNA sequences, which encode 
+life should be compressible. It is well known that DNA sequences in 
+higher eukaryotes contain many tandem repeats, and essentials genes (like 
+rRNAs) have many copies. It is also proved that genes duplicate 
+themselves sometimes for evolutionary purposes. All these facts conclude 
+that DNA sequences should be compressible. The compression of DNA 
+sequences is not an easy task. (Grumback and Tahi 1994[<a href="#R06" rid="R06" class=" bibr popnode">6</a>], 
+Rivals <em>et al</em>. 1995  [<a href="#R07" rid="R07" class=" bibr popnode">7</a>]; Chen  et al. 2000  
+[<a href="#R08" rid="R08" class=" bibr popnode">8</a>]) DNA sequences consists of only four 
+nucleotides bases {a,c,g,t}. Two bits are enough to store each base.  The 
+standard compression softwares such as &#x0201c;compress&#x0201d;, &#x0201c;gzip&#x0201d;, &#x0201c;bzip2&#x0201d;, 
+&#x0201c;winzip&#x0201d; expanded the DNA genome file more than compressing it. Most 
+of the Existing software tools worked well for English text compression 
+(Bell  <em>et al</em>. 1990[<a href="#R09" rid="R09" class=" bibr popnode">9</a>]) 
+but not for DNA Genomes. Increasing genome sequence data of organisms lead DNA  database size two or three times 
+bigger annually. Thus it becomes very hard to download and maintain data 
+in a local system. Other algorithms specifically designed for DNA 
+sequences compression did not manage to achieve average compression 
+rate below 1.7 bits/base. Algorithms for Compressing DNA sequences, 
+such as Ziv-Lempel compression algorithms  [<a href="#R10" rid="R10" class=" bibr popnode">10</a>,
+<a href="#R11" rid="R11" class=" bibr popnode">11</a>]. Biocompress  
+[<a href="#R12" rid="R12" class=" bibr popnode">12</a>], 
+Gencompress [<a href="#R13" rid="R13" class=" bibr popnode">13</a>] and DNAcompress 
+[<a href="#R14" rid="R14" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_212802177">14</a>] compress DNA sequences.</p><p id="__p3" class="p p-last">Their average compression rate is about 1.74 bits per base. Hence we 
+present a new compression algorithm named &#x0201c;DNABIT Compress&#x0201d; whose 
+compression rate is below 1.56 bits per base (for Best case) even for larger 
+genome (nearly 2,00,000 characters).</p></div><div id="s2" class="tsec sec"><h2 class="head no_bottom_margin" id="s2title">Existing compression algorithms</h2><p id="__p4" class="p p-first-last">General purpose compression algorithms do not perform well with 
+biological sequences, resulting quite often in expansion rather than 
+compression. Probably one of the most well-known DNA compressors is 
+Ziv-Lempel compression algorithms  [<a href="#R10" rid="R10" class=" bibr popnode">10</a>,
+<a href="#R11" rid="R11" class=" bibr popnode">11</a>] are based on an idea of 
+complexity presented by Lempel and Ziv in  [<a href="#R15" rid="R15" class=" bibr popnode">15</a>]. Grumbach and Tahi 
+proposed two lossless compression algorithms for DNA sequences, namely 
+Biocompress and Biocompress-2 using  the technique of Ziv and Lempel 
+(1997) data compression method. Biocompress-2 detects exact repeats and 
+complementary palindromes located  in the target sequence and then 
+encode them by repeat length and the position of a previous repeat 
+occurrence. Biocompress-2 also uses arithmetic coding of order 2 if no 
+significant repetition is found. Biocompress also uses the same 
+methodology as in Biocompress-2 except that it does not use order-2 
+arithmetic coding. Gencompress (Chen  <em>et al</em>. 2000  
+[<a href="#R13" rid="R13" class=" bibr popnode">13</a>]) achieves 
+significantly higher compression ratios than either Biocompress-2 or Cfact. 
+Gencompress is a one-pass algorithm. In Gencompress we search for 
+approximate matches that satisfy condition C. This algorithm carefully 
+finds the optimal prefix and uses  order-2 arithmetic encoding (Nelson 
+1991; Bell  <em>et al</em>. 1990) whenever needed. Gencompress also detects the 
+approximate complemented palindrome in DNA sequences. The Average 
+compression ratio is 1.7428. DNA compress employs the Lempel-Ziv 
+compression scheme as Biocompress-2  and Gencompress. It consists of 
+two components: find all approximate repeats including complemented 
+palindromes; and encode approximate repeat regions and non-repeat 
+regions. The Average ratio used for  compressing sequences found to be 
+1.7254. Behzadi and Fessant find repeats to the cost of a dynamic 
+programming search and select from a second order markov model, a 
+context tree and two-bit coding for the non-repeated parts. They use an 
+expert model with Bayesian averaging over a second order Markov model, 
+a first order Markov model estimated on short term data (last 512 symbols) 
+and a repeat model. Expressed per element complexity can provide 
+information about the structure of the regions and local properties of a 
+genome, or proteome. Perhaps more than their use in compressing 
+biological sequences, compression algorithms, in particular variants of the 
+Ziv-Lempel algorithms  [<a href="#R10" rid="R10" class=" bibr popnode">10</a>,
+<a href="#R11" rid="R11" class=" bibr popnode">11</a>], have been useful as measures of 
+evolutionary distance (Li  <em>et al</em>.)  
+[<a href="#R17" rid="R17" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_212802178">17</a>] used. Gencompress is used as the 
+distance estimator in hierarchical clustering of biological sequences as a 
+solution to the phylogeny construction problem.</p></div><div id="s3" class="tsec sec"><h2 class="head no_bottom_margin" id="s3title">Methodology</h2><p id="__p5" class="p p-first-last">Please see (<a href="#SD1" rid="SD1" class=" supplementary-material">supplementary material</a>) for methodology.</p></div><div id="s4" class="tsec sec"><h2 class="head no_bottom_margin" id="s4title">Experimental Results</h2><p id="__p6" class="p p-first">To experiment our algorithm, we tried to compress a standard set of DNA 
+sequences with our algorithm, and we compare with results published for
+other efficient DNA compressors. A test prototype is implemented to 
+assess the capability of our framework. The code is written in java and 
+compiled in java 1.2 SDK. Tests ran on a system based on intel Pentium 
+we tested our DNABIT program on a dataset of DNA sequences typically 
+used in DNA compression studies. The datasets includes 9 sequences: two 
+chloroplast genomes (CHMPXX AND CHNTXX); 4 HUMAN GENES 
+[HUMDYSTROP, HUMHBB, HUMHDABCD (Humanbeta globinregion 
+on chromosome11) and HUMHPRTB (Humanhypoxanthine 
+phosphoribosyl transferase gene); 1 mitochondria genome (MPOMTCG); 
+and genomes of 2 Viruses (HEHCMVCG AND VACCG)</p><p id="__p7" class="p">The results are displayed on Table 10 (see <a href="#SD1" rid="SD1" class=" supplementary-material">Table 10</a>). The 
+table shows that our proposed new DNABIT compress algorithm program 
+performs better than other programs. Other existing algorithms that are 
+used to compare with the proposed DNABIT are Normal CTW, CTW+LZ, 
+BIOCOMPRESS 2, GENCOMPRESS, DNA COMPRESS, DNA PACK. 
+During our experiments, we tried to compress the DNA genomes as long 
+as nearly 2 lakhs length. The time taken to compress is approximately in 
+seconds. Our proposed algorithm DNABIT compress performs better than 
+the best algorithms GENCOMPRESS and DNA PACK whose 
+compression ratio is approximately 1.7. Our DNABIT compress 
+algorithm&#x02019;s compression ratio is as less as 1.58 bits/base. </p><div id="s4a" class="sec"><h3>DNABIT Compress Comparison with other Compressors</h3><p id="__p8" class="p p-first">Compression algorithms designed to compress DNA sequences 
+comparison is a difficult task because the source or executable code of 
+compressors are usually not available. Another reason is space and time 
+requirement of most compressors makes it difficult to test them on 
+sequences of larger Genomes.  Complete data on the running times is not 
+available. In  [<a href="#R14" rid="R14" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_212802162">14</a>] 
+the authors report some compression times for the file 
+hehcmvcg (229354 bases) on a 700MHz Pentium III. According to 
+[<a href="#R14" rid="R14" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_212802164">14</a>] the 
+compression of hehcmvcg takes a few hours for CTW+LZ, 51 seconds for 
+GenCompress-2  [<a href="#R18" rid="R18" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_212802165">18</a>], 
+but only 10 Seconds for our proposed algorithm 
+DNABIT Compress. Unfortunately, we could not test in depth the 
+performance of DNACompress. Since it is based on the PatternHunter 
+[<a href="#R17" rid="R17" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_212802171">17</a>] 
+search engine which is not freely available.</p><p id="__p9" class="p p-last">Finally, we would like to comment on the performance of Off-line which, 
+like our algorithms, only encodes exact repeats.  While we use a simple 
+and fast procedure to find repeats, Off-line is designed to search for an 
+&#x0201c;optimal&#x0201d; sequence of textual substitutions. It is therefore not surprising 
+that Off-line is much slower than our algorithms (for the yeast sequences 
+the difference is by a factor 1000 or more). The experimental results show
+that our algorithms are an order of magnitude faster than the other DNA 
+compressors and that their compression ratio is very close to the one of the 
+best compressors.The speed of our algorithm and its small working space 
+have been able to compress sequences of length up to 220MB, which are 
+well beyond the range of any other DNA compressor. <a href="/pmc/articles/PMC3046040/figure/F1/" target="figure" class="fig-table-link fig figpopup" rid-figpopup="F1" rid-ob="ob-F1" co-legend-rid="lgnd_F1"><span>Figure 1</span></a> shows the 
+comparison ratios of proposed DNABIT compress algorithm with popular 
+existing algorithms.</p><!--fig ft0--><!--fig mode=article f1--><div class="fig iconblock ten_col whole_rhythm clearfix" id="F1" co-legend-rid="lgnd_F1"><a class="icnblk_img figpopup" href="/pmc/articles/PMC3046040/figure/F1/" target="figure" rid-figpopup="F1" rid-ob="ob-F1"><img src="/pmc/articles/PMC3046040/bin/97320630005350F1.gif" class="small-thumb" alt="Figure 1" title="Figure 1" src-large="/pmc/articles/PMC3046040/bin/97320630005350F1.jpg" /></a><div class="icnblk_cntnt" id="lgnd_F1"><div><a class="figpopup" href="/pmc/articles/PMC3046040/figure/F1/" target="figure" rid-figpopup="F1" rid-ob="ob-F1">Figure 1</a></div><!--caption a4--><div><span>Comparison of ratios of DNABIT Compress with existing algorithms</span></div></div></div></div><div id="s4b" class="sec"><h3>DNA COMPRESS JAVA TOOL</h3><p id="__p10" class="p p-first-last">The proposed DNABIT compress tool screens are shown in <a href="/pmc/articles/PMC3046040/figure/F1/" target="figure" class="fig-table-link fig figpopup" rid-figpopup="F1" rid-ob="ob-F1" co-legend-rid="lgnd_F1"><span>Figure 2, 3, 4</span></a>. 
+The tool has the option of selecting the  type as either encrypt or decrypt. 
+The DNA genomes of any length can be given as Input in the input column 
+selecting the encryption option. The compression ratio is displayed in the 
+output column with the time taken for computing. The encrypted text can 
+be decrypted back to its original DNA sequence by using the decryption 
+option. The original DNA text is displayed in the output option. Sample 
+Code is given in <a href="#SD1" rid="SD1" class=" supplementary-material">supplementary material</a>.</p></div><div id="s4c" class="sec sec-last"><h3>Detecting Tandem repeats of Repetitive Nucleotides</h3><p id="__p11" class="p p-first">In addition to the compression technique , an algorithm is designed to find 
+tandem repeats as DNABIT compress enlighthens on compressing 
+repetitive bases The detection of tandem repeats is important in biology 
+and medicine as it can be used  for phylogenic studies and disease 
+diagnosis. This paper proposes two techniques for detecting approximate 
+tandem repeats (ATRs) in DNA sequences. We have proposed a algorithm 
+to calculate the tandem repeats since our proposed DNABIT compress 
+focuses on repetitive Bases. our algorithm calculates consequetive similar 
+two repeats (di nucleotides) and three repeats (tri nucleotides or codons). 
+Tandem repeats (TRs) are defined as two or more contiguous approximate 
+copies of a pattern of nucleotides. Tandem repeats have been known to 
+play important roles in human disease, regulation, and evolution.</p><p id="__p12" class="p p-last">Repetitive structures are present in  over one-third of the human genome 
+[<a href="#R18" rid="R18" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_212802161">18</a>]. 
+The expansion of the trinucleotide  repeat results in anticipation or 
+progression in severity of the disorder through each generation. In general, 
+there is a correlation between the size of the expansion and the severity of 
+the phenotype. Furthermore, instabilities in dinucleotide repeat sequences 
+have been observed in colon cancer [<a href="#R19" rid="R19" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_329225792">19</a>] Some biological mechanisms for 
+the expansion of repeats include: defect in mismatch repair system, 
+polymerase slippage during replication, and genetic instability of some 
+DNA structures  [<a href="#R21" rid="R21" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_329225794">21</a>,
+<a href="#R22" rid="R22" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_329225795">22</a>]. Repeats play a role in gene regulation when 
+present in regions with transcription factors [<a href="#R22" rid="R22" class=" bibr popnode tag_hotlink tag_tooltip" id="__tag_329225793">22</a>]. Sample code is given in 
+<a href="#SD1" rid="SD1" class=" supplementary-material">supplementary material</a>. </p></div></div><div id="s5" class="tsec sec"><h2 class="head no_bottom_margin" id="s5title">Conclusion</h2><p id="__p13" class="p p-first-last">A simple DNA compression algorithm which is completely new in its 
+design is proposed to compress DNA sequences which are repetitive as 
+well as non repetitive in nature. Data compression reveals certain 
+theoretical ideas such as entropy,  mutual information and complexity 
+between sequences of different genomes. Data compression also plays a 
+vital role in analyzing biological sequences to discover hidden patterns, 
+infer phylogenetic relationship between organisms which are areas of 
+active research in bioinformatics.  If the sequence is compressed using 
+DNABIT Compress algorithm, it will be easier to compress large bytes of 
+DNA sequences with the average compression ratio of 1.5359 bits per base 
+which will be very useful in sequence comparisons and Multiple sequence 
+Alignment analysis. The simplicity and flexibility of DNABIT Compress 
+algorithm could make it an invaluable tool for DNA compression in 
+clinical research.</p></div><div id="s6" class="tsec sec"><h2 class="head no_bottom_margin" id="s6title">Limitations</h2><p id="__p14" class="p p-first">Summative evaluation of learning outcomes such as testing the real 
+biological sequences on this algorithm, performance with the tools, or the 
+transfer of knowledge to similar tasks could not be performed</p><p id="__p15" class="p p-last">(1)The compression algorithm can be applied to calculate phylogeny and 
+multiple sequence alignment of various DNA sequences. (2) Developing a new DNA compressor with compressed text data rather 
+than Binary bits. </p></div><div id="unreferenced-ft" class="tsec sec headless whole_rhythm"><div class="unreferenced">​
+                    <!--fig ft0--><!--fig mode=article f1--><div class="fig iconblock ten_col whole_rhythm clearfix" id="F2" co-legend-rid="lgnd_F2"><a class="icnblk_img figpopup" href="/pmc/articles/PMC3046040/figure/F2/" target="figure" rid-figpopup="F2" rid-ob="ob-F2"><img src="/pmc/articles/PMC3046040/bin/97320630005350F2.gif" class="small-thumb" alt="Figure 2" title="Figure 2" src-large="/pmc/articles/PMC3046040/bin/97320630005350F2.jpg" /></a><div class="icnblk_cntnt" id="lgnd_F2"><div><a class="figpopup" href="/pmc/articles/PMC3046040/figure/F2/" target="figure" rid-figpopup="F2" rid-ob="ob-F2">Figure 2</a></div><!--caption a4--><div><span>DNAcompress Tool Screen</span></div></div></div><!--fig ft0--><!--fig mode=article f1--><div class="fig iconblock ten_col whole_rhythm clearfix" id="F3" co-legend-rid="lgnd_F3"><a class="icnblk_img figpopup" href="/pmc/articles/PMC3046040/figure/F3/" target="figure" rid-figpopup="F3" rid-ob="ob-F3"><img src="/pmc/articles/PMC3046040/bin/97320630005350F3.gif" class="small-thumb" alt="Figure 3" title="Figure 3" src-large="/pmc/articles/PMC3046040/bin/97320630005350F3.jpg" /></a><div class="icnblk_cntnt" id="lgnd_F3"><div><a class="figpopup" href="/pmc/articles/PMC3046040/figure/F3/" target="figure" rid-figpopup="F3" rid-ob="ob-F3">Figure 3</a></div><!--caption a4--><div><span>Compression Ratio displayed in the output Box.</span></div></div></div><!--fig ft0--><!--fig mode=article f1--><div class="fig iconblock ten_col whole_rhythm clearfix" id="F4" co-legend-rid="lgnd_F4"><a class="icnblk_img figpopup" href="/pmc/articles/PMC3046040/figure/F4/" target="figure" rid-figpopup="F4" rid-ob="ob-F4"><img src="/pmc/articles/PMC3046040/bin/97320630005350F4.gif" class="small-thumb" alt="Figure 4" title="Figure 4" src-large="/pmc/articles/PMC3046040/bin/97320630005350F4.jpg" /></a><div class="icnblk_cntnt" id="lgnd_F4"><div><a class="figpopup" href="/pmc/articles/PMC3046040/figure/F4/" target="figure" rid-figpopup="F4" rid-ob="ob-F4">Figure 4</a></div><!--caption a4--><div><span>Decompressed Text in the output Box.</span></div></div></div></div></div><div id="__sec1" class="tsec sec"><a id="supplementary-material-sec"></a><h2 class="head no_bottom_margin" id="__sec1title">Supplementary material</h2><!--/article/body/sec/--><div class="sec suppmat" id="SD1"><!--caption a9--><strong>Data 1:</strong><div class="sup-box half_rhythm" id="d32e306"><a href="/pmc/articles/PMC3046040/bin/97320630005350S1.pdf">Click here to view.</a><sup>(272K, pdf)</sup></div></div></div><div id="__ackid210425" class="tsec sec"><h2 class="head no_bottom_margin" id="__ackid210425title">Acknowledgments</h2><div class="sec"><p id="__p16">Authors are thankful for the support rendered by V. K. Kumar during its 
+development phase</p></div></div><div id="__fn-groupid238343" class="tsec sec"><h2 class="head no_bottom_margin" id="__fn-groupid238343title">Footnotes</h2><!--back/fn-group--><div class="fm-sec half_rhythm small"><p class="fn sec" id="FN1"><p id="__p17" class="p p-first-last"><strong>Citation:</strong>Rajarajeswari &#x00026; Apparao, Bioinformation 5(8), 350-360 (2011)
+ </p></p></div></div><div id="__ref-listid238356" class="tsec sec"><h2 class="head no_bottom_margin" id="__ref-listid238356title">References</h2><div class="ref-list-sec sec" id="reference-list"><div class="ref-cit-blk half_rhythm" id="R01">1. <span class="element-citation">Schrodinger E.  Cambridge, UK: Cambridge University Press; p. 1944.</span></div><div class="ref-cit-blk half_rhythm" id="R02">2. <span class="element-citation">Giancarlo R, et al.  <span><span class="ref-journal">A synopsis Bioinformatics. </span>2009;<span class="ref-vol">25</span>:1575.</span>  <span class="nowrap ref pubmed">[<a href="/pubmed/19251772" target="pmc_ext" ref="reftype=pubmed&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CCitationRef&amp;TO=Entrez%7CPubMed%7CRecord&amp;rendering-type=normal">PubMed</a>]</span></span></div><div class="ref-cit-blk half_rhythm" id="R03">3. <span class="element-citation">Koonin EV, et al.  <span><span class="ref-journal">Bioinformatics. </span>1999;<span class="ref-vol">15</span>:265.</span>  <span class="nowrap ref pubmed">[<a href="/pubmed/10438229" target="pmc_ext" ref="reftype=pubmed&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CCitationRef&amp;TO=Entrez%7CPubMed%7CRecord&amp;rendering-type=normal">PubMed</a>]</span></span></div><div class="ref-cit-blk half_rhythm" id="R04">4. <span class="element-citation">Wooley JC, et al.  <span><span class="ref-journal">J.Comput.Biol. </span>1999;<span class="ref-vol">6</span>:459.</span>  <span class="nowrap ref pubmed">[<a href="/pubmed/10582579" target="pmc_ext" ref="reftype=pubmed&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CCitationRef&amp;TO=Entrez%7CPubMed%7CRecord&amp;rendering-type=normal">PubMed</a>]</span></span></div><div class="ref-cit-blk half_rhythm" id="R05">5. <span class="element-citation">Bennett CH, et al.  <span><span class="ref-journal">IEEE Trans.Inform.Theory. </span>1998;<span class="ref-vol">44</span>:4.</span></span></div><div class="ref-cit-blk half_rhythm" id="R06">6. <span class="element-citation">Grumbach S, Tahi F. <span><span class="ref-journal">Journal of Information Processing and Management. </span>1994;<span class="ref-vol">30</span>(6):875.</span></span></div><div class="ref-cit-blk half_rhythm" id="R07">7. <span class="element-citation">Rivals E, et al.   <span class="ref-journal">LIFL, Lille I University, technical report IT-285.</span> 1995. </span></div><div class="ref-cit-blk half_rhythm" id="R08">8. <span class="element-citation">Chen X, et al.  <span><span class="ref-journal">Proceedings of the Fourth Annual International Conference on Computational Molecular Biology. </span>2000</span> Tokyo, Japan.</span></div><div class="ref-cit-blk half_rhythm" id="R09">9. <span class="element-citation">Bell TC, et al.   Newyork: Prentice Hall; p. 1990.</span></div><div class="ref-cit-blk half_rhythm" id="R10">10. <span class="element-citation">Ziv J, Lempel A. <span><span class="ref-journal">IEEE Trans. Inf. Theory. </span>1977;<span class="ref-vol">23</span>:337.</span></span></div><div class="ref-cit-blk half_rhythm" id="R11">11. <span class="element-citation">Ziv J, Lempel A. <span><span class="ref-journal">IEEE Trans. Inf.Theory. </span>1987;<span class="ref-vol">24</span>:530.</span></span></div><div class="ref-cit-blk half_rhythm" id="R12">12. <span class="element-citation">Grumbach A, Tahi F. Proceedings of the IEEE Data Compression Conference; 1993.  Snowbird, UT, USA.</span></div><div class="ref-cit-blk half_rhythm" id="R13">13. <span class="element-citation">Chen X, et al.  Proceedings of the Fourth Annual International Conference on Computational Molecular Biology; 2000.  Tokyo, Japan.</span></div><div class="ref-cit-blk half_rhythm" id="R14">14. <span class="element-citation">Chen X, et al.  <span><span class="ref-journal">Bioinformatics. </span>2002;<span class="ref-vol">18</span>:1696.</span>  <span class="nowrap ref pubmed">[<a href="/pubmed/12490460" target="pmc_ext" ref="reftype=pubmed&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CCitationRef&amp;TO=Entrez%7CPubMed%7CRecord&amp;rendering-type=normal">PubMed</a>]</span></span></div><div class="ref-cit-blk half_rhythm" id="R15">15. <span class="element-citation">Lempel A, Ziv J. <span><span class="ref-journal">IEEE Trans. Inf. Theory. </span>1976;<span class="ref-vol">22</span>:75.</span></span></div><div class="ref-cit-blk half_rhythm" id="R16">16. <span class="element-citation">Li M, et al.  <span><span class="ref-journal">IEEE Trans. Inf. Theory. </span>2003;<span class="ref-vol">50</span>:3250.</span></span></div><div class="ref-cit-blk half_rhythm" id="R17">17. <span class="element-citation">Ma B, et al.  <span><span class="ref-journal">Bioinformatics. </span>2002;<span class="ref-vol">18</span>:440.</span>  <span class="nowrap ref pubmed">[<a href="/pubmed/11934743" target="pmc_ext" ref="reftype=pubmed&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CCitationRef&amp;TO=Entrez%7CPubMed%7CRecord&amp;rendering-type=normal">PubMed</a>]</span></span></div><div class="ref-cit-blk half_rhythm" id="R18">18. <span class="element-citation">Lander ES, et al.  <span><span class="ref-journal">Nature. </span>2001;<span class="ref-vol">409</span>:860.</span>  <span class="nowrap ref pubmed">[<a href="/pubmed/11237011" target="pmc_ext" ref="reftype=pubmed&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CCitationRef&amp;TO=Entrez%7CPubMed%7CRecord&amp;rendering-type=normal">PubMed</a>]</span></span></div><div class="ref-cit-blk half_rhythm" id="R19">19. <span class="element-citation">Thibodeau S, et al.  <span><span class="ref-journal">Science. </span>1993;<span class="ref-vol">260</span>:816.</span>  <span class="nowrap ref pubmed">[<a href="/pubmed/8484122" target="pmc_ext" ref="reftype=pubmed&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CCitationRef&amp;TO=Entrez%7CPubMed%7CRecord&amp;rendering-type=normal">PubMed</a>]</span></span></div><div class="ref-cit-blk half_rhythm" id="R20">20. <span class="element-citation">Mitas M. <span><span class="ref-journal">Nucleic Acids Research. </span>1997;<span class="ref-vol">25</span>:2245.</span> <span class="nowrap ref pmc">[<a class="int-reflink" href="/pmc/articles/PMC146772/">PMC free article</a>]</span>  <span class="nowrap ref pubmed">[<a href="/pubmed/9171073" target="pmc_ext" ref="reftype=pubmed&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CCitationRef&amp;TO=Entrez%7CPubMed%7CRecord&amp;rendering-type=normal">PubMed</a>]</span></span></div><div class="ref-cit-blk half_rhythm" id="R21">21. <span class="element-citation">Wells RD, et al.  <span><span class="ref-journal"> Journal of Biological Chemistr. </span>1996;<span class="ref-vol">271</span>:2875.</span>  <span class="nowrap ref pubmed">[<a href="/pubmed/8621672" target="pmc_ext" ref="reftype=pubmed&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CCitationRef&amp;TO=Entrez%7CPubMed%7CRecord&amp;rendering-type=normal">PubMed</a>]</span></span></div><div class="ref-cit-blk half_rhythm" id="R22">22. <span class="element-citation">Perutz M, et al.  <span><span class="ref-journal">Current Opinion in Structural Biology. </span>1996;<span class="ref-vol">6</span>:848.</span>  <span class="nowrap ref pubmed">[<a href="/pubmed/8994886" target="pmc_ext" ref="reftype=pubmed&amp;article-id=3046040&amp;issue-id=194596&amp;journal-id=480&amp;FROM=Article%7CCitationRef&amp;TO=Entrez%7CPubMed%7CRecord&amp;rendering-type=normal">PubMed</a>]</span></span></div></div></div></div><!--post-content--><hr class="whole_rhythm no_bottom_margin" /><div class="courtesy-note no_margin small">Articles from <span class="acknowledgment-journal-title">Bioinformation</span> are provided here courtesy of <strong>Biomedical Informatics Publishing Group</strong></div></div>
+            
+            
+        
+            
+        </div>
+        <!-- Book content -->
+    </div>
+    
+    <div id="rightcolumn" class="four_col col last">
+        <!-- Custom content above discovery portlets -->
+        <div class="col6">
+            
+        </div>
+        
+        <div xmlns:np="http://ncbi.gov/portal/XSLT/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><div class="format-menu"><h2>Formats:</h2><ul><li class="selected">Article</li> | <li><a href="/pmc/articles/PMC3046040/?report=reader">PubReader</a></li> | <li class="epub-link"><a href="/pmc/articles/PMC3046040/epub/">ePub (beta)</a></li> | <li><a href="/pmc/articles/PMC3046040/pdf/97320630005350.pdf">PDF (266K)</a></li> | <li><a href="#" data-citationid="PMC3046040" class="citationexporter ctxp">Citation</a></li></ul></div></div><div xmlns:np="http://ncbi.gov/portal/XSLT/namespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" class="share-buttons"><h2>Share</h2><ul><li class="facebook"><a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC3046040%2F"><img src="//static.pubmed.gov/portal/portal3rc.fcgi/4144485/img/4047626" alt="Share on Facebook" />
+                             Facebook
+                        </a></li><li class="twitter"><a href="https://twitter.com/intent/tweet?url=https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC3046040%2F&amp;text=DNABIT%20Compress%20%E2%80%93%20Genome%20compression%20algorithm"><img src="//static.pubmed.gov/portal/portal3rc.fcgi/4144485/img/4047627" alt="Share on Twitter" />
+                             Twitter
+                        </a></li><li class="gplus"><a href="https://plus.google.com/share?url=https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC3046040%2F"><img src="//static.pubmed.gov/portal/portal3rc.fcgi/4144485/img/4047628" alt="Share on Google Plus" />
+                             Google+
+                        </a></li></ul></div>
+        
+        <div id="ajax-portlets" data-pmid="21383923" data-aiid="3046040" data-aid="3046040" data-iid="194596" data-domainid="480" data-domain="bioinform" data-accid="PMC3046040" data-md5="eacdf5e0c85a180c27211471b2d3d9db"></div>
+                
+        <!-- Custom content below discovery portlets -->
+        <div class="col7">
+            
+        </div>
+    </div>
+</div>
+
+<!-- Custom content after all -->
+<div class="col8">
+    
+</div>
+<div class="col9">
+    
+</div>
+
+<script src="/corehtml/pmc/js/jquery.scrollTo-1.4.2.js"></script>
+<script>
+    (function($){
+        $('.skiplink').each(function(i, item){
+            var href = $($(item).attr('href'));
+            href.attr('tabindex', '-1').addClass('skiptarget'); // ensure the target can receive focus
+            $(item).on('click', function(event){
+                event.preventDefault();
+                $.scrollTo(href, 0, {
+                    onAfter: function(){
+                        href.focus();
+                    }
+                });
+            });
+        });
+    })(jQuery);
+</script>
+
+
+
+<div id="body-link-poppers"></div>
+                        </div>
+                        <div class="bottom">
+                            
+                            <div id="NCBIFooter_dynamic">
+    <a id="help-desk-link" class="help_desk jig-ncbihelpwindow" target="_blank" href="">Support Center</a>
+    <a id="help-desk-link" class="help_desk jig-ncbihelpwindow" target="_blank" href="https://support.ncbi.nlm.nih.gov/ics/support/KBList.asp?Time=2016-11-14T08:31:47-05:00&amp;Snapshot=%2Fprojects%2FPMC%2FPMCViewer@4.43&amp;Host=ptpmc202&amp;ncbi_phid=F4FC66A1829BBA310000000000F900F1&amp;ncbi_session=F4FC081080924F01_0164SID&amp;from=https%3A%2F%2Fwww.ncbi.nlm.nih.gov%2Fpmc%2Farticles%2FPMC3046040%2F&amp;Db=pmc&amp;folderID=132&amp;Ncbi_App=pmc&amp;Page=literature&amp;style=classic&amp;deptID=28049">Support Center</a>
+    
+</div>
+
+                            <div class="footer" id="footer">
+    
+    <div class="subfooter"> </div><script type="text/javascript" src="/portal/portal3rc.fcgi/static/js/preloaderWidget.js"> </script>
+    <div id="external-disclaimer" class="offscreen_noflow">
+        External link. Please review our <a href="https://www.nlm.nih.gov/privacy.html">privacy policy</a>.
+    </div>    
+    <div id="ncbifooter" class="contact_info">      
+        <div id="footer-contents-right">
+            <div id="nlm_thumb_logo">
+                <a href="https://www.nlm.nih.gov" title="NLM">NLM</a>
+            </div>
+            <div id="nih_thumb_logo">
+                <a href="https://www.nih.gov" title="NIH">NIH</a>
+            </div>
+            <div id="hhs_thumb_logo">
+                <a href="https://www.hhs.gov" title="DHHS">DHHS</a>
+            </div>
+            <div id="usagov_thumb_logo">
+                <a href="https://www.usa.gov" title="USA.gov">USA.gov</a>
+            </div>         
+        </div>
+        
+        <div id="footer-contents-left">
+            <p class="address vcard">
+                <span class="url">
+                    <a class="fn url newdomain" href="https://www.ncbi.nlm.nih.gov">National Center for
+                        Biotechnology Information</a>,
+                </span> <span class="org url newdomain"><a href="https://www.nlm.nih.gov/">U.S. National Library of Medicine</a></span>
+                <span class="adr">
+                    <span class="street-address">8600 Rockville Pike</span>, <span class="locality">Bethesda</span>
+                    <span class="region">MD</span>, <span class="postal-code">20894</span>
+                    <span class="country-name">USA</span>
+                </span>
+            </p>
+            
+            <a href="/home/about/policies.shtml">Policies and Guidelines</a> | <a href="/home/about/contact.shtml">Contact</a>
+        </div>
+    </div>
+    <script type="text/javascript" src="/portal/portal3rc.fcgi/rlib/js/InstrumentOmnitureBaseJS/InstrumentNCBIConfigJS/InstrumentNCBIBaseJS/InstrumentPageStarterJS.js?v=1"> </script>    
+    <script type="text/javascript" src="/portal/portal3rc.fcgi/static/js/hfjs2.js"> </script>
+</div>
+                        </div>
+                    </div>
+                    <!--/.page-->
+                </div>
+                <!--/.wrap-->
+            </div><!-- /.twelve_col -->
+        </div>
+        <!-- /.grid -->
+
+        <span class="PAFAppResources"></span>
+        
+        <!-- BESelector tab -->
+        
+        
+        
+        <noscript><img alt="statistics" src="/stat?jsdisabled=true&amp;ncbi_db=pmc&amp;ncbi_pdid=article&amp;ncbi_acc=&amp;ncbi_domain=bioinform&amp;ncbi_report=record&amp;ncbi_type=fulltext&amp;ncbi_objectid=&amp;ncbi_pcid=/articles/PMC3046040/&amp;ncbi_app=pmc" /></noscript>
+        
+        
+        <!-- usually for JS scripts at page bottom -->
+        <!--<component id="PageFixtures" label="styles"></component>-->
+    
+
+<!-- F4FC081080924F01_0164SID /projects/PMC/PMCViewer@4.43 ptpmc202 v4.1.r508797 Mon, Aug 01 2016 12:51:16 -->
+
+<script type="text/javascript" src="//static.pubmed.gov/portal/portal3rc.fcgi/4144485/js/3879255/4121861/3818874/3821238/4117325/4087685/4072593/4076480/3921943/4105668/4065628.js" snapshot="pmc"></script></body>
+</html>

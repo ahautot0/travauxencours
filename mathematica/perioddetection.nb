@@ -1,0 +1,236 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      6792,        227]
+NotebookOptionsPosition[      5860,        190]
+NotebookOutlinePosition[      6203,        205]
+CellTagsIndexPosition[      6160,        202]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"triples", "=", 
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "3", ",", "4", ",", "3", ",", "4", ",", "3", ",", "4",
+      ",", "3", ",", "4", ",", "3", ",", "4", ",", "3", ",", "4"}], "}"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.6252083320250216`*^9, 3.62520834849865*^9}}],
+
+Cell["Clear[eps]", "Input",
+ AspectRatioFixed->True],
+
+Cell["\<\
+eps[k_,n_]:=eps[k,n]=eps[k-2,n+1]+1/
+           (eps[k-1,n+1]-eps[k-1,n])\
+\>", "Input",
+ AspectRatioFixed->True],
+
+Cell["eps[-1,n_]:=0;", "Input",
+ CellChangeTimes->{3.625208395891533*^9},
+ AspectRatioFixed->True],
+
+Cell["eps[0,n_]:=triples[[n]];", "Input",
+ CellChangeTimes->{{3.6252083626322746`*^9, 3.62520836551828*^9}, 
+   3.6252083967963347`*^9},
+ AspectRatioFixed->True],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"eps", "[", 
+    RowBox[{"1", ",", "n"}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "1", ",", "10"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.625208370635089*^9, 3.6252083710094895`*^9}, {
+  3.6252084676828594`*^9, 3.62520846794806*^9}, {3.625817071440208*^9, 
+  3.625817096248252*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["1", "2"], ",", 
+   FractionBox["1", "2"], ",", 
+   RowBox[{"-", "1"}], ",", 
+   RowBox[{"-", 
+    FractionBox["1", "3"]}], ",", 
+   FractionBox["1", "2"], ",", 
+   FractionBox["1", "2"], ",", 
+   RowBox[{"-", "1"}], ",", 
+   RowBox[{"-", 
+    FractionBox["1", "3"]}], ",", 
+   FractionBox["1", "2"], ",", 
+   FractionBox["1", "2"]}], "}"}]], "Output",
+ CellChangeTimes->{{3.625208376547499*^9, 3.6252084121155615`*^9}, 
+   3.625208468462861*^9, {3.6258170574585834`*^9, 3.625817096825453*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["triples"], "Input",
+ CellChangeTimes->{{3.6252085031885214`*^9, 3.6252085064177275`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "2", ",", "3", ",", "4", ",", "3", ",", "4", ",", "3", ",", "4", 
+   ",", "3", ",", "4", ",", "3", ",", "4", ",", "3", ",", "4"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.6252085072757287`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"FindSequenceFunction", "[", 
+  RowBox[{"triples", ",", "n"}], "]"}]], "Input",
+ CellChangeTimes->{{3.62520866726961*^9, 3.625208668361612*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"DifferenceRoot", "[", 
+   RowBox[{"Function", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[FormalY]", ",", "\[FormalN]"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "7"}], "+", 
+         RowBox[{"\[FormalY]", "[", "\[FormalN]", "]"}], "+", 
+         RowBox[{"\[FormalY]", "[", 
+          RowBox[{"1", "+", "\[FormalN]"}], "]"}]}], "\[Equal]", "0"}], ",", 
+       RowBox[{
+        RowBox[{"\[FormalY]", "[", "1", "]"}], "\[Equal]", "1"}], ",", 
+       RowBox[{
+        RowBox[{"\[FormalY]", "[", "2", "]"}], "\[Equal]", "2"}], ",", 
+       RowBox[{
+        RowBox[{"\[FormalY]", "[", "3", "]"}], "\[Equal]", "3"}]}], "}"}]}], 
+    "]"}], "]"}], "[", "n", "]"}]], "Output",
+ CellChangeTimes->{3.6252086697968144`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"triples", "=", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "1", ",", "2", ",", "3", ",", "4", ",", "1", ",", "2", ",", "3", ",", "4",
+      ",", "1", ",", "2", ",", "3", ",", "4", ",", "1", ",", "2", ",", "3", 
+     ",", "4", ",", "1", ",", "2", ",", "3", ",", "4", ",", "1", ",", "2", 
+     ",", "3", ",", "4", ",", "1", ",", "2", ",", "3", ",", "4"}], "}"}], "/.", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"3", "\[Rule]", "5"}], ",", 
+     RowBox[{"2", "\[Rule]", "3"}]}], "}"}]}]}]], "Input",
+ CellChangeTimes->{{3.6258168694074516`*^9, 3.625816942579581*^9}, {
+  3.6258169927884693`*^9, 3.6258170109509015`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1", ",", "3", ",", "5", ",", "4", ",", "1", ",", "3", ",", "5", ",", "4", 
+   ",", "1", ",", "3", ",", "5", ",", "4", ",", "1", ",", "3", ",", "5", ",", 
+   "4", ",", "1", ",", "3", ",", "5", ",", "4", ",", "1", ",", "3", ",", "5", 
+   ",", "4", ",", "1", ",", "3", ",", "5", ",", "4"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.625816895057897*^9, {3.625816927899955*^9, 3.625816943597583*^9}, 
+   3.6258170118557034`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"FindSequenceFunction", "[", 
+   RowBox[{"triples", ",", "n"}], "]"}], "//", "FullSimplify"}]], "Input",
+ CellChangeTimes->{{3.625816955297603*^9, 3.625816960149212*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   FractionBox["1", "4"], " ", 
+   RowBox[{"(", 
+    RowBox[{"13", "+", 
+     RowBox[{"Cos", "[", 
+      FractionBox[
+       RowBox[{"n", " ", "\[Pi]"}], "2"], "]"}], "+", 
+     RowBox[{"Cos", "[", 
+      RowBox[{"n", " ", "\[Pi]"}], "]"}], "+", 
+     RowBox[{"Cos", "[", 
+      FractionBox[
+       RowBox[{"3", " ", "n", " ", "\[Pi]"}], "2"], "]"}], "-", 
+     RowBox[{"4", " ", 
+      RowBox[{"Sin", "[", 
+       FractionBox[
+        RowBox[{"n", " ", "\[Pi]"}], "2"], "]"}]}]}], ")"}]}], "+", 
+  RowBox[{"Sin", "[", 
+   FractionBox[
+    RowBox[{"3", " ", "n", " ", "\[Pi]"}], "2"], "]"}]}]], "Output",
+ CellChangeTimes->{
+  3.6258169014851084`*^9, {3.6258169472167892`*^9, 3.6258169611632137`*^9}, 
+   3.6258170160521107`*^9}]
+}, Open  ]]
+},
+WindowSize->{1126, 817},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[557, 20, 323, 8, 31, "Input"],
+Cell[883, 30, 52, 1, 31, "Input"],
+Cell[938, 33, 123, 4, 48, "Input"],
+Cell[1064, 39, 98, 2, 31, "Input"],
+Cell[1165, 43, 161, 3, 31, "Input"],
+Cell[CellGroupData[{
+Cell[1351, 50, 364, 9, 31, "Input"],
+Cell[1718, 61, 549, 16, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2304, 82, 103, 1, 31, "Input"],
+Cell[2410, 85, 247, 6, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[2694, 96, 167, 3, 31, "Input"],
+Cell[2864, 101, 820, 22, 34, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[3721, 128, 645, 14, 31, "Input"],
+Cell[4369, 144, 467, 9, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4873, 158, 204, 4, 31, "Input"],
+Cell[5080, 164, 764, 23, 47, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

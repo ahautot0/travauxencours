@@ -1,0 +1,134 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 8.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       157,          7]
+NotebookDataLength[      4376,        124]
+NotebookOptionsPosition[      4060,        108]
+NotebookOutlinePosition[      4403,        123]
+CellTagsIndexPosition[      4360,        120]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{"Grid", "[", 
+  RowBox[{
+   RowBox[{"MapThread", "[", 
+    RowBox[{"Prepend", ",", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{
+        StyleBox[
+         RowBox[{"P", 
+          StyleBox["repe",
+           FontFamily->"Courier New"], "nd"}]], "[", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"8", "^", "4"}], ",", 
+             RowBox[{"12", "^", "6"}], ",", 
+             RowBox[{"16", "^", "8"}], ",", 
+             RowBox[{"20", "^", "10"}]}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"2347", " ", "\"\<(57.3%)\>\""}], ",", 
+             RowBox[{"1825642", " ", "\"\<(61.1%)\>\""}], ",", 
+             RowBox[{"2737817414", " ", "\"\<(63.7%)\>\""}], ",", 
+             "\"\<???\>\""}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"1747", " ", "\"\<(42.6%)\>\""}], ",", 
+             RowBox[{"1159100", " ", "\"\<(38.8%)\>\""}], ",", 
+             RowBox[{"1555613138", " ", "\"\<(36.2%)\>\""}], ",", 
+             "\"\<???\>\""}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"2", " ", "\"\<(4.8 10^-4)\>\""}], ",", 
+             RowBox[{"1242", " ", "\"\<(4.2 10^-4)\>\""}], ",", 
+             RowBox[{"1536744", " ", "\"\<(3.6 10^-4)\>\""}], ",", 
+             "\"\<???\>\""}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0", ",", "0", ",", "\"\<???\>\""}], "}"}]}], 
+          "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+          "\"\<S = 2\>\"", ",", "\"\<S = 3\>\"", ",", "\"\<S = 4\>\"", ",", 
+           "\"\<S = 5\>\""}], "}"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<\>\"", ",", "Total", ",", "Halting", ",", "Looping", ",", 
+         "Nesting", ",", "Others"}], "}"}]}], "}"}]}], "]"}], ",", 
+   RowBox[{"Frame", "\[Rule]", "All"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.622787400165185*^9, 3.622787462752495*^9}, {
+  3.622787516198189*^9, 3.622787777030647*^9}, {3.622787821677925*^9, 
+  3.6227878414587603`*^9}, {3.6227880045882463`*^9, 3.6227884380974083`*^9}, {
+  3.6227886000568924`*^9, 3.6227887018158712`*^9}, {3.622788790533227*^9, 
+  3.6227888869881964`*^9}}],
+
+Cell[BoxData[
+ TagBox[GridBox[{
+    {"\<\"\"\>", "\<\"S = 2\"\>", "\<\"S = 3\"\>", "\<\"S = 4\"\>", "\<\"S = \
+5\"\>"},
+    {"Total", "4096", "2985984", "4294967296", "10240000000000"},
+    {"Halting", 
+     RowBox[{"2347", " ", "\<\"(57.3%)\"\>"}], 
+     RowBox[{"1825642", " ", "\<\"(61.1%)\"\>"}], 
+     RowBox[{"2737817414", " ", "\<\"(63.7%)\"\>"}], "\<\"???\"\>"},
+    {"Looping", 
+     RowBox[{"1747", " ", "\<\"(42.6%)\"\>"}], 
+     RowBox[{"1159100", " ", "\<\"(38.8%)\"\>"}], 
+     RowBox[{"1555613138", " ", "\<\"(36.2%)\"\>"}], "\<\"???\"\>"},
+    {"Nesting", 
+     RowBox[{"2", " ", "\<\"(4.8 10^-4)\"\>"}], 
+     RowBox[{"1242", " ", "\<\"(4.2 10^-4)\"\>"}], 
+     RowBox[{"1536744", " ", "\<\"(3.6 10^-4)\"\>"}], "\<\"???\"\>"},
+    {"Others", "0", "0", "0", "\<\"???\"\>"}
+   },
+   AutoDelete->False,
+   GridBoxFrame->{"Columns" -> {{True}}, "Rows" -> {{True}}},
+   GridBoxItemSize->{"Columns" -> {{Automatic}}, "Rows" -> {{Automatic}}}],
+  "Grid"]], "Output",
+ CellChangeTimes->{
+  3.622788321206403*^9, 3.6227883743556957`*^9, {3.622788415882969*^9, 
+   3.622788443229817*^9}, 3.622788610430911*^9, 3.622788730332721*^9, 
+   3.6227888471145267`*^9, 3.6227888893282003`*^9}]
+}, Open  ]]
+},
+WindowSize->{1347, 879},
+WindowMargins->{{0, Automatic}, {Automatic, 0}},
+FrontEndVersion->"8.0 for Microsoft Windows (64-bit) (November 7, 2010)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[579, 22, 2271, 55, 112, "Input"],
+Cell[2853, 79, 1191, 26, 114, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+

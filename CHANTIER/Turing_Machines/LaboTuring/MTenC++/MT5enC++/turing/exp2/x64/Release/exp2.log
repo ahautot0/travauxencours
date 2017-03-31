@@ -1,0 +1,21 @@
+﻿Build started 22/02/2015 20:27:27.
+     1>Project "C:\Users\User\Desktop\MT5enC++\turing\exp2\exp2.vcxproj" on node 3 (build target(s)).
+     1>InitializeBuildStatus:
+         Creating "x64\Release\exp2.unsuccessfulbuild" because "AlwaysCreate" was specified.
+       ClCompile:
+         All outputs are up-to-date.
+       Link:
+         c:\Program Files (x86)\Microsoft Visual Studio 10.0\VC\bin\x86_amd64\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\User\Desktop\MT5enC++\turing\x64\Release\exp2.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /ManifestFile:"x64\Release\exp2.exe.intermediate.manifest" /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /DEBUG /PDB:"C:\Users\User\Desktop\MT5enC++\turing\x64\Release\exp2.pdb" /SUBSYSTEM:CONSOLE /OPT:REF /OPT:ICF /LTCG /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\User\Desktop\MT5enC++\turing\x64\Release\exp2.lib" /MACHINE:X64 x64\Release\version11.obj
+         Generating code
+         Finished generating code
+         exp2.vcxproj -> C:\Users\User\Desktop\MT5enC++\turing\x64\Release\exp2.exe
+       Manifest:
+         c:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\mt.exe /nologo /verbose /outputresource:"C:\Users\User\Desktop\MT5enC++\turing\x64\Release\exp2.exe;#1" /manifest x64\Release\exp2.exe.intermediate.manifest
+       FinalizeBuildStatus:
+         Deleting file "x64\Release\exp2.unsuccessfulbuild".
+         Touching "x64\Release\exp2.lastbuildstate".
+     1>Done Building Project "C:\Users\User\Desktop\MT5enC++\turing\exp2\exp2.vcxproj" (build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:00.73

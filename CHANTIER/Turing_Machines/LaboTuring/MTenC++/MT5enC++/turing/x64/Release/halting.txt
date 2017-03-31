@@ -1,0 +1,3 @@
+Nombre de machines qui se sont certainement arrêtées : 887748344
+Nombre de machines qui ont certainement bouclé : 4821273964
+Nombre de machines qui s'arrêteront ou qui boucleront ou qui ont nesté : 814292
