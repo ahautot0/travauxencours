@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[    271596,       5901]
-NotebookOptionsPosition[    266200,       5710]
-NotebookOutlinePosition[    266543,       5725]
-CellTagsIndexPosition[    266500,       5722]
+NotebookDataLength[    373486,       8771]
+NotebookOptionsPosition[    365691,       8502]
+NotebookOutlinePosition[    366034,       8517]
+CellTagsIndexPosition[    365991,       8514]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -53,7 +53,3079 @@ Cell[BoxData[
 }, Open  ]],
 
 Cell[BoxData["\[IndentingNewLine]"], "Input",
- CellChangeTimes->{3.6990926575297756`*^9}]
+ CellChangeTimes->{3.6990926575297756`*^9}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"theta", "[", "t_", "]"}], ":=", 
+  RowBox[{"Mod", "[", 
+   RowBox[{
+    RowBox[{
+     FractionBox[
+      RowBox[{"300", "-", "t"}], "300"], 
+     FractionBox["\[Pi]", "2"]}], ",", 
+    RowBox[{"2", "\[Pi]"}]}], "]"}], "              ", 
+  RowBox[{"(*", 
+   RowBox[{"Cette", " ", "fonction", " ", "donne", " ", 
+    RowBox[{"l", "'"}], "angle", " ", "trigonom\[EAcute]trique", " ", "quans",
+     " ", "on", " ", "donne", " ", 
+    RowBox[{"l", "'"}], "\[EAcute]cart", " ", "en", " ", "cents", " ", "par", 
+    " ", "rapport", " ", "au", " ", "sommet", " ", "du", " ", "cercle", " ", 
+    "parcouru", " ", "dans", " ", "le", " ", "sens", " ", "horlogique"}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.7002942076361313`*^9, 3.700294276276252*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"theta", "[", "0", "]"}], ",", 
+   RowBox[{"theta", "[", "300", "]"}], ",", 
+   RowBox[{"theta", "[", "600", "]"}], ",", 
+   RowBox[{"theta", "[", "900", "]"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.7002942902226763`*^9, 3.7002943362739573`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["\[Pi]", "2"], ",", "0", ",", 
+   FractionBox[
+    RowBox[{"3", " ", "\[Pi]"}], "2"], ",", "\[Pi]"}], "}"}]], "Output",
+ CellChangeTimes->{3.700294296681088*^9, 3.700294336663958*^9}]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Partition de l\[CloseCurlyQuote]octave :", "Subtitle",
+ CellChangeTimes->{{3.700293995693159*^9, 3.700294004101574*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Differences", "[", 
+  RowBox[{"Sort", "[", 
+   RowBox[{"Mod", "[", 
+    RowBox[{
+     RowBox[{"1200.", 
+      RowBox[{"Log", "[", 
+       RowBox[{"2", ",", 
+        RowBox[{"Table", "[", 
+         RowBox[{
+          RowBox[{"NestWhile", "[", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"#", "/", "2"}], "&"}], ",", 
+            RowBox[{
+             FractionBox["4", "3"], 
+             SuperscriptBox[
+              RowBox[{"(", 
+               FractionBox["3", "2"], ")"}], "k"]}], ",", 
+            RowBox[{
+             RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"k", ",", "0", ",", "7"}], "}"}]}], "]"}]}], "]"}]}], ",", 
+     "1200"}], "]"}], "]"}], "]"}]], "Input",
+ CellChangeTimes->{{3.700373350289611*^9, 3.7003734104430513`*^9}, 
+   3.700373447899194*^9, {3.7003735323130217`*^9, 3.700373559251381*^9}, {
+   3.700373607502266*^9, 3.7003736491855392`*^9}, {3.7003737088868437`*^9, 
+   3.700373716390457*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "203.91000173077484`", ",", "203.91000173077484`", ",", 
+   "90.22499567306278`", ",", "113.68500605771203`", ",", 
+   "90.22499567306295`", ",", "203.91000173077498`", ",", 
+   "203.9100017307744`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.700373368374645*^9, 3.700373411261098*^9, 3.7003734482092113`*^9, {
+   3.7003735370993423`*^9, 3.700373560093783*^9}, {3.7003736153022795`*^9, 
+   3.700373637454319*^9}, {3.7003737094016447`*^9, 3.7003737167960577`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"quintesascendantes", " ", "=", 
+  RowBox[{"1200", 
+   RowBox[{"Log", "[", 
+    RowBox[{"2", ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"NestWhile", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "/", "2"}], "&"}], ",", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           FractionBox["3", "2"], ")"}], "k"], ",", 
+         RowBox[{
+          RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}]}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.7002945280294943`*^9, {3.7002945988536186`*^9, 3.7002946335324793`*^9}, {
+   3.7002950243131657`*^9, 3.7002950247967668`*^9}, 3.7002958442350063`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["3", "2"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["9", "8"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["27", "16"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["81", "64"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["243", "128"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["729", "512"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["2187", "2048"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["6561", "4096"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["19683", "16384"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["59049", "32768"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["177147", "131072"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["531441", "524288"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.700294168026662*^9, 3.7002945309778996`*^9, {3.7002946053432302`*^9, 
+   3.700294634967682*^9}, 3.700295028275573*^9, 3.70029584648141*^9, 
+   3.7003246799804707`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"quartesascendantes", " ", "=", 
+  RowBox[{"1200", 
+   RowBox[{"Log", "[", 
+    RowBox[{"2", ",", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"NestWhile", "[", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"#", "/", "2"}], "&"}], ",", 
+         SuperscriptBox[
+          RowBox[{"(", 
+           FractionBox["4", "3"], ")"}], "k"], ",", 
+         RowBox[{
+          RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}]}], 
+    "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.700294979868688*^9, 3.700295014906349*^9}, {
+   3.70029532271049*^9, 3.700295340291721*^9}, 3.7002958490242147`*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["4", "3"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["16", "9"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["32", "27"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["128", "81"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["256", "243"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["1024", "729"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["4096", "2187"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["8192", "6561"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["32768", "19683"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["65536", "59049"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["262144", "177147"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["1048576", "531441"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]]}], "}"}]], "Output",
+ CellChangeTimes->{{3.700294982317892*^9, 3.7002950310367775`*^9}, 
+   3.7002953449717293`*^9, 3.7002958495078154`*^9, 3.7003246807448716`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+    RowBox[{"Rotate", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Arrow", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"2.9", 
+              RowBox[{"Cos", "[", 
+               RowBox[{"theta", "[", 
+                RowBox[{"notesdebase", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+             RowBox[{"2.9", 
+              RowBox[{"Sin", "[", 
+               RowBox[{"theta", "[", 
+                RowBox[{"notesdebase", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}], 
+          "}"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "2", ",", "7"}], "}"}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["\[Pi]", "600"]}], 
+       RowBox[{"notesdebase", "[", 
+        RowBox[{"[", "4", "]"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", 
+    RowBox[{"Thickness", "[", "0.014", "]"}], ",", 
+    RowBox[{"Rotate", "[", 
+     RowBox[{
+      RowBox[{"Arrow", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"2.9", 
+            RowBox[{"Cos", "[", 
+             RowBox[{"theta", "[", 
+              RowBox[{"notesdebase", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}], ",", 
+           RowBox[{"2.9", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"theta", "[", 
+              RowBox[{"notesdebase", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}], 
+        "}"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["\[Pi]", "600"]}], 
+       RowBox[{"notesdebase", "[", 
+        RowBox[{"[", "4", "]"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", 
+    RowBox[{"PointSize", "[", "0.026", "]"}], ",", "Green", ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"quintesascendantes", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{"3", " ", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"quintesascendantes", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "13"}], "}"}]}], "]"}], ",", "Blue", ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"quartesascendantes", " ", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{"3", " ", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"quartesascendantes", " ", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "13"}], "}"}]}], "]"}], ",", "Black", ",", 
+    RowBox[{"Point", "[", 
+     RowBox[{"{", 
+      RowBox[{"0", ",", "3"}], "}"}], "]"}], ",", "Red", ",", 
+    RowBox[{"PointSize", "[", "0.015", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", 
+          RowBox[{"Cos", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
+         RowBox[{"3", 
+          RowBox[{"Sin", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{
+  3.700294929386999*^9, {3.700295068071243*^9, 3.7002950687264442`*^9}, {
+   3.700295281776018*^9, 3.700295293710039*^9}, {3.7002953654701653`*^9, 
+   3.7002953986982236`*^9}, {3.7002954761991596`*^9, 3.700295495184393*^9}, {
+   3.700295548723687*^9, 3.7002955530136943`*^9}, {3.7002958667302456`*^9, 
+   3.7002958706146526`*^9}, {3.700296178887794*^9, 3.7002961793245945`*^9}, {
+   3.700296325949252*^9, 3.7002963330784645`*^9}, {3.7002964972843533`*^9, 
+   3.700296509561575*^9}, {3.7002965447396364`*^9, 3.7002965882481127`*^9}, {
+   3.7002966591346374`*^9, 3.7002966636430454`*^9}, {3.7002967339367685`*^9, 
+   3.7002967850580587`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[{{-3.5, -3.5}, {-3.5, 3.5}, {3.5, 3.5}, {
+    3.5, -3.5}, {-3.5, -3.5}}], CircleBox[{0, 0}, 3], 
+   GeometricTransformationBox[{
+     ArrowBox[{{0, 0}, {2.540630741551673, 1.3982830311072916`}}], 
+     ArrowBox[{{0, 0}, {2.4500143822215446`, -1.5515893551154514`}}], 
+     ArrowBox[{{0, 0}, {1.4756319340860053`, -2.4964996285009926`}}], 
+     ArrowBox[{{0, 0}, {-1.4756319340860198`, -2.496499628500984}}], 
+     ArrowBox[{{0, 0}, {-2.8986326882877402`, 0.08904234043300438}}], 
+     ArrowBox[{{0, 0}, {-1.3196155841523642`, 
+       2.582366106899294}}]}, {{{-0.8608619408624111, 
+     0.5088385979606919}, {-0.5088385979606919, -0.8608619408624111}}, {0., 
+     0.}}], 
+   {Thickness[0.014], 
+    GeometricTransformationBox[
+     ArrowBox[{{0, 0}, {1.7757378587636622`*^-16, 
+       2.9}}], {{{-0.8608619408624111, 
+      0.5088385979606919}, {-0.5088385979606919, -0.8608619408624111}}, {0., 
+      0.}}], 
+    {RGBColor[0, 1, 0], PointSize[
+     0.026], {PointBox[{0, 3}], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[3, 2]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[3, 2]]/Log[
+            2])]}, {-1.526515793882082, -2.5825858225872294`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[9, 8]]/Log[2])], 3 
+         Sin[Rational[1, 600] Pi (300 - 1200 Log[Rational[9, 8]]/Log[2])]}, {
+        2.628238698156902, 1.4464996873523728`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[27, 16]]/Log[2])], 
+         3 Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[27, 16]]/Log[
+            2])]}, {-2.9985855396080074`, 0.09211276596516689}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[81, 64]]/Log[2])], 
+         3 Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[81, 64]]/Log[2])]}, {
+        2.5344976367809107`, -1.605092436326325}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[243, 128]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[243, 128]]/Log[
+            2])]}, {-1.365119569812808, 2.6714132140337434`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[729, 512]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[729, 512]]/Log[
+            2])]}, {-0.18413867202429196`, -2.9943434922308314`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[2187, 2048]]/Log[2])]}, {
+        1.682155518986122, 2.4840194866273757`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[6561, 4096]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[6561, 4096]]/Log[
+            2])]}, {-2.7120686577893243`, -1.2824521805653468`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[19683, 16384]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[19683, 16384]]/Log[2])]}, {
+        2.9872778580071344`, -0.2759909401779453}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[59049, 32768]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[59049, 32768]]/Log[
+            2])]}, {-2.4311989716893243`, 1.757632373409403}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[177147, 131072]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[177147, 131072]]/Log[2])]}, {
+        1.1985754727752025`, -2.750166692413698}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[531441, 524288]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[531441, 524288]]/Log[2])]}, {
+        0.3675829561626439, 2.9773952996434203`}]]}, 
+     {RGBColor[0, 0, 1], PointBox[{0, 3}], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[4, 3]]/Log[2])], 3 
+         Sin[Rational[1, 600] Pi (300 - 1200 Log[Rational[4, 3]]/Log[2])]}, {
+        1.526515793882083, -2.582585822587229}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[16, 9]]/Log[2])], 
+         3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[16, 9]]/Log[
+            2])]}, {-2.6282386981569026`, 1.4464996873523717`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[32, 27]]/Log[2])], 
+         3 Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[32, 27]]/Log[2])]}, {
+        2.9985855396080074`, 0.09211276596516581}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[128, 81]]/Log[2])],
+          3 Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[128, 81]]/Log[
+            2])]}, {-2.53449763678091, -1.6050924363263266`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[256, 243]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[256, 243]]/Log[2])]}, {
+        1.365119569812807, 2.671413214033744}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[1024, 729]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[1024, 729]]/Log[2])]}, {
+        0.184138672024293, -2.994343492230831}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[4096, 2187]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[4096, 2187]]/Log[
+            2])]}, {-1.682155518986122, 2.4840194866273757`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[8192, 6561]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[8192, 6561]]/Log[2])]}, {
+        2.712068657789324, -1.2824521805653486`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[32768, 19683]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[32768, 19683]]/Log[
+            2])]}, {-2.9872778580071344`, -0.27599094017794645`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[65536, 59049]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[65536, 59049]]/Log[2])]}, {
+        2.4311989716893248`, 1.7576323734094028`}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[262144, 177147]]/Log[2])], 3 
+         Sin[
+          Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[262144, 177147]]/Log[
+            2])]}, {-1.198575472775201, -2.750166692413699}]], 
+      PointBox[NCache[{
+        3 Cos[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[1048576, 531441]]/Log[2])], 3 
+         Sin[Rational[1, 600] 
+           Pi (300 - 1200 Log[Rational[1048576, 531441]]/Log[
+            2])]}, {-0.3675829561626436, 2.9773952996434203`}]]}, 
+     {GrayLevel[0], PointBox[{0, 3}]}, 
+     {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+      PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+        2.598076211353316, 1.5}]], 
+      PointBox[NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5,
+         2.598076211353316}]], PointBox[{0, 3}], 
+      PointBox[NCache[{
+        Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+        2.598076211353316}]], 
+      PointBox[NCache[{
+        Rational[-3, 2] 3^Rational[1, 2], Rational[
+         3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+      PointBox[NCache[{
+        Rational[-3, 2] 3^Rational[1, 2], 
+         Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+      PointBox[NCache[{
+        Rational[-3, 2], Rational[-3, 2] 
+         3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+      PointBox[NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+        1.5, -2.598076211353316}]], 
+      PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+        2.598076211353316, -1.5}]]}}}}]], "Output",
+ CellChangeTimes->{{3.7002965704484816`*^9, 3.7002965886537137`*^9}, {
+  3.700296660164239*^9, 3.7002966644698467`*^9}, {3.700296772234836*^9, 
+  3.70029678580686*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Arrow", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"2.9", 
+            RowBox[{"Cos", "[", 
+             RowBox[{"theta", "[", 
+              RowBox[{"notesdebase", "[", 
+               RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+           RowBox[{"2.9", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"theta", "[", 
+              RowBox[{"notesdebase", "[", 
+               RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}], 
+        "}"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "7"}], "}"}]}], "]"}], ",", 
+    RowBox[{"PointSize", "[", "0.026", "]"}], ",", "Green", ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"quintesascendantes", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{"3", " ", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"quintesascendantes", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "12"}], "}"}]}], "]"}], ",", "Red", ",", 
+    RowBox[{"PointSize", "[", "0.015", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", 
+          RowBox[{"Cos", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
+         RowBox[{"3", 
+          RowBox[{"Sin", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7002944751454015`*^9, 3.7002944797630095`*^9}, {
+   3.7002946767913556`*^9, 3.7002946848877697`*^9}, {3.7002947343710566`*^9, 
+   3.7002947802039375`*^9}, 3.7002948402484426`*^9, {3.7002961031808605`*^9, 
+   3.7002961035240617`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[{{-3.5, -3.5}, {-3.5, 3.5}, {3.5, 3.5}, {
+    3.5, -3.5}, {-3.5, -3.5}}], 
+   CircleBox[{0, 0}, 3], {ArrowBox[{{0, 0}, {1.7757378587636622`*^-16, 2.9}}],
+     ArrowBox[{{0, 0}, {2.540630741551673, 1.3982830311072916`}}], 
+    ArrowBox[{{0, 0}, {2.4500143822215446`, -1.5515893551154514`}}], 
+    ArrowBox[{{0, 0}, {1.4756319340860053`, -2.4964996285009926`}}], 
+    ArrowBox[{{0, 0}, {-1.4756319340860198`, -2.496499628500984}}], 
+    ArrowBox[{{0, 0}, {-2.8986326882877402`, 0.08904234043300438}}], 
+    ArrowBox[{{0, 0}, {-1.3196155841523642`, 2.582366106899294}}]}, 
+   {RGBColor[0, 1, 0], PointSize[0.026], PointBox[{0, 3}], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[3, 2]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[3, 2]]/Log[
+          2])]}, {-1.526515793882082, -2.5825858225872294`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[9, 8]]/Log[2])], 3 
+       Sin[Rational[1, 600] Pi (300 - 1200 Log[Rational[9, 8]]/Log[2])]}, {
+      2.628238698156902, 1.4464996873523728`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[27, 16]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[27, 16]]/Log[
+          2])]}, {-2.9985855396080074`, 0.09211276596516689}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[81, 64]]/Log[2])], 3 
+       Sin[Rational[1, 600] Pi (300 - 1200 Log[Rational[81, 64]]/Log[2])]}, {
+      2.5344976367809107`, -1.605092436326325}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[243, 128]]/Log[2])], 
+       3 Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[243, 128]]/Log[
+          2])]}, {-1.365119569812808, 2.6714132140337434`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[729, 512]]/Log[2])], 
+       3 Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[729, 512]]/Log[
+          2])]}, {-0.18413867202429196`, -2.9943434922308314`}]], 
+    PointBox[
+     NCache[{3 
+       Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[2187, 2048]]/Log[2])],
+        3 Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.682155518986122, 2.4840194866273757`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[6561, 4096]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[6561, 4096]]/Log[
+          2])]}, {-2.7120686577893243`, -1.2824521805653468`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[19683, 16384]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[19683, 16384]]/Log[2])]}, {
+      2.9872778580071344`, -0.2759909401779453}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[59049, 32768]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[59049, 32768]]/Log[
+          2])]}, {-2.4311989716893243`, 1.757632373409403}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[177147, 131072]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[177147, 131072]]/Log[2])]}, {
+      1.1985754727752025`, -2.750166692413698}]]}, 
+   {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+      2.598076211353316, 1.5}]], 
+    PointBox[NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+      2.598076211353316}]], PointBox[{0, 3}], 
+    PointBox[NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5,
+       2.598076211353316}]], 
+    PointBox[NCache[{
+      Rational[-3, 2] 3^Rational[1, 2], Rational[3, 2]}, {-2.598076211353316, 
+      1.5}]], PointBox[{-3, 0}], 
+    PointBox[NCache[{
+      Rational[-3, 2] 3^Rational[1, 2], 
+       Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+    PointBox[NCache[{
+      Rational[-3, 2], Rational[-3, 2] 
+       3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+    PointBox[NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+      1.5, -2.598076211353316}]], 
+    PointBox[
+     NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+      2.598076211353316, -1.5}]]}}]], "Output",
+ CellChangeTimes->{3.7002948424480467`*^9, 3.700296104678464*^9}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.700297753369872*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Partition simplifi\[EAcute]e", "Subtitle",
+ CellChangeTimes->{{3.7002977720119047`*^9, 3.700297781028721*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+    RowBox[{"PointSize", "[", "0.026", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"touteslesnotes", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{"3", " ", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"touteslesnotes", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "21"}], "}"}]}], "]"}], ",", "Red", ",", 
+    RowBox[{"PointSize", "[", "0.015", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", 
+          RowBox[{"Cos", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
+         RowBox[{"3", 
+          RowBox[{"Sin", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.700297813991579*^9, 3.700297829154805*^9}, {
+   3.7002978741140842`*^9, 3.700297913675754*^9}, {3.7002979534724236`*^9, 
+   3.700297954626826*^9}, 3.7002980262621517`*^9, {3.7002980831086516`*^9, 
+   3.700298099722681*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[{{-3.5, -3.5}, {-3.5, 3.5}, {3.5, 3.5}, {
+    3.5, -3.5}, {-3.5, -3.5}}], CircleBox[{0, 0}, 3], 
+   {PointSize[0.026], PointBox[{0, 3}], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (-900 + 1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (-900 + 
+          1200 Log[Rational[2187, 2048]]/Log[2])]}, {-1.682155518986122, 
+      2.4840194866273757`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {2.6282386981569035`, 
+      1.4464996873523706`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {2.998585539608008, 
+      0.0921127659651598}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.712068657789321, -1.2824521805653535`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.9872778580071344`, -0.27599094017794745`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.534497636780908, -1.605092436326329}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.5265157938820753`, -2.582585822587234}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      0.18413867202428236`, -2.994343492230832}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.198575472775197, -2.7501666924137007`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-0.1841386720242993, -2.994343492230831}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-1.52651579388209, -2.582585822587225}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-2.534497636780917, -1.6050924363263155`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-2.712068657789328, -1.2824521805653397`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.9985855396080074`, 
+      0.0921127659651762}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.628238698156895, 
+      1.4464996873523859`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.43119897168932, 
+      1.7576323734094095`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-1.3651195698127936`, 
+      2.6714132140337505`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (1500 - 7200 Log[Rational[256, 243]]/Log[2] - 7200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (1500 - 7200 Log[Rational[256, 243]]/Log[2] - 7200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {0.3675829561626571, 
+      2.9773952996434185`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[256, 243]]/Log[2])], 
+       3 Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2])]}, {1.365119569812807,
+       2.671413214033744}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.682155518986122, 2.4840194866273757`}]]}, 
+   {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+      2.598076211353316, 1.5}]], 
+    PointBox[NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+      2.598076211353316}]], PointBox[{0, 3}], 
+    PointBox[NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5,
+       2.598076211353316}]], 
+    PointBox[NCache[{
+      Rational[-3, 2] 3^Rational[1, 2], Rational[3, 2]}, {-2.598076211353316, 
+      1.5}]], PointBox[{-3, 0}], 
+    PointBox[NCache[{
+      Rational[-3, 2] 3^Rational[1, 2], 
+       Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+    PointBox[NCache[{
+      Rational[-3, 2], Rational[-3, 2] 
+       3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+    PointBox[NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+      1.5, -2.598076211353316}]], 
+    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+      2.598076211353316, -1.5}]]}}]], "Output",
+ CellChangeTimes->{3.700297914206155*^9, 3.7002979557500277`*^9, 
+  3.7002980268237524`*^9, 3.700298101126683*^9, 3.700298716532164*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"tc", "=", 
+   RowBox[{"1200", "  ", 
+    RowBox[{"Log", "[", 
+     RowBox[{"2", ",", 
+      RowBox[{"2187", "/", "2048"}]}], "]"}]}]}], ";", 
+  RowBox[{"td", "=", 
+   RowBox[{"1200", " ", 
+    RowBox[{"Log", "[", 
+     RowBox[{"2", ",", 
+      RowBox[{"256", "/", "243"}]}], "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.699601672493411*^9, 3.699601675154563*^9}, {
+  3.6996017223592634`*^9, 3.6996017383181763`*^9}, {3.6996256556100893`*^9, 
+  3.6996256708669167`*^9}, {3.6996257712072926`*^9, 3.6996257749512997`*^9}, {
+  3.6996259273947673`*^9, 3.6996259292043705`*^9}, {3.699626152924363*^9, 
+  3.6996261625651803`*^9}, {3.6996264627877073`*^9, 3.699626468856118*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"5", "tc"}], "+", 
+   RowBox[{"7", "td"}]}], "//", "Simplify"}]], "Input",
+ CellChangeTimes->{{3.700233476778385*^9, 3.7002334932208138`*^9}}],
+
+Cell[BoxData["1200"], "Output",
+ CellChangeTimes->{{3.700233482253995*^9, 3.7002334941568155`*^9}, 
+   3.7002960640871925`*^9, 3.700298659482864*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"notesdebase", "=", 
+  RowBox[{"Most", "[", 
+   RowBox[{"Accumulate", "[", 
+    RowBox[{"{", 
+     RowBox[{"0", ",", 
+      RowBox[{"tc", " ", "+", "td"}], ",", 
+      RowBox[{"tc", " ", "+", "td"}], ",", " ", "td", ",", 
+      RowBox[{"tc", " ", "+", "td"}], ",", 
+      RowBox[{"tc", " ", "+", "td"}], ",", 
+      RowBox[{"tc", "+", " ", "td"}], ",", "td"}], "}"}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.699626746224605*^9, {3.6996269069204874`*^9, 3.6996269115224953`*^9}, {
+   3.699627085946402*^9, 3.699627087537605*^9}, {3.6996273014919806`*^9, 
+   3.6996273048615866`*^9}, {3.699627416994583*^9, 3.6996274342326136`*^9}, 
+   3.7001604620753627`*^9, {3.700298635505622*^9, 3.700298639764429*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6996274288818045`*^9, 3.699627435012615*^9}, 
+   3.699640008049121*^9, 3.699640538590452*^9, 3.699676555892127*^9, 
+   3.699800862353158*^9, 3.7001604680189734`*^9, 3.700296067565998*^9, 
+   3.700297853818449*^9, 3.7002986626340694`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"touteslesnotes", "=", 
+  RowBox[{"Union", "[", 
+   RowBox[{"Join", "[", 
+    RowBox[{"notesdebase", ",", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{"notesdebase", "+", "tc"}], ",", "1200"}], "]"}], ",", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{"notesdebase", "-", "tc"}], ",", "1200"}], "]"}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.699627150624116*^9, 3.6996271939453917`*^9}, {
+  3.699627285657953*^9, 3.6996273225364175`*^9}, {3.7002986804025006`*^9, 
+  3.700298703318941*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   RowBox[{"1200", "-", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    RowBox[{"-", "1200"}], "+", 
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["256", "243"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["2187", "2048"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]]}], "}"}]], "Output",
+ CellChangeTimes->{{3.6996271783453646`*^9, 3.6996271963633957`*^9}, 
+   3.6996273340648375`*^9, 3.699627443920231*^9, {3.699639994040296*^9, 
+   3.6996400233371477`*^9}, 3.699640541663658*^9, 3.699676555903127*^9, 
+   3.6997038612321396`*^9, 3.699800862368758*^9, 3.699802523819476*^9, 
+   3.7001604859122047`*^9, 3.7002980563234043`*^9, {3.7002986836005063`*^9, 
+   3.700298704551343*^9}, 3.7003244151388054`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"Length", "[", "touteslesnotes", "]"}], ",", 
+   RowBox[{"Sort", "[", 
+    RowBox[{"N", "[", "touteslesnotes", "]"}], "]"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.7003244193196125`*^9, 3.700324456759678*^9}, {
+  3.7003245429966297`*^9, 3.7003245847891035`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"21", ",", 
+   RowBox[{"{", 
+    RowBox[{
+    "0.`", ",", "23.460010384649877`", ",", "90.22499567306305`", ",", 
+     "113.68500605771193`", ",", "203.91000173077498`", ",", 
+     "294.13499740383804`", ",", "317.5950077884869`", ",", 
+     "384.35999307690105`", ",", "407.82000346154996`", ",", 
+     "498.044999134613`", ",", "521.5050095192619`", ",", 
+     "588.2699948076761`", ",", "611.7300051923249`", ",", 
+     "701.955000865388`", ",", "792.1799965384511`", ",", 
+     "815.6400069230999`", ",", "905.865002596163`", ",", "996.089998269226`",
+      ",", "1019.5500086538748`", ",", "1086.314993942288`", ",", 
+     "1109.775004326938`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.7003244301616316`*^9, 3.700324457399279*^9}, 
+   3.700324547052637*^9, 3.700324585350704*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Union", "[", 
+  RowBox[{
+   RowBox[{"N", "[", "quartesascendantes", "]"}], ",", 
+   RowBox[{"N", "[", "quintesascendantes", "]"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7003246979049015`*^9, 3.7003247336289644`*^9}, {
+  3.7003247723794327`*^9, 3.700324852516773*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "0.`", ",", "23.460010384649014`", ",", "90.22499567306305`", ",", 
+   "113.68500605771193`", ",", "180.44999134612573`", ",", 
+   "203.91000173077484`", ",", "294.13499740383764`", ",", 
+   "317.5950077884868`", ",", "384.3599930769007`", ",", "407.8200034615497`",
+    ",", "498.04499913461245`", ",", "521.5050095192615`", ",", 
+   "588.2699948076754`", ",", "611.7300051923245`", ",", "678.4949904807384`",
+    ",", "701.9550008653874`", ",", "792.1799965384502`", ",", 
+   "815.6400069230993`", ",", "882.4049922115131`", ",", "905.8650025961624`",
+    ",", "996.089998269225`", ",", "1019.5500086538742`", ",", 
+   "1086.314993942288`", ",", "1109.7750043269368`", ",", 
+   "1176.539989615351`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.700324712007326*^9, 3.700324734471366*^9}, {
+  3.700324805794691*^9, 3.700324853499575*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.7003248970392513`*^9, 3.70032490200006*^9}}],
+
+Cell[BoxData["25"], "Output",
+ CellChangeTimes->{3.7003249026396613`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"touteslesnotes2", "=", 
+  RowBox[{"Union", "[", 
+   RowBox[{"Join", "[", 
+    RowBox[{"touteslesnotes", ",", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{"touteslesnotes", "+", "tc"}], ",", "1200"}], "]"}], ",", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{"touteslesnotes", "-", "tc"}], ",", "1200"}], "]"}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7002981630743923`*^9, 3.7002981872856345`*^9}, {
+  3.7002982447249355`*^9, 3.7002982515889473`*^9}, {3.7002984677429276`*^9, 
+  3.7002984691937294`*^9}, {3.7002987304005885`*^9, 3.7002987331305933`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   RowBox[{"1200", "-", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{"1200", "-", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{"1200", "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "-", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    RowBox[{"-", "1200"}], "+", 
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    RowBox[{"-", "1200"}], "+", 
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"8400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["256", "243"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"2400", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["256", "243"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"3600", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["256", "243"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["2187", "2048"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"2400", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["2187", "2048"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7002981882996364`*^9, 3.700298252368949*^9, 3.7002984708629327`*^9, {
+   3.7002987258141804`*^9, 3.7002987338949947`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.7002982617289653`*^9, 3.700298266206173*^9}}],
+
+Cell[BoxData["35"], "Output",
+ CellChangeTimes->{3.700298266954974*^9, 3.700298474544539*^9, 
+  3.700298738621803*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+    RowBox[{"PointSize", "[", "0.026", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"touteslesnotes2", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{"3", " ", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"touteslesnotes2", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "35"}], "}"}]}], "]"}], ",", "Red", ",", 
+    RowBox[{"PointSize", "[", "0.015", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", 
+          RowBox[{"Cos", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
+         RowBox[{"3", 
+          RowBox[{"Sin", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.700298282009001*^9, 3.7002982881866117`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[{{-3.5, -3.5}, {-3.5, 3.5}, {3.5, 3.5}, {
+    3.5, -3.5}, {-3.5, -3.5}}], CircleBox[{0, 0}, 3], 
+   {PointSize[0.026], PointBox[{0, 3}], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (-900 + 2400 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (-900 + 
+          2400 Log[Rational[2187, 2048]]/Log[2])]}, {-2.7856713924662087`, 
+      1.1135685399630206`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (-900 + 1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (-900 + 
+          1200 Log[Rational[2187, 2048]]/Log[2])]}, {-1.682155518986122, 
+      2.4840194866273757`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (-900 - 1200 Log[Rational[256, 243]]/Log[2] + 
+          1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (-900 - 1200 Log[Rational[256, 243]]/Log[2] + 
+          1200 Log[Rational[2187, 2048]]/Log[2])]}, {-0.367582956162641, 
+      2.9773952996434208`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {2.6282386981569035`, 
+      1.4464996873523706`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {2.998585539608008, 
+      0.0921127659651598}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.712068657789321, -1.2824521805653535`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[
+        Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.8314518269154267`, -2.3760859003176096`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.9872778580071344`, -0.27599094017794745`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.534497636780908, -1.605092436326329}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.5265157938820753`, -2.582585822587234}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      0.18413867202428236`, -2.994343492230832}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-1.1985754727752123`, -2.7501666924136936`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.318732242683234, -1.9035442697087919`}]], 
+    PointBox[
+     NCache[{3 
+       Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.198575472775197, -2.7501666924137007`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-0.1841386720242993, -2.994343492230831}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-1.52651579388209, -2.582585822587225}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-2.534497636780917, -1.6050924363263155`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-2.9872778580071357`, -0.2759909401779305}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-0.5496410830694357, -2.949219333959795}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[
+        Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-1.8314518269154387`, -2.3760859003176007`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-2.712068657789328, -1.2824521805653397`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.9985855396080074`, 
+      0.0921127659651762}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.628238698156895, 
+      1.4464996873523859`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.964705136131271, 
+      0.4588283511258439}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.43119897168932, 
+      1.7576323734094095`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-1.3651195698127936`, 
+      2.6714132140337505`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 7200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 7200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-1.0275115414217928`, 
+      2.8185492779522257`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (1500 - 7200 Log[Rational[256, 243]]/Log[2] - 7200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (1500 - 7200 Log[Rational[256, 243]]/Log[2] - 7200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {0.3675829561626571, 
+      2.9773952996434185`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (1500 - 7200 Log[Rational[256, 243]]/Log[2] - 8400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (1500 - 7200 Log[Rational[256, 243]]/Log[2] - 8400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {1.9738417205195513`, 
+      2.259192081770919}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[256, 243]]/Log[2])], 
+       3 Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2])]}, {1.365119569812807,
+       2.671413214033744}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 2400 Log[Rational[256, 243]]/Log[2])], 
+       3 Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2])]}, {
+      2.4311989716893283`, 1.7576323734093982`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 3600 Log[Rational[256, 243]]/Log[2])], 
+       3 Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2])]}, {
+      2.9647051361312737`, 0.4588283511258283}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.682155518986122, 2.4840194866273757`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.7856713924662095`, 1.1135685399630193`}]]}, 
+   {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+      2.598076211353316, 1.5}]], 
+    PointBox[NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+      2.598076211353316}]], PointBox[{0, 3}], 
+    PointBox[NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5,
+       2.598076211353316}]], 
+    PointBox[NCache[{
+      Rational[-3, 2] 3^Rational[1, 2], Rational[3, 2]}, {-2.598076211353316, 
+      1.5}]], PointBox[{-3, 0}], 
+    PointBox[NCache[{
+      Rational[-3, 2] 3^Rational[1, 2], 
+       Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+    PointBox[NCache[{
+      Rational[-3, 2], Rational[-3, 2] 
+       3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+    PointBox[NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+      1.5, -2.598076211353316}]], 
+    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+      2.598076211353316, -1.5}]]}}]], "Output",
+ CellChangeTimes->{3.7002982890758133`*^9, 3.7002984776177444`*^9, 
+  3.700298743707412*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"touteslesnotes3", "=", 
+  RowBox[{"Union", "[", 
+   RowBox[{"Join", "[", 
+    RowBox[{"touteslesnotes2", ",", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{"touteslesnotes", "+", "tc"}], ",", "1200"}], "]"}], ",", 
+     RowBox[{"Mod", "[", 
+      RowBox[{
+       RowBox[{"touteslesnotes2", "-", "tc"}], ",", "1200"}], "]"}]}], "]"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.7002983405559034`*^9, 3.700298344783511*^9}, {
+  3.7002984020044117`*^9, 3.700298403190014*^9}, {3.7002987692134566`*^9, 
+  3.700298770820259*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0", ",", 
+   RowBox[{"1200", "-", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{"1200", "-", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{"1200", "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "-", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{"1200", "-", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{"1200", "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "-", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "-", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "-", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"1200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"2400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"3600", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"4800", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    FractionBox[
+     RowBox[{"6000", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    RowBox[{"-", "1200"}], "+", 
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   RowBox[{
+    RowBox[{"-", "1200"}], "+", 
+    FractionBox[
+     RowBox[{"7200", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["256", "243"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]], "+", 
+    FractionBox[
+     RowBox[{"8400", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["2187", "2048"], "]"}]}], 
+     RowBox[{"Log", "[", "2", "]"}]]}], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["256", "243"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"2400", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["256", "243"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"3600", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["256", "243"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"4800", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["256", "243"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"1200", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["2187", "2048"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]], ",", 
+   FractionBox[
+    RowBox[{"2400", " ", 
+     RowBox[{"Log", "[", 
+      FractionBox["2187", "2048"], "]"}]}], 
+    RowBox[{"Log", "[", "2", "]"}]]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.7002983477631164`*^9, 3.7002984044224157`*^9, {3.700298771693861*^9, 
+   3.700298789415492*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Length", "[", "%", "]"}]], "Input",
+ CellChangeTimes->{{3.700298775796668*^9, 3.700298786779087*^9}}],
+
+Cell[BoxData["42"], "Output",
+ CellChangeTimes->{{3.7002987820366793`*^9, 3.700298791084695*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+    RowBox[{"PointSize", "[", "0.026", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", " ", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"touteslesnotes3", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{"3", " ", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"touteslesnotes3", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "42"}], "}"}]}], "]"}], ",", "Red", ",", 
+    RowBox[{"PointSize", "[", "0.015", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", 
+          RowBox[{"Cos", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
+         RowBox[{"3", 
+          RowBox[{"Sin", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.700298810491129*^9, 3.700298820194346*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{
+   LineBox[{{-3.5, -3.5}, {-3.5, 3.5}, {3.5, 3.5}, {
+    3.5, -3.5}, {-3.5, -3.5}}], CircleBox[{0, 0}, 3], 
+   {PointSize[0.026], PointBox[{0, 3}], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (-900 + 3600 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (-900 + 
+          3600 Log[Rational[2187, 2048]]/Log[
+           2])]}, {-2.9309524958315305`, -0.6399355179851509}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (-900 + 2400 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (-900 + 
+          2400 Log[Rational[2187, 2048]]/Log[2])]}, {-2.7856713924662087`, 
+      1.1135685399630206`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (-900 - 1200 Log[Rational[256, 243]]/Log[2] + 
+          2400 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (-900 - 1200 Log[Rational[256, 243]]/Log[2] + 
+          2400 Log[Rational[2187, 2048]]/Log[2])]}, {-1.9738417205195389`, 
+      2.2591920817709297`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (-900 + 1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (-900 + 
+          1200 Log[Rational[2187, 2048]]/Log[2])]}, {-1.682155518986122, 
+      2.4840194866273757`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (-900 - 1200 Log[Rational[256, 243]]/Log[2] + 
+          1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (-900 - 1200 Log[Rational[256, 243]]/Log[2] + 
+          1200 Log[Rational[2187, 2048]]/Log[2])]}, {-0.367582956162641, 
+      2.9773952996434208`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] + 
+          1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] + 
+          1200 Log[Rational[2187, 2048]]/Log[2])]}, {1.0275115414218101`, 
+      2.818549277952219}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] + 
+          1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] + 
+          1200 Log[Rational[2187, 2048]]/Log[2])]}, {2.1975215623802447`, 
+      2.0422778907077968`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {2.6282386981569035`, 
+      1.4464996873523706`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {2.998585539608008, 
+      0.0921127659651598}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.712068657789321, -1.2824521805653535`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.8314518269154267`, -2.3760859003176096`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 1200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      0.5496410830694203, -2.949219333959798}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.9872778580071344`, -0.27599094017794745`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.534497636780908, -1.605092436326329}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.5265157938820753`, -2.582585822587234}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      0.18413867202428236`, -2.994343492230832}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-1.1985754727752123`, -2.7501666924136936`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 2400 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-2.3187322426832444`, -1.9035442697087799`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.318732242683234, -1.9035442697087919`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.198575472775197, -2.7501666924137007`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-0.1841386720242993, -2.994343492230831}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-1.52651579388209, -2.582585822587225}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-2.534497636780917, -1.6050924363263155`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 3600 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-2.9872778580071357`, -0.2759909401779305}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-0.5496410830694357, -2.949219333959795}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-1.8314518269154387`, -2.3760859003176007`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[
+          2])]}, {-2.712068657789328, -1.2824521805653397`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.9985855396080074`, 
+      0.0921127659651762}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 4800 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.628238698156895, 
+      1.4464996873523859`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.964705136131271, 
+      0.4588283511258439}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-2.43119897168932, 
+      1.7576323734094095`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 7200 Log[Rational[256, 243]]/Log[2] - 6000 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-1.3651195698127936`, 
+      2.6714132140337505`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 7200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 6000 Log[Rational[256, 243]]/Log[2] - 7200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {-1.0275115414217928`, 
+      2.8185492779522257`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (1500 - 7200 Log[Rational[256, 243]]/Log[2] - 7200 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (1500 - 7200 Log[Rational[256, 243]]/Log[2] - 7200 
+          Log[Rational[2187, 2048]]/Log[2])]}, {0.3675829561626571, 
+      2.9773952996434185`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (1500 - 7200 Log[Rational[256, 243]]/Log[2] - 8400 
+          Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (1500 - 7200 Log[Rational[256, 243]]/Log[2] - 8400 
+          Log[Rational[2187, 2048]]/Log[2])]}, {1.9738417205195513`, 
+      2.259192081770919}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 1200 Log[Rational[256, 243]]/Log[2])], 
+       3 Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[256, 243]]/Log[2])]}, {1.365119569812807,
+       2.671413214033744}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 2400 Log[Rational[256, 243]]/Log[2])], 
+       3 Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[256, 243]]/Log[2])]}, {
+      2.4311989716893283`, 1.7576323734093982`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 3600 Log[Rational[256, 243]]/Log[2])], 
+       3 Sin[Rational[1, 600] 
+         Pi (300 - 3600 Log[Rational[256, 243]]/Log[2])]}, {
+      2.9647051361312737`, 0.4588283511258283}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] Pi (300 - 4800 Log[Rational[256, 243]]/Log[2])], 
+       3 Sin[Rational[1, 600] 
+         Pi (300 - 4800 Log[Rational[256, 243]]/Log[2])]}, {
+      2.848769345893868, -0.9404856266288306}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 1200 Log[Rational[2187, 2048]]/Log[2])]}, {
+      1.682155518986122, 2.4840194866273757`}]], 
+    PointBox[NCache[{
+      3 Cos[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[2187, 2048]]/Log[2])], 3 
+       Sin[Rational[1, 600] 
+         Pi (300 - 2400 Log[Rational[2187, 2048]]/Log[2])]}, {
+      2.7856713924662095`, 1.1135685399630193`}]]}, 
+   {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+      2.598076211353316, 1.5}]], 
+    PointBox[NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+      2.598076211353316}]], PointBox[{0, 3}], 
+    PointBox[NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5,
+       2.598076211353316}]], 
+    PointBox[NCache[{
+      Rational[-3, 2] 3^Rational[1, 2], Rational[3, 2]}, {-2.598076211353316, 
+      1.5}]], PointBox[{-3, 0}], 
+    PointBox[NCache[{
+      Rational[-3, 2] 3^Rational[1, 2], 
+       Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+    PointBox[NCache[{
+      Rational[-3, 2], Rational[-3, 2] 
+       3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+    PointBox[NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+      1.5, -2.598076211353316}]], 
+    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+      2.598076211353316, -1.5}]]}}]], "Output",
+ CellChangeTimes->{3.7002988207871475`*^9}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.7002941652342567`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -117,11 +3189,13 @@ Cell[BoxData[
        RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
     RowBox[{"{", 
      RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}], "]"}]], "Input",
- CellChangeTimes->{{3.699383039274952*^9, 3.699383039930153*^9}}],
+ CellChangeTimes->{{3.699383039274952*^9, 3.699383039930153*^9}, {
+  3.7002351866505885`*^9, 3.700235206228623*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{"1", ",", 
+   FractionBox["531441", "524288"], ",", 
    FractionBox["2187", "2048"], ",", 
    FractionBox["9", "8"], ",", 
    FractionBox["19683", "16384"], ",", 
@@ -133,7 +3207,146 @@ Cell[BoxData[
    FractionBox["27", "16"], ",", 
    FractionBox["59049", "32768"], ",", 
    FractionBox["243", "128"]}], "}"}]], "Output",
- CellChangeTimes->{3.699383041271755*^9}]
+ CellChangeTimes->{3.699383041271755*^9, 3.7002335595209303`*^9, 
+  3.700234874806041*^9, 3.7002351872745895`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"NestWhile", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "/", "2"}], "&"}], ",", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["3", "2"], ")"}], "k"], ",", 
+     RowBox[{
+      RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{3.700235228614662*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", 
+   FractionBox["3", "2"], ",", 
+   FractionBox["9", "8"], ",", 
+   FractionBox["27", "16"], ",", 
+   FractionBox["81", "64"], ",", 
+   FractionBox["243", "128"], ",", 
+   FractionBox["729", "512"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["6561", "4096"], ",", 
+   FractionBox["19683", "16384"], ",", 
+   FractionBox["59049", "32768"], ",", 
+   FractionBox["177147", "131072"], ",", 
+   FractionBox["531441", "524288"]}], "}"}]], "Output",
+ CellChangeTimes->{{3.700235219005045*^9, 3.7002352289266624`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Ratios", "[", 
+  RowBox[{"{", 
+   RowBox[{"1", ",", 
+    FractionBox["2187", "2048"], ",", 
+    FractionBox["9", "8"], ",", 
+    FractionBox["19683", "16384"], ",", 
+    FractionBox["81", "64"], ",", 
+    FractionBox["177147", "131072"], ",", 
+    FractionBox["729", "512"], ",", 
+    FractionBox["3", "2"], ",", 
+    FractionBox["6561", "4096"], ",", 
+    FractionBox["27", "16"], ",", 
+    FractionBox["59049", "32768"], ",", 
+    FractionBox["243", "128"], ",", "2"}], "}"}], "]"}]], "Input",
+ CellChangeTimes->{{3.700234888596465*^9, 3.7002348973636804`*^9}, {
+  3.7002349890918417`*^9, 3.700234989778243*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["256", "243"]}], "}"}]], "Output",
+ CellChangeTimes->{3.700234897816081*^9, 3.7002349900902433`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{"NestWhile", "[", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"#", "/", "2"}], "&"}], ",", 
+     SuperscriptBox[
+      RowBox[{"(", 
+       FractionBox["3", "2"], ")"}], "k"], ",", 
+     RowBox[{
+      RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", 
+   FractionBox["3", "2"], ",", 
+   FractionBox["9", "8"], ",", 
+   FractionBox["27", "16"], ",", 
+   FractionBox["81", "64"], ",", 
+   FractionBox["243", "128"], ",", 
+   FractionBox["729", "512"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["6561", "4096"], ",", 
+   FractionBox["19683", "16384"], ",", 
+   FractionBox["59049", "32768"], ",", 
+   FractionBox["177147", "131072"]}], "}"}]], "Output",
+ CellChangeTimes->{3.700233663838314*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"NestWhile", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"#", "/", "2"}], "&"}], ",", 
+      SuperscriptBox[
+       RowBox[{"(", 
+        FractionBox["3", "2"], ")"}], "k"], ",", 
+      RowBox[{
+       RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.7002337143824024`*^9, 3.7002337148348036`*^9}, 
+   3.700233747719661*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1.`", ",", "1.5`", ",", "1.125`", ",", "1.6875`", ",", "1.265625`", ",", 
+   "1.8984375`", ",", "1.423828125`", ",", "1.06787109375`", ",", 
+   "1.601806640625`", ",", "1.20135498046875`", ",", "1.802032470703125`", 
+   ",", "1.3515243530273438`", ",", "1.0136432647705078`"}], "}"}]], "Output",
+ CellChangeTimes->{3.7002337153496046`*^9, 3.7002337480784616`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -271,6 +3484,123 @@ Cell[BoxData[
    FractionBox["2187", "2048"], ",", 
    FractionBox["256", "243"]}], "}"}]], "Output",
  CellChangeTimes->{3.699509470389925*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Ratios", "[", 
+   RowBox[{"Sort", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"NestWhile", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "/", "2"}], "&"}], ",", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          FractionBox["3", "2"], ")"}], "k"], ",", 
+        RowBox[{
+         RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "35"}], "}"}]}], "]"}], "]"}], "]"}], 
+  "    "}]], "Input",
+ CellChangeTimes->{{3.7002197543181467`*^9, 3.700219754567747*^9}, {
+  3.700219827965876*^9, 3.700219828574277*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["134217728", "129140163"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["70368744177664", "68630377364883"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["134217728", "129140163"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["70368744177664", "68630377364883"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["134217728", "129140163"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["70368744177664", "68630377364883"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["70368744177664", "68630377364883"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["134217728", "129140163"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["70368744177664", "68630377364883"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["134217728", "129140163"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["70368744177664", "68630377364883"], ",", 
+   FractionBox["531441", "524288"], ",", 
+   FractionBox["531441", "524288"]}], "}"}]], "Output",
+ CellChangeTimes->{3.7002197550513477`*^9, 3.700219829011078*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"1200", 
+     RowBox[{"Log", "[", 
+      RowBox[{"2", ",", 
+       FractionBox["531441", "524288"]}], "]"}]}], ",", 
+    RowBox[{"1200", 
+     RowBox[{"Log", "[", 
+      RowBox[{"2", ",", 
+       FractionBox["134217728", "129140163"]}], "]"}]}], ",", 
+    RowBox[{"1200", 
+     RowBox[{"Log", "[", 
+      RowBox[{"2", ",", 
+       FractionBox["70368744177664", "68630377364883"]}], "]"}]}]}], "}"}], "//",
+   "N"}]], "Input",
+ CellChangeTimes->{{3.7002200147918043`*^9, 3.700220038410246*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "23.460010384649014`", ",", "66.7649852884139`", ",", 
+   "43.304974903764894`"}], "}"}]], "Output",
+ CellChangeTimes->{3.700220039221447*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"3", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{
+    "23.460010384649014`", ",", "66.7649852884139`", ",", 
+     "43.304974903764894`"}], "}"}], "/", 
+   RowBox[{"Total", "[", 
+    RowBox[{"{", 
+     RowBox[{
+     "23.460010384649014`", ",", "66.7649852884139`", ",", 
+      "43.304974903764894`"}], "}"}], "]"}]}]}]], "Input",
+ CellChangeTimes->{{3.7002200999523535`*^9, 3.700220109920771*^9}, 
+   3.700220204254137*^9}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"0.5270729174125983`", ",", "1.5`", ",", "0.9729270825874019`"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{3.700220111043973*^9, 3.700220204550537*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -512,8 +3842,22 @@ Cell[BoxData[
  CellChangeTimes->{3.699509509945187*^9}]
 }, Open  ]],
 
-Cell[BoxData["\[IndentingNewLine]"], "Input",
- CellChangeTimes->{3.6990927598035555`*^9}]
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{
+    FractionBox["2187", "2048"], ",", 
+    FractionBox["256", "243"], ",", 
+    FractionBox["2187", "2048"], ",", 
+    FractionBox["256", "243"], ",", 
+    FractionBox["2187", "2048"], ",", 
+    FractionBox["256", "243"], ",", 
+    FractionBox["256", "243"], ",", 
+    FractionBox["2187", "2048"], ",", 
+    FractionBox["256", "243"], ",", 
+    FractionBox["2187", "2048"], ",", 
+    FractionBox["256", "243"]}], "}"}], "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{3.6990927598035555`*^9, 3.7002340018753076`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -546,21 +3890,40 @@ Cell[BoxData[
   RowBox[{"{", 
    RowBox[{"tc", ",", "td", ",", 
     RowBox[{"tc", "+", " ", "td"}], ",", 
-    RowBox[{"tc", "-", " ", "td"}]}], "}"}], "//", "N"}]], "Input",
+    RowBox[{"tc", "-", " ", "td"}], ",", 
+    RowBox[{
+     RowBox[{"2", "td"}], "-", "tc"}]}], "}"}], "//", "N"}]], "Input",
  CellChangeTimes->{{3.69960174974783*^9, 3.699601751660939*^9}, 
    3.6996256759213257`*^9, {3.6996261684307904`*^9, 3.6996262048880544`*^9}, {
-   3.6996264764377317`*^9, 3.6996264769213324`*^9}}],
+   3.6996264764377317`*^9, 3.6996264769213324`*^9}, {3.7002204283329306`*^9, 
+   3.7002204324357376`*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
   RowBox[{
   "113.68500605771193`", ",", "90.22499567306305`", ",", 
-   "203.91000173077498`", ",", "23.460010384648882`"}], "}"}]], "Output",
+   "203.91000173077498`", ",", "23.460010384648882`", ",", 
+   "66.76498528841417`"}], "}"}]], "Output",
  CellChangeTimes->{
   3.699601752093964*^9, 3.699625676264526*^9, 3.6996257774785037`*^9, 
    3.6996259313415737`*^9, {3.699626176714405*^9, 3.6996262054652557`*^9}, {
    3.6996264725533247`*^9, 3.6996264774361334`*^9}, 3.6996405318824406`*^9, 
-   3.699676555868125*^9, 3.6998008623063583`*^9}]
+   3.699676555868125*^9, 3.6998008623063583`*^9, 3.700233472207577*^9, 
+   3.700296063274991*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"5", "tc"}], "+", 
+   RowBox[{"7", "td"}]}], "//", "Simplify"}]], "Input",
+ CellChangeTimes->{{3.700233476778385*^9, 3.7002334932208138`*^9}}],
+
+Cell[BoxData["1200"], "Output",
+ CellChangeTimes->{{3.700233482253995*^9, 3.7002334941568155`*^9}, 
+   3.7002960640871925`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -595,7 +3958,8 @@ Cell[BoxData[
    ",", "1109.775004326938`", ",", "1200.000000000001`"}], "}"}]], "Output",
  CellChangeTimes->{3.6996257448276463`*^9, 3.699625779896508*^9, 
   3.6996259370199842`*^9, 3.69962659521634*^9, 3.69964053734245*^9, 
-  3.699676555882126*^9, 3.699800862337558*^9, 3.7001604670673714`*^9}]
+  3.699676555882126*^9, 3.699800862337558*^9, 3.7001604670673714`*^9, 
+  3.7002960667235966`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -620,7 +3984,8 @@ Cell[BoxData[
    ",", "1109.775004326938`"}], "}"}]], "Output",
  CellChangeTimes->{{3.6996274288818045`*^9, 3.699627435012615*^9}, 
    3.699640008049121*^9, 3.699640538590452*^9, 3.699676555892127*^9, 
-   3.699800862353158*^9, 3.7001604680189734`*^9}]
+   3.699800862353158*^9, 3.7001604680189734`*^9, 3.700296067565998*^9, 
+   3.700297853818449*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -656,7 +4021,7 @@ Cell[BoxData[
    3.6996273340648375`*^9, 3.699627443920231*^9, {3.699639994040296*^9, 
    3.6996400233371477`*^9}, 3.699640541663658*^9, 3.699676555903127*^9, 
    3.6997038612321396`*^9, 3.699800862368758*^9, 3.699802523819476*^9, 
-   3.7001604859122047`*^9}]
+   3.7001604859122047`*^9, 3.7002980563234043`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -666,37 +4031,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.700160489593811*^9, 3.700160502401434*^9}}],
 
 Cell[BoxData["21"], "Output",
- CellChangeTimes->{3.700160503009835*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Sort", "[", 
-  RowBox[{"Join", "[", 
-   RowBox[{"notesdebase", ",", 
-    RowBox[{"Mod", "[", 
-     RowBox[{
-      RowBox[{"notesdebase", "+", "tc"}], ",", "1200"}], "]"}], ",", 
-    RowBox[{"Mod", "[", 
-     RowBox[{
-      RowBox[{"notesdebase", "-", "tc"}], ",", "1200"}], "]"}]}], "]"}], 
-  "]"}]], "Input",
- CellChangeTimes->{{3.7001605680463486`*^9, 3.70016057467636*^9}}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-  "0.`", ",", "23.460010384649877`", ",", "90.22499567306305`", ",", 
-   "113.68500605771193`", ",", "203.91000173077498`", ",", 
-   "294.13499740383804`", ",", "317.5950077884869`", ",", 
-   "384.3599930769011`", ",", "407.82000346154996`", ",", "498.044999134613`",
-    ",", "521.5050095192619`", ",", "588.2699948076761`", ",", 
-   "611.7300051923249`", ",", "701.955000865388`", ",", "792.1799965384511`", 
-   ",", "815.6400069230999`", ",", "905.865002596163`", ",", 
-   "996.089998269226`", ",", "1019.5500086538749`", ",", "1086.314993942288`",
-    ",", "1109.775004326938`"}], "}"}]], "Output",
- CellChangeTimes->{{3.700160569294351*^9, 3.7001605753783617`*^9}}]
+ CellChangeTimes->{3.700160503009835*^9, 3.7002980601298113`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -727,103 +4062,6 @@ Cell[BoxData[
   3.6998008623843584`*^9}]
 }, Open  ]],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"8", " ", 
-   RowBox[{"(", "113.685", ")"}]}], "+", 
-  RowBox[{"4", " ", "66.765"}]}]], "Input",
- CellChangeTimes->{{3.6997281279605417`*^9, 3.69972816254652*^9}}],
-
-Cell[BoxData["1176.54`"], "Output",
- CellChangeTimes->{3.699728163400569*^9, 3.699800862399958*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"2.", "td"}], "-", "tc"}]], "Input",
- CellChangeTimes->{{3.6997042471456175`*^9, 3.699704250406023*^9}, 
-   3.6997044782444234`*^9}],
-
-Cell[BoxData["66.76498528841417`"], "Output",
- CellChangeTimes->{3.699704250764824*^9, 3.699704478462824*^9, 
-  3.699800862431158*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData["td"], "Input",
- CellChangeTimes->{{3.69970449900806*^9, 3.699704499398061*^9}}],
-
-Cell[BoxData[
- FractionBox[
-  RowBox[{"1200", " ", 
-   RowBox[{"Log", "[", 
-    FractionBox["256", "243"], "]"}]}], 
-  RowBox[{"Log", "[", "2", "]"}]]], "Output",
- CellChangeTimes->{3.699704501613264*^9, 3.6998008624467583`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"2", "^", 
-   RowBox[{"(", 
-    RowBox[{
-     RowBox[{"(", 
-      RowBox[{
-       RowBox[{"2", "td"}], "-", "tc"}], ")"}], "/", "1200"}], ")"}]}], "//", 
-  "Simplify"}]], "Input",
- CellChangeTimes->{{3.6997043521494017`*^9, 3.699704401305088*^9}}],
-
-Cell[BoxData[
- FractionBox["134217728", "129140163"]], "Output",
- CellChangeTimes->{{3.699704382928256*^9, 3.69970440228789*^9}, 
-   3.6998008624623585`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Total", "[", "%", "]"}]], "Input",
- CellChangeTimes->{{3.699704051911275*^9, 3.699704059602088*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"Total", "::", "normal"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Nonatomic expression expected at position \
-\[NoBreak]\\!\\(1\\)\[NoBreak] in \
-\[NoBreak]\\!\\(Total[\\(\\(134217728\\/129140163\\)\\)]\\)\[NoBreak]. \\!\\(\
-\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/Total\\\", ButtonNote -> \
-\\\"Total::normal\\\"]\\)\"\>"}]], "Message", "MSG",
- CellChangeTimes->{3.6998008624935584`*^9}],
-
-Cell[BoxData[
- RowBox[{"Total", "[", 
-  FractionBox["134217728", "129140163"], "]"}]], "Output",
- CellChangeTimes->{3.6997040603664894`*^9, 3.6998008624935584`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Length", "[", "touteslesnotes", "]"}]], "Input",
- CellChangeTimes->{{3.6996400148039327`*^9, 3.6996400260203524`*^9}, 
-   3.6997040818945274`*^9}],
-
-Cell[BoxData["21"], "Output",
- CellChangeTimes->{{3.699640018485539*^9, 3.6996400267535534`*^9}, 
-   3.6996405436136613`*^9, 3.699676555913128*^9, 3.699704082268928*^9, 
-   3.6998008625247583`*^9}]
-}, Open  ]],
-
 Cell[BoxData[
  RowBox[{
   RowBox[{"theta", "[", "t_", "]"}], ":=", 
@@ -834,285 +4072,6 @@ Cell[BoxData[
       RowBox[{"300", "-", "t"}], "300"], 
      FractionBox["\[Pi]", "2"]}], ",", 
     RowBox[{"2", "\[Pi]"}]}], "]"}]}]], "Input"],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Table", "[", 
-  RowBox[{
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"3", 
-       RowBox[{"Cos", "[", 
-        RowBox[{"theta", "[", 
-         RowBox[{"touteslesnotes", "[", 
-          RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
-      RowBox[{"3", 
-       RowBox[{"Sin", "[", 
-        RowBox[{"theta", "[", 
-         RowBox[{"touteslesnotes", "[", 
-          RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"k", ",", "0", ",", "21"}], "}"}]}], "]"}]], "Input"],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"3", " ", 
-       RowBox[{"Cos", "[", 
-        RowBox[{"Mod", "[", 
-         RowBox[{
-          RowBox[{
-           FractionBox["1", "600"], " ", 
-           RowBox[{"(", 
-            RowBox[{"300", "-", "List"}], ")"}], " ", "\[Pi]"}], ",", 
-          RowBox[{"2", " ", "\[Pi]"}]}], "]"}], "]"}]}], ",", 
-      RowBox[{"3", " ", 
-       RowBox[{"Sin", "[", 
-        RowBox[{"Mod", "[", 
-         RowBox[{
-          RowBox[{
-           FractionBox["1", "600"], " ", 
-           RowBox[{"(", 
-            RowBox[{"300", "-", "List"}], ")"}], " ", "\[Pi]"}], ",", 
-          RowBox[{"2", " ", "\[Pi]"}]}], "]"}], "]"}]}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"1.8369701987210297`*^-16", ",", "3.`"}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"0.3675829561626571`", ",", "2.9773952996434185`"}], "}"}], 
-    "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"1.365119569812807`", ",", "2.671413214033744`"}], "}"}], "]"}], 
-   ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"1.6821555189861224`", ",", "2.4840194866273753`"}], "}"}], 
-    "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"2.6282386981569035`", ",", "1.4464996873523706`"}], "}"}], 
-    "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"2.998585539608008`", ",", "0.09211276596515956`"}], "}"}], 
-    "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"2.9872778580071344`", ",", 
-      RowBox[{"-", "0.2759909401779468`"}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"2.7120686577893203`", ",", 
-      RowBox[{"-", "1.2824521805653557`"}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"2.534497636780908`", ",", 
-      RowBox[{"-", "1.605092436326329`"}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"1.5265157938820746`", ",", 
-      RowBox[{"-", "2.582585822587234`"}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"1.198575472775198`", ",", 
-      RowBox[{"-", "2.7501666924137`"}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{"0.18413867202428164`", ",", 
-      RowBox[{"-", "2.994343492230832`"}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"-", "0.18413867202429868`"}], ",", 
-      RowBox[{"-", "2.994343492230831`"}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"-", "1.5265157938820897`"}], ",", 
-      RowBox[{"-", "2.5825858225872254`"}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"-", "2.5344976367809178`"}], ",", 
-      RowBox[{"-", "1.6050924363263146`"}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"-", "2.712068657789328`"}], ",", 
-      RowBox[{"-", "1.2824521805653388`"}]}], "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"-", "2.9985855396080074`"}], ",", "0.09211276596517695`"}], 
-     "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"-", "2.6282386981568955`"}], ",", "1.4464996873523852`"}], 
-     "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"-", "2.4311989716893185`"}], ",", "1.757632373409411`"}], 
-     "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"-", "1.6821555189861217`"}], ",", "2.4840194866273757`"}], 
-     "}"}], "]"}], ",", 
-   RowBox[{"Point", "[", 
-    RowBox[{"{", 
-     RowBox[{
-      RowBox[{"-", "1.3651195698127907`"}], ",", "2.671413214033752`"}], 
-     "}"}], "]"}]}], "}"}]], "Output",
- CellChangeTimes->{3.699640699910336*^9, 3.6996765559261284`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"Graphics", "[", 
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Circle", "[", 
-     RowBox[{
-      RowBox[{"{", 
-       RowBox[{"0", ",", "0"}], "}"}], ",", "2"}], "]"}], ",", 
-    RowBox[{"Circle", "[", 
-     RowBox[{
-      RowBox[{"{", 
-       RowBox[{"0", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
-    RowBox[{"Circle", "[", 
-     RowBox[{
-      RowBox[{"{", 
-       RowBox[{"0", ",", "0"}], "}"}], ",", "3.5"}], "]"}], ",", 
-    RowBox[{"PointSize", "[", "0.015", "]"}], ",", 
-    RowBox[{"Table", "[", 
-     RowBox[{
-      RowBox[{"Line", "[", 
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"{", 
-          RowBox[{"0", ",", "0"}], "}"}], ",", 
-         RowBox[{"{", 
-          RowBox[{
-           RowBox[{"2.5", 
-            RowBox[{"Cos", "[", 
-             FractionBox[
-              RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
-           RowBox[{"2.5", 
-            RowBox[{"Sin", "[", 
-             FractionBox[
-              RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}]}], 
-        "}"}], "]"}], ",", 
-      RowBox[{"{", 
-       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}], ",", 
-    RowBox[{"Table", "[", 
-     RowBox[{
-      RowBox[{"Point", "[", 
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"3", 
-          RowBox[{"Cos", "[", 
-           RowBox[{"theta", "[", 
-            RowBox[{"touteslesnotes", "[", 
-             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
-         RowBox[{"3", 
-          RowBox[{"Sin", "[", 
-           RowBox[{"theta", "[", 
-            RowBox[{"touteslesnotes", "[", 
-             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}], 
-      ",", 
-      RowBox[{"{", 
-       RowBox[{"k", ",", "1", ",", "21"}], "}"}]}], "]"}], ",", "Red", ",", 
-    RowBox[{"PointSize", "[", "0.02", "]"}], ",", 
-    RowBox[{"Table", "[", 
-     RowBox[{
-      RowBox[{"Point", "[", 
-       RowBox[{"{", 
-        RowBox[{
-         RowBox[{"2", 
-          RowBox[{"Cos", "[", 
-           FractionBox[
-            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
-         RowBox[{"2", 
-          RowBox[{"Sin", "[", 
-           FractionBox[
-            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}], "]"}], 
-      ",", 
-      RowBox[{"{", 
-       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], "}"}], 
-  "]"}]], "Input",
- CellChangeTimes->{{3.699553741782883*^9, 3.699553794635776*^9}, {
-   3.6995538404998565`*^9, 3.6995538884231405`*^9}, {3.6995539280316105`*^9, 
-   3.6995539288272114`*^9}, {3.6995540324893937`*^9, 3.699554043596613*^9}, {
-   3.6996399775822673`*^9, 3.6996399854914813`*^9}, {3.699640051557597*^9, 
-   3.6996400695288286`*^9}, {3.6996401185909147`*^9, 
-   3.6996401302129354`*^9}, {3.6996401669821997`*^9, 3.699640247556341*^9}, {
-   3.6996407319995923`*^9, 3.6996407598612413`*^9}, 3.6996408403729825`*^9}],
-
-Cell[BoxData[
- GraphicsBox[{CircleBox[{0, 0}, 2], CircleBox[{0, 0}, 3], 
-   CircleBox[{0, 0}, 3.5], 
-   {PointSize[
-    0.015], {LineBox[{{0, 0}, {2.5, 0.}}], 
-     LineBox[{{0, 0}, {2.1650635094610964`, 1.25}}], 
-     LineBox[{{0, 0}, {1.25, 2.1650635094610964`}}], 
-     LineBox[{{0, 0}, {0., 2.5}}], 
-     LineBox[{{0, 0}, {-1.25, 2.1650635094610964`}}], 
-     LineBox[{{0, 0}, {-2.1650635094610964`, 1.25}}], 
-     LineBox[{{0, 0}, {-2.5, 0.}}], 
-     LineBox[{{0, 0}, {-2.1650635094610964`, -1.25}}], 
-     LineBox[{{0, 0}, {-1.25, -2.1650635094610964`}}], 
-     LineBox[{{0, 0}, {0., -2.5}}], 
-     LineBox[{{0, 0}, {1.25, -2.1650635094610964`}}], 
-     LineBox[{{0, 0}, {2.1650635094610964`, -1.25}}]}, {
-     PointBox[{1.8369701987210297`*^-16, 3.}], 
-     PointBox[{0.3675829561626571, 2.9773952996434185`}], 
-     PointBox[{1.365119569812807, 2.671413214033744}], 
-     PointBox[{1.6821555189861224`, 2.4840194866273753`}], 
-     PointBox[{2.6282386981569035`, 1.4464996873523706`}], 
-     PointBox[{2.998585539608008, 0.09211276596515956}], 
-     PointBox[{2.9872778580071344`, -0.2759909401779468}], 
-     PointBox[{2.7120686577893203`, -1.2824521805653557`}], 
-     PointBox[{2.534497636780908, -1.605092436326329}], 
-     PointBox[{1.5265157938820746`, -2.582585822587234}], 
-     PointBox[{1.198575472775198, -2.7501666924137}], 
-     PointBox[{0.18413867202428164`, -2.994343492230832}], 
-     PointBox[{-0.18413867202429868`, -2.994343492230831}], 
-     PointBox[{-1.5265157938820897`, -2.5825858225872254`}], 
-     PointBox[{-2.5344976367809178`, -1.6050924363263146`}], 
-     PointBox[{-2.712068657789328, -1.2824521805653388`}], 
-     PointBox[{-2.9985855396080074`, 0.09211276596517695}], 
-     PointBox[{-2.6282386981568955`, 1.4464996873523852`}], 
-     PointBox[{-2.4311989716893185`, 1.757632373409411}], 
-     PointBox[{-1.6821555189861217`, 2.4840194866273757`}], 
-     PointBox[{-1.3651195698127907`, 2.671413214033752}]}}, 
-   {RGBColor[1, 0, 0], PointSize[0.02], PointBox[{2, 0}], 
-    PointBox[NCache[{3^Rational[1, 2], 1}, {1.7320508075688772`, 1}]], 
-    PointBox[NCache[{1, 3^Rational[1, 2]}, {1, 1.7320508075688772`}]], 
-    PointBox[{0, 2}], 
-    PointBox[NCache[{-1, 3^Rational[1, 2]}, {-1, 1.7320508075688772`}]], 
-    PointBox[NCache[{-3^Rational[1, 2], 1}, {-1.7320508075688772`, 1}]], 
-    PointBox[{-2, 0}], 
-    PointBox[NCache[{-3^Rational[1, 2], -1}, {-1.7320508075688772`, -1}]], 
-    PointBox[NCache[{-1, -3^Rational[1, 2]}, {-1, -1.7320508075688772`}]], 
-    PointBox[{0, -2}], 
-    PointBox[NCache[{1, -3^Rational[1, 2]}, {1, -1.7320508075688772`}]], 
-    PointBox[NCache[{3^Rational[1, 2], -1}, {
-      1.7320508075688772`, -1}]]}}]], "Output",
- CellChangeTimes->{
-  3.6996296685046988`*^9, 3.699640249007144*^9, 3.6996406252798047`*^9, {
-   3.6996407324051933`*^9, 3.699640760391642*^9}, 3.699640792496498*^9, 
-   3.699640841121784*^9, 3.6996765559551306`*^9, 3.699800868546369*^9}]
-}, Open  ]],
 
 Cell[CellGroupData[{
 
@@ -1280,78 +4239,6 @@ Cell[BoxData[
         1.7320508075688772`, -1}]]}}}}]], "Output",
  CellChangeTimes->{3.6997147771010313`*^9}]
 }, Open  ]],
-
-Cell[BoxData[
- GraphicsBox[{CircleBox[{0, 0}, 2], CircleBox[{0, 0}, 3], 
-   {PointSize[
-    0.015], {ArrowBox[{{0, 0}, {1.7757378587636622`*^-16, 2.9}}], 
-     ArrowBox[{{0, 0}, {2.540630741551673, 1.3982830311072916`}}], 
-     ArrowBox[{{0, 0}, {2.4500143822215446`, -1.5515893551154514`}}], 
-     ArrowBox[{{0, 0}, {1.4756319340860053`, -2.4964996285009926`}}], 
-     ArrowBox[{{0, 0}, {-1.4756319340860198`, -2.496499628500984}}], 
-     ArrowBox[{{0, 0}, {-2.8986326882877402`, 0.08904234043300438}}], 
-     ArrowBox[{{0, 0}, {-1.3196155841523642`, 2.582366106899294}}]}, {
-     PointBox[{1.8369701987210297`*^-16, 3.}], 
-     PointBox[{0.3675829561626571, 2.9773952996434185`}], 
-     PointBox[{1.365119569812807, 2.671413214033744}], 
-     PointBox[{1.6821555189861224`, 2.4840194866273753`}], 
-     PointBox[{2.6282386981569035`, 1.4464996873523706`}], 
-     PointBox[{2.998585539608008, 0.09211276596515956}], 
-     PointBox[{2.9872778580071344`, -0.2759909401779468}], 
-     PointBox[{2.7120686577893203`, -1.2824521805653557`}], 
-     PointBox[{2.534497636780908, -1.605092436326329}], 
-     PointBox[{1.5265157938820746`, -2.582585822587234}], 
-     PointBox[{1.198575472775198, -2.7501666924137}], 
-     PointBox[{0.18413867202428164`, -2.994343492230832}], 
-     PointBox[{-0.18413867202429868`, -2.994343492230831}], 
-     PointBox[{-1.5265157938820897`, -2.5825858225872254`}], 
-     PointBox[{-2.5344976367809178`, -1.6050924363263146`}], 
-     PointBox[{-2.712068657789328, -1.2824521805653388`}], 
-     PointBox[{-2.9985855396080074`, 0.09211276596517695}], 
-     PointBox[{-2.6282386981568955`, 1.4464996873523852`}], 
-     PointBox[{-2.4311989716893185`, 1.757632373409411}], 
-     PointBox[{-1.6821555189861217`, 2.4840194866273757`}], 
-     PointBox[{-1.3651195698127907`, 2.671413214033752}]}, 
-    {RGBColor[
-     1, 0, 0], {LineBox[{{0, 0}, {2.5, 0.}}], 
-      LineBox[{{0, 0}, {2.1650635094610964`, 1.25}}], 
-      LineBox[{{0, 0}, {1.25, 2.1650635094610964`}}], 
-      LineBox[{{0, 0}, {0., 2.5}}], 
-      LineBox[{{0, 0}, {-1.25, 2.1650635094610964`}}], 
-      LineBox[{{0, 0}, {-2.1650635094610964`, 1.25}}], 
-      LineBox[{{0, 0}, {-2.5, 0.}}], 
-      LineBox[{{0, 0}, {-2.1650635094610964`, -1.25}}], 
-      LineBox[{{0, 0}, {-1.25, -2.1650635094610964`}}], 
-      LineBox[{{0, 0}, {0., -2.5}}], 
-      LineBox[{{0, 0}, {1.25, -2.1650635094610964`}}], 
-      LineBox[{{0, 0}, {2.1650635094610964`, -1.25}}]}, 
-     {PointSize[0.02], PointBox[{2, 0}], 
-      PointBox[NCache[{3^Rational[1, 2], 1}, {1.7320508075688772`, 1}]], 
-      PointBox[NCache[{1, 3^Rational[1, 2]}, {1, 1.7320508075688772`}]], 
-      PointBox[{0, 2}], 
-      PointBox[NCache[{-1, 3^Rational[1, 2]}, {-1, 1.7320508075688772`}]], 
-      PointBox[NCache[{-3^Rational[1, 2], 1}, {-1.7320508075688772`, 1}]], 
-      PointBox[{-2, 0}], 
-      PointBox[NCache[{-3^Rational[1, 2], -1}, {-1.7320508075688772`, -1}]], 
-      PointBox[NCache[{-1, -3^Rational[1, 2]}, {-1, -1.7320508075688772`}]], 
-      PointBox[{0, -2}], 
-      PointBox[NCache[{1, -3^Rational[1, 2]}, {1, -1.7320508075688772`}]], 
-      PointBox[NCache[{3^Rational[1, 2], -1}, {1.7320508075688772`, -1}]]}}}, 
-   InsetBox["\[Sharp]", Scaled[{0.5, 0.5}], Center], 
-   InsetBox["\[Sharp]", Scaled[{0.5, 0.5}], Center], 
-   InsetBox["\[Sharp]", Scaled[{0.5, 0.5}], Center], 
-   InsetBox["\[Sharp]", Scaled[{0.5, 0.5}], Center]}]], "Input",
- CellChangeTimes->{3.699677752472645*^9}],
-
-Cell[BoxData[
- RowBox[{"Graphics", "[", 
-  RowBox[{"{", 
-   RowBox[{
-    RowBox[{"Text", "[", 
-     RowBox[{"\"\<ABCDEF\>\"", ",", 
-      RowBox[{"{", 
-       RowBox[{"0.5", ",", "0.5"}], "}"}]}], "]"}], ",", 
-    RowBox[{"Circle", "[", "]"}]}], "}"}], "]"}]], "Input"],
 
 Cell[CellGroupData[{
 
@@ -1762,101 +4649,6 @@ Cell[BoxData[
    3.699800883943596*^9, 3.6998009077180376`*^9}, {3.699800983644371*^9, 
    3.699801002676405*^9}, 3.699801060817707*^9}]
 }, Open  ]],
-
-Cell[BoxData[
- GraphicsBox[{CircleBox[{0, 0}, 3], 
-   {PointSize[
-    0.026], {ArrowBox[{{0, 0}, {1.7757378587636622`*^-16, 2.9}}], 
-     ArrowBox[{{0, 0}, {2.540630741551673, 1.3982830311072916`}}], 
-     ArrowBox[{{0, 0}, {2.4500143822215446`, -1.5515893551154514`}}], 
-     ArrowBox[{{0, 0}, {1.4756319340860053`, -2.4964996285009926`}}], 
-     ArrowBox[{{0, 0}, {-1.4756319340860198`, -2.496499628500984}}], 
-     ArrowBox[{{0, 0}, {-2.8986326882877402`, 0.08904234043300438}}], 
-     ArrowBox[{{0, 0}, {-1.3196155841523642`, 2.582366106899294}}]}, {
-     PointBox[{1.8369701987210297`*^-16, 3.}], 
-     PointBox[{0.3675829561626571, 2.9773952996434185`}], 
-     PointBox[{1.365119569812807, 2.671413214033744}], 
-     PointBox[{1.6821555189861224`, 2.4840194866273753`}], 
-     PointBox[{2.6282386981569035`, 1.4464996873523706`}], 
-     PointBox[{2.998585539608008, 0.09211276596515956}], 
-     PointBox[{2.9872778580071344`, -0.2759909401779468}], 
-     PointBox[{2.7120686577893203`, -1.2824521805653557`}], 
-     PointBox[{2.534497636780908, -1.605092436326329}], 
-     PointBox[{1.5265157938820746`, -2.582585822587234}], 
-     PointBox[{1.198575472775198, -2.7501666924137}], 
-     PointBox[{0.18413867202428164`, -2.994343492230832}], 
-     PointBox[{-0.18413867202429868`, -2.994343492230831}], 
-     PointBox[{-1.5265157938820897`, -2.5825858225872254`}], 
-     PointBox[{-2.5344976367809178`, -1.6050924363263146`}], 
-     PointBox[{-2.712068657789328, -1.2824521805653388`}], 
-     PointBox[{-2.9985855396080074`, 0.09211276596517695}], 
-     PointBox[{-2.6282386981568955`, 1.4464996873523852`}], 
-     PointBox[{-2.4311989716893185`, 1.757632373409411}], 
-     PointBox[{-1.6821555189861217`, 2.4840194866273757`}], 
-     PointBox[{-1.3651195698127907`, 2.671413214033752}]}}, 
-   {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
-    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
-      2.598076211353316, 1.5}]], 
-    PointBox[NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
-      2.598076211353316}]], PointBox[{0, 3}], 
-    PointBox[NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5,
-       2.598076211353316}]], 
-    PointBox[NCache[{
-      Rational[-3, 2] 3^Rational[1, 2], Rational[3, 2]}, {-2.598076211353316, 
-      1.5}]], PointBox[{-3, 0}], 
-    PointBox[NCache[{
-      Rational[-3, 2] 3^Rational[1, 2], 
-       Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
-    PointBox[NCache[{
-      Rational[-3, 2], Rational[-3, 2] 
-       3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], PointBox[{0, -3}], 
-    PointBox[NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
-      1.5, -2.598076211353316}]], 
-    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
-      2.598076211353316, -1.5}]]}, InsetBox[
-    StyleBox[Cell["",
-      GeneratedCell->False,
-      CellAutoOverwrite->False,
-      CellBaseline->Baseline,
-      TextAlignment->Left],
-     TextAlignment->Center,
-     FontSize->12,
-     FontWeight->Plain,
-     Background->GrayLevel[
-      1.]], {1.4885097493036215`, 0.038523676880222624`}, {Left, Baseline},
-    Alignment->{Left, Top}], 
-   InsetBox["", {0.19097222222222232`, 2.5297222222222233`}, {Left, Baseline},
-    Alignment->{Left, Top}], 
-   InsetBox["", {-0.3298611111111107, 2.6338888888888894`}, {Left, Baseline},
-    Alignment->{Left, Top}], InsetBox[
-    StyleBox[Cell["do",
-      GeneratedCell->False,
-      CellAutoOverwrite->False,
-      CellBaseline->Baseline,
-      TextAlignment->Left],
-     TextAlignment->Center,
-     FontSize->12,
-     FontWeight->Plain,
-     Background->GrayLevel[1.]], {-0.3298611111111107, 2.6338888888888894`}, {
-    Left, Baseline},
-    Alignment->{Left, Top}], InsetBox[
-    StyleBox[Cell["do\[Sharp]",
-      GeneratedCell->False,
-      CellAutoOverwrite->False,
-      CellBaseline->Baseline,
-      TextAlignment->Left],
-     TextAlignment->Center,
-     FontSize->12,
-     FontWeight->Plain,
-     Background->GrayLevel[1.]], {0.8159722222222223, 1.974166666666667}, {
-    Left, Baseline},
-    Alignment->{Left, Top}]},
-  ImagePadding->{{0., 1.}, {1., 0.}},
-  ImageSize->{361., Automatic},
-  PlotRange->{{-3.125, 3.125}, {-3.12, 3.12}},
-  PlotRangePadding->Automatic]], "Input",
- CellChangeTimes->{{3.699677625358992*^9, 3.6996776859524984`*^9}, {
-  3.6996777563286533`*^9, 3.699677763870877*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -5730,177 +8522,255 @@ Cell[CellGroupData[{
 Cell[807, 30, 363, 10, 31, "Input"],
 Cell[1173, 42, 471, 9, 30, "Output"]
 }, Open  ]],
-Cell[1659, 54, 89, 1, 52, "Input"]
-}, Open  ]],
+Cell[1659, 54, 89, 1, 52, "Input"],
+Cell[1751, 57, 783, 18, 47, "Input"],
 Cell[CellGroupData[{
-Cell[1785, 60, 160, 4, 49, "Subtitle"],
-Cell[CellGroupData[{
-Cell[1970, 68, 315, 9, 47, "Input"],
-Cell[2288, 79, 324, 7, 30, "Output"]
-}, Open  ]],
-Cell[2627, 89, 89, 1, 52, "Input"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[2753, 95, 233, 5, 49, "Subtitle"],
-Cell[CellGroupData[{
-Cell[3011, 104, 512, 15, 47, "Input"],
-Cell[3526, 121, 507, 14, 47, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[4070, 140, 834, 23, 47, "Input"],
-Cell[4907, 165, 433, 8, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[5377, 178, 981, 27, 47, "Input"],
-Cell[6361, 207, 382, 7, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[6780, 219, 1312, 37, 47, "Input"],
-Cell[8095, 258, 501, 14, 47, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[8633, 277, 444, 13, 47, "Input"],
-Cell[9080, 292, 223, 4, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9340, 301, 202, 3, 31, "Input"],
-Cell[9545, 306, 142, 2, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[9724, 313, 1035, 30, 47, "Input"],
-Cell[10762, 345, 447, 9, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[11246, 359, 614, 12, 52, "Input"],
-Cell[11863, 373, 215, 3, 30, "Output"]
+Cell[2559, 79, 300, 7, 31, "Input"],
+Cell[2862, 88, 238, 6, 47, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12127, 382, 212, 4, 49, "Subtitle"],
+Cell[3149, 100, 126, 1, 49, "Subtitle"],
 Cell[CellGroupData[{
-Cell[12364, 390, 420, 12, 47, "Input"],
-Cell[12787, 404, 470, 9, 30, "Output"]
-}, Open  ]],
-Cell[13272, 416, 113, 1, 52, "Input"]
+Cell[3300, 105, 1022, 27, 47, "Input"],
+Cell[4325, 134, 506, 10, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13422, 422, 216, 4, 49, "Subtitle"],
-Cell[CellGroupData[{
-Cell[13663, 430, 853, 22, 47, "Input"],
-Cell[14519, 454, 736, 17, 47, "Output"]
+Cell[4868, 149, 756, 21, 47, "Input"],
+Cell[5627, 172, 2115, 66, 57, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15292, 476, 628, 19, 47, "Input"],
-Cell[15923, 497, 501, 14, 47, "Output"]
-}, Open  ]],
-Cell[16439, 514, 89, 1, 52, "Input"]
+Cell[7779, 243, 720, 20, 47, "Input"],
+Cell[8502, 265, 2071, 64, 57, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[16565, 520, 117, 1, 49, "Subtitle"],
-Cell[16685, 523, 711, 16, 31, "Input"],
-Cell[CellGroupData[{
-Cell[17421, 543, 380, 8, 31, "Input"],
-Cell[17804, 553, 466, 9, 30, "Output"]
-}, Open  ]],
-Cell[18285, 565, 707, 14, 31, "Input"],
-Cell[CellGroupData[{
-Cell[19017, 583, 196, 4, 31, "Input"],
-Cell[19216, 589, 470, 8, 30, "Output"]
+Cell[10610, 334, 5528, 153, 160, "Input"],
+Cell[16141, 489, 8747, 183, 374, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19723, 602, 448, 10, 31, "Input"],
-Cell[20174, 614, 425, 8, 30, "Output"]
+Cell[24925, 677, 3069, 89, 74, "Input"],
+Cell[27997, 768, 4522, 91, 374, "Output"]
+}, Open  ]],
+Cell[32534, 862, 87, 1, 52, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[20636, 627, 499, 13, 31, "Input"],
-Cell[21138, 642, 958, 16, 30, "Output"]
+Cell[32658, 868, 116, 1, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[32799, 873, 2292, 67, 74, "Input"],
+Cell[35094, 942, 8181, 180, 374, "Output"]
+}, Open  ]],
+Cell[43290, 1125, 711, 16, 31, "Input"],
+Cell[CellGroupData[{
+Cell[44026, 1145, 188, 5, 31, "Input"],
+Cell[44217, 1152, 149, 2, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22133, 663, 138, 2, 31, "Input"],
-Cell[22274, 667, 71, 1, 30, "Output"]
+Cell[44403, 1159, 741, 16, 31, "Input"],
+Cell[45147, 1177, 2327, 72, 57, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[22382, 673, 400, 11, 31, "Input"],
-Cell[22785, 686, 710, 12, 30, "Output"]
+Cell[47511, 1254, 549, 14, 31, "Input"],
+Cell[48063, 1270, 6688, 212, 157, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[23532, 703, 276, 6, 31, "Input"],
-Cell[23811, 711, 764, 15, 30, "Output"]
+Cell[54788, 1487, 315, 7, 31, "Input"],
+Cell[55106, 1496, 833, 16, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24612, 731, 197, 5, 31, "Input"],
-Cell[24812, 738, 99, 1, 30, "Output"]
+Cell[55976, 1517, 294, 6, 31, "Input"],
+Cell[56273, 1525, 878, 15, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24948, 744, 166, 4, 31, "Input"],
-Cell[25117, 750, 134, 2, 30, "Output"]
+Cell[57188, 1545, 126, 2, 31, "Input"],
+Cell[57317, 1549, 73, 1, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25288, 757, 93, 1, 31, "Input"],
-Cell[25384, 760, 228, 6, 57, "Output"]
+Cell[57427, 1555, 615, 14, 31, "Input"],
+Cell[58045, 1571, 10457, 341, 257, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25649, 771, 281, 9, 31, "Input"],
-Cell[25933, 782, 157, 3, 47, "Output"]
+Cell[68539, 1917, 127, 2, 31, "Input"],
+Cell[68669, 1921, 118, 2, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26127, 790, 124, 2, 31, "Input"],
-Cell[26254, 794, 517, 11, 40, "Message"],
-Cell[26774, 807, 164, 3, 47, "Output"]
+Cell[68824, 1928, 2116, 64, 74, "Input"],
+Cell[70943, 1994, 12773, 286, 374, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[26975, 815, 170, 3, 31, "Input"],
-Cell[27148, 820, 197, 3, 30, "Output"]
-}, Open  ]],
-Cell[27360, 826, 264, 9, 47, "Input"],
-Cell[CellGroupData[{
-Cell[27649, 839, 573, 17, 31, "Input"],
-Cell[28225, 858, 4013, 116, 92, "Output"]
+Cell[83753, 2285, 561, 14, 31, "Input"],
+Cell[84317, 2301, 12456, 407, 307, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[32275, 979, 2867, 79, 83, "Input"],
-Cell[35145, 1060, 2933, 53, 374, "Output"]
+Cell[96810, 2713, 125, 2, 31, "Input"],
+Cell[96938, 2717, 97, 1, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[38115, 1118, 3483, 97, 110, "Input"],
-Cell[41601, 1217, 3602, 63, 374, "Output"]
+Cell[97072, 2723, 2114, 64, 74, "Input"],
+Cell[99189, 2789, 15010, 334, 374, "Output"]
 }, Open  ]],
-Cell[45218, 1283, 3439, 60, 374, "Input"],
-Cell[48660, 1345, 269, 8, 31, "Input"],
-Cell[CellGroupData[{
-Cell[48954, 1357, 4010, 113, 94, "Input"],
-Cell[52967, 1472, 4824, 89, 374, "Output"]
+Cell[114214, 3126, 89, 1, 52, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[57828, 1566, 4590, 129, 139, "Input"],
-Cell[62421, 1697, 3597, 65, 374, "Output"]
-}, Open  ]],
-Cell[66033, 1765, 4365, 93, 375, "Input"],
-Cell[70401, 1860, 343, 9, 31, "Input"],
-Cell[70747, 1871, 379, 11, 47, "Input"],
+Cell[114340, 3132, 160, 4, 49, "Subtitle"],
 Cell[CellGroupData[{
-Cell[71151, 1886, 156, 3, 31, "Input"],
-Cell[71310, 1891, 114, 1, 30, "Output"]
+Cell[114525, 3140, 315, 9, 47, "Input"],
+Cell[114843, 3151, 324, 7, 30, "Output"]
+}, Open  ]],
+Cell[115182, 3161, 89, 1, 52, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[71461, 1897, 285, 4, 31, "Input"],
-Cell[71749, 1903, 191, 3, 30, "Output"]
+Cell[115308, 3167, 233, 5, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[115566, 3176, 563, 16, 47, "Input"],
+Cell[116132, 3194, 622, 16, 47, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[71977, 1911, 5100, 134, 193, "Input"],
-Cell[77080, 2047, 78177, 1396, 647, "Output"]
+Cell[116791, 3215, 445, 14, 47, "Input"],
+Cell[117239, 3231, 575, 15, 47, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[155294, 3448, 5493, 138, 220, "Input"],
-Cell[160790, 3588, 101985, 2048, 633, "Output"]
+Cell[117851, 3251, 638, 16, 47, "Input"],
+Cell[118492, 3269, 561, 15, 47, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[262812, 5641, 1069, 18, 52, "Input"],
-Cell[263884, 5661, 862, 14, 50, "Output"]
+Cell[119090, 3289, 403, 13, 47, "Input"],
+Cell[119496, 3304, 507, 14, 47, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[264783, 5680, 726, 13, 31, "Input"],
-Cell[265512, 5695, 660, 11, 30, "Output"]
+Cell[120040, 3323, 535, 16, 47, "Input"],
+Cell[120578, 3341, 406, 7, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[121021, 3353, 834, 23, 47, "Input"],
+Cell[121858, 3378, 433, 8, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[122328, 3391, 981, 27, 47, "Input"],
+Cell[123312, 3420, 382, 7, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[123731, 3432, 1312, 37, 47, "Input"],
+Cell[125046, 3471, 501, 14, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[125584, 3490, 647, 19, 47, "Input"],
+Cell[126234, 3511, 1715, 38, 83, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[127986, 3554, 557, 17, 47, "Input"],
+Cell[128546, 3573, 184, 5, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[128767, 3583, 442, 13, 31, "Input"],
+Cell[129212, 3598, 189, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[129438, 3607, 444, 13, 47, "Input"],
+Cell[129885, 3622, 223, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[130145, 3631, 202, 3, 31, "Input"],
+Cell[130350, 3636, 142, 2, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[130529, 3643, 1035, 30, 47, "Input"],
+Cell[131567, 3675, 447, 9, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[132051, 3689, 614, 12, 52, "Input"],
+Cell[132668, 3703, 215, 3, 30, "Output"]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[132932, 3712, 212, 4, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[133169, 3720, 420, 12, 47, "Input"],
+Cell[133592, 3734, 470, 9, 30, "Output"]
+}, Open  ]],
+Cell[134077, 3746, 113, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[134227, 3752, 216, 4, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[134468, 3760, 853, 22, 47, "Input"],
+Cell[135324, 3784, 736, 17, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[136097, 3806, 628, 19, 47, "Input"],
+Cell[136728, 3827, 501, 14, 47, "Output"]
+}, Open  ]],
+Cell[137244, 3844, 574, 15, 68, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[137855, 3864, 117, 1, 49, "Subtitle"],
+Cell[137975, 3867, 711, 16, 31, "Input"],
+Cell[CellGroupData[{
+Cell[138711, 3887, 492, 11, 31, "Input"],
+Cell[139206, 3900, 545, 11, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[139788, 3916, 188, 5, 31, "Input"],
+Cell[139979, 3923, 127, 2, 30, "Output"]
+}, Open  ]],
+Cell[140121, 3928, 707, 14, 31, "Input"],
+Cell[CellGroupData[{
+Cell[140853, 3946, 196, 4, 31, "Input"],
+Cell[141052, 3952, 497, 9, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[141586, 3966, 448, 10, 31, "Input"],
+Cell[142037, 3978, 473, 9, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[142547, 3992, 499, 13, 31, "Input"],
+Cell[143049, 4007, 982, 16, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[144068, 4028, 138, 2, 31, "Input"],
+Cell[144209, 4032, 95, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[144341, 4038, 276, 6, 31, "Input"],
+Cell[144620, 4046, 764, 15, 30, "Output"]
+}, Open  ]],
+Cell[145399, 4064, 264, 9, 47, "Input"],
+Cell[CellGroupData[{
+Cell[145688, 4077, 3483, 97, 110, "Input"],
+Cell[149174, 4176, 3602, 63, 374, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[152813, 4244, 4010, 113, 94, "Input"],
+Cell[156826, 4359, 4824, 89, 374, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[161687, 4453, 4590, 129, 139, "Input"],
+Cell[166280, 4584, 3597, 65, 374, "Output"]
+}, Open  ]],
+Cell[169892, 4652, 343, 9, 31, "Input"],
+Cell[170238, 4663, 379, 11, 47, "Input"],
+Cell[CellGroupData[{
+Cell[170642, 4678, 156, 3, 31, "Input"],
+Cell[170801, 4683, 114, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[170952, 4689, 285, 4, 31, "Input"],
+Cell[171240, 4695, 191, 3, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[171468, 4703, 5100, 134, 193, "Input"],
+Cell[176571, 4839, 78177, 1396, 647, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[254785, 6240, 5493, 138, 220, "Input"],
+Cell[260281, 6380, 101985, 2048, 633, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[362303, 8433, 1069, 18, 52, "Input"],
+Cell[363375, 8453, 862, 14, 50, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[364274, 8472, 726, 13, 31, "Input"],
+Cell[365003, 8487, 660, 11, 30, "Output"]
 }, Open  ]]
 }, Open  ]]
 }
