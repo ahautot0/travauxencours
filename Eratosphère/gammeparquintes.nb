@@ -10,96 +10,1743 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       145,          7]
-NotebookDataLength[    373486,       8771]
-NotebookOptionsPosition[    365691,       8502]
-NotebookOutlinePosition[    366034,       8517]
-CellTagsIndexPosition[    365991,       8514]
+NotebookDataLength[    508625,      11652]
+NotebookOptionsPosition[    499712,      11347]
+NotebookOutlinePosition[    500055,      11362]
+CellTagsIndexPosition[    500012,      11359]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell["\<\
-Division de l\[CloseCurlyQuote]octave en 12 parties \[EAcute]gales :\
-\>", "Subtitle",
- CellChangeTimes->{{3.699092589747657*^9, 3.6990926033508806`*^9}, {
-  3.6990926538793693`*^9, 3.699092654877771*^9}}],
+Cell["Package pr\[EAcute]liminaire :", "Subtitle",
+ CellChangeTimes->{{3.7015388135033665`*^9, 3.7015388263580637`*^9}}],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
+Cell[BoxData[{
  RowBox[{
-  RowBox[{"Table", "[", 
+  RowBox[{"tc", "=", 
+   RowBox[{"1200", "  ", 
+    RowBox[{"Log", "[", 
+     RowBox[{"2", ",", 
+      RowBox[{"2187", "/", "2048"}]}], "]"}]}]}], ";", 
+  RowBox[{"td", "=", 
+   RowBox[{"1200", " ", 
+    RowBox[{"Log", "[", 
+     RowBox[{"2", ",", 
+      RowBox[{"256", "/", "243"}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"intervMAJencents", "=", 
+   RowBox[{"{", 
+    RowBox[{"0", ",", 
+     RowBox[{"tc", " ", "+", "td"}], ",", 
+     RowBox[{"tc", " ", "+", "td"}], ",", " ", "td", ",", 
+     RowBox[{"tc", " ", "+", "td"}], ",", 
+     RowBox[{"tc", " ", "+", "td"}], ",", 
+     RowBox[{"tc", "+", " ", "td"}], ",", "td"}], "}"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{"doremifasollasiPyth", "=", 
    RowBox[{
-    RowBox[{"2", "^", 
-     RowBox[{"(", 
-      RowBox[{"k", "/", "12"}], ")"}]}], ",", 
-    RowBox[{"{", 
-     RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}], "//", "N"}]], "Input",
- CellChangeTimes->{{3.424625819265625*^9, 3.42462585340625*^9}, {
-  3.699092561028006*^9, 3.6990925613868065`*^9}}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-  "1.`", ",", "1.0594630943592953`", ",", "1.122462048309373`", ",", 
-   "1.189207115002721`", ",", "1.2599210498948732`", ",", 
-   "1.3348398541700344`", ",", "1.4142135623730951`", ",", 
-   "1.4983070768766822`", ",", "1.5874010519681996`", ",", 
-   "1.6817928305074288`", ",", "1.7817974362806788`", ",", 
-   "1.887748625363387`", ",", "2.`"}], "}"}]], "Output",
- CellChangeTimes->{3.424625855078125*^9, 3.6990925616052074`*^9}]
-}, Open  ]],
-
-Cell[BoxData["\[IndentingNewLine]"], "Input",
- CellChangeTimes->{3.6990926575297756`*^9}],
-
-Cell[BoxData[
+    RowBox[{"Most", "[", 
+     RowBox[{"Accumulate", "[", "intervMAJencents", "]"}], "]"}], "//", 
+    "N"}]}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
-  RowBox[{"theta", "[", "t_", "]"}], ":=", 
+  RowBox[{"noteschromatiques", "=", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"100", "k"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], ";"}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"doremifasollasiChrom", "=", 
+    RowBox[{"{", 
+     RowBox[{
+     "0", ",", "200", ",", "400", ",", "500", ",", "700", ",", "900", ",", 
+      "1100"}], "}"}]}], ";"}], "\n"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"theta", "[", "s_", "]"}], ":=", 
   RowBox[{"Mod", "[", 
    RowBox[{
     RowBox[{
      FractionBox[
-      RowBox[{"300", "-", "t"}], "300"], 
+      RowBox[{"300", "-", "s"}], "300"], 
      FractionBox["\[Pi]", "2"]}], ",", 
     RowBox[{"2", "\[Pi]"}]}], "]"}], "              ", 
   RowBox[{"(*", 
    RowBox[{"Cette", " ", "fonction", " ", "donne", " ", 
-    RowBox[{"l", "'"}], "angle", " ", "trigonom\[EAcute]trique", " ", "quans",
+    RowBox[{"l", "'"}], "angle", " ", "trigonom\[EAcute]trique", " ", "quand",
      " ", "on", " ", "donne", " ", 
     RowBox[{"l", "'"}], "\[EAcute]cart", " ", "en", " ", "cents", " ", "par", 
     " ", "rapport", " ", "au", " ", "sommet", " ", "du", " ", "cercle", " ", 
     "parcouru", " ", "dans", " ", "le", " ", "sens", " ", "horlogique"}], 
-   "*)"}]}]], "Input",
- CellChangeTimes->{{3.7002942076361313`*^9, 3.700294276276252*^9}}],
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.701539051818028*^9, 3.7015390523505363`*^9}, {
+   3.7015392151560373`*^9, 3.70153922374467*^9}, {3.7015392598417244`*^9, 
+   3.7015393025058804`*^9}, {3.7015393699364166`*^9, 
+   3.7015393705164256`*^9}, {3.701539535775465*^9, 3.7015395641439004`*^9}, 
+   3.7015396471841764`*^9}],
 
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   RowBox[{"theta", "[", "0", "]"}], ",", 
-   RowBox[{"theta", "[", "300", "]"}], ",", 
-   RowBox[{"theta", "[", "600", "]"}], ",", 
-   RowBox[{"theta", "[", "900", "]"}]}], "}"}]], "Input",
- CellChangeTimes->{{3.7002942902226763`*^9, 3.7002943362739573`*^9}}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   FractionBox["\[Pi]", "2"], ",", "0", ",", 
-   FractionBox[
-    RowBox[{"3", " ", "\[Pi]"}], "2"], ",", "\[Pi]"}], "}"}]], "Output",
- CellChangeTimes->{3.700294296681088*^9, 3.700294336663958*^9}]
-}, Open  ]]
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.70153938644117*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell["Partition de l\[CloseCurlyQuote]octave :", "Subtitle",
- CellChangeTimes->{{3.700293995693159*^9, 3.700294004101574*^9}}],
+Cell["\<\
+Gamme chromatique, division de l\[CloseCurlyQuote]octave en 12 parties \
+\[EAcute]gales :\
+\>", "Subtitle",
+ CellChangeTimes->{{3.699092589747657*^9, 3.6990926033508806`*^9}, {
+  3.6990926538793693`*^9, 3.699092654877771*^9}, {3.7015403026732473`*^9, 
+  3.70154032043552*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"notes12", "=", 
+  RowBox[{"{", 
+   RowBox[{
+   "\"\<do=si\[Sharp]\>\"", ",", "\"\<r\[EAcute]\[Flat]=do\[Sharp]\>\"", ",", 
+    "\"\<r\[EAcute]\>\"", ",", "\"\<mi\[Flat]=r\[EAcute]\[Sharp]\>\"", ",", 
+    "\"\<fa\[Flat]=mi\>\"", ",", "\"\<fa=mi\[Sharp]\>\"", ",", 
+    "\"\<sol\[Flat]=fa\[Sharp]\>\"", ",", "\"\<sol\>\"", ",", 
+    "\"\<la\[Flat]=sol\[Sharp]\>\"", ",", "\"\<la\>\"", ",", 
+    "\"\<si\[Flat]=la\[Sharp]\>\"", ",", "\"\<do\[Flat]=si\>\""}], 
+   "}"}]}]], "Input",
+ CellChangeTimes->{{3.7015140153430443`*^9, 3.701514063529785*^9}, 
+   3.7015141048144193`*^9, {3.7015141955498133`*^9, 3.701514203400934*^9}, {
+   3.701514271813985*^9, 3.701514333568434*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"\<\"do=si\[Sharp]\"\>", 
+   ",", "\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", ",", "\<\"r\[EAcute]\"\>", 
+   ",", "\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", ",", "\<\"fa\[Flat]=mi\"\>", 
+   ",", "\<\"fa=mi\[Sharp]\"\>", ",", "\<\"sol\[Flat]=fa\[Sharp]\"\>", 
+   ",", "\<\"sol\"\>", ",", "\<\"la\[Flat]=sol\[Sharp]\"\>", 
+   ",", "\<\"la\"\>", ",", "\<\"si\[Flat]=la\[Sharp]\"\>", 
+   ",", "\<\"do\[Flat]=si\"\>"}], "}"}]], "Output",
+ CellChangeTimes->{3.701514751319352*^9, 3.7015401005316415`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "4"}], ",", 
+         RowBox[{"-", "4"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", "4"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"4", ",", 
+         RowBox[{"-", "4"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "4"}], ",", 
+         RowBox[{"-", "4"}]}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+    RowBox[{"PointSize", "[", "0.026", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Arrow", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"2.8", 
+            RowBox[{"Cos", "[", 
+             RowBox[{"theta", "[", 
+              RowBox[{"doremifasollasiChrom", "[", 
+               RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+           RowBox[{"2.8", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"theta", "[", 
+              RowBox[{"doremifasollasiChrom", "[", 
+               RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}], 
+        "}"}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "7"}], "}"}]}], "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Text", "[", 
+       RowBox[{
+        RowBox[{"notes12", "[", 
+         RowBox[{"[", "k", "]"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{"3.5", 
+           RowBox[{"Cos", "[", 
+            RowBox[{"theta", "[", 
+             RowBox[{"noteschromatiques", "[", 
+              RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+          RowBox[{"3.5", 
+           RowBox[{"Sin", "[", 
+            RowBox[{"theta", "[", 
+             RowBox[{"noteschromatiques", "[", 
+              RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}], 
+       "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "12"}], "}"}]}], "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"noteschromatiques", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{"3", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"noteschromatiques", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "12"}], "}"}]}], "]"}], ",", "Red", ",", 
+    RowBox[{"PointSize", "[", "0.015", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", 
+          RowBox[{"Cos", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
+         RowBox[{"3", 
+          RowBox[{"Sin", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7015144604378834`*^9, 3.7015144736425858`*^9}, {
+  3.701514531434474*^9, 3.7015145318119793`*^9}, {3.7015147653905687`*^9, 
+  3.7015147796467876`*^9}, {3.7015148953630657`*^9, 3.7015150022157073`*^9}, {
+  3.7015167407439184`*^9, 3.7015167446349783`*^9}, {3.701540081729353*^9, 
+  3.7015400888754625`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+   CircleBox[{0, 0}, 3], 
+   {PointSize[
+    0.026], {ArrowBox[{{0, 0}, {0., 2.8}}], 
+     ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+     ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+     ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+     ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+     ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+     ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {
+     InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+     InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+     InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+     InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+     InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+     InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+     InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+     InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+     InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", {-3.031088913245535, -1.75}], 
+     InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+     InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", {-3.031088913245535, 1.75}], 
+     InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+     PointBox[{0, 3}], 
+     PointBox[NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+       2.598076211353316}]], 
+     PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+       2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+     PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+       2.598076211353316, -1.5}]], 
+     PointBox[NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+       1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+     PointBox[NCache[{
+       Rational[-3, 2], Rational[-3, 2] 
+        3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+     PointBox[NCache[{
+       Rational[-3, 2] 3^Rational[1, 2], 
+        Rational[-3, 2]}, {-2.598076211353316, -1.5}]], PointBox[{-3, 0}], 
+     PointBox[NCache[{
+       Rational[-3, 2] 3^Rational[1, 2], Rational[3, 2]}, {-2.598076211353316,
+        1.5}]], 
+     PointBox[NCache[{
+       Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+       2.598076211353316}]]}}, 
+   {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+      2.598076211353316, 1.5}]], 
+    PointBox[NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+      2.598076211353316}]], PointBox[{0, 3}], 
+    PointBox[NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5,
+       2.598076211353316}]], 
+    PointBox[NCache[{
+      Rational[-3, 2] 3^Rational[1, 2], Rational[3, 2]}, {-2.598076211353316, 
+      1.5}]], PointBox[{-3, 0}], 
+    PointBox[NCache[{
+      Rational[-3, 2] 3^Rational[1, 2], 
+       Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+    PointBox[NCache[{
+      Rational[-3, 2], Rational[-3, 2] 
+       3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+    PointBox[NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+      1.5, -2.598076211353316}]], 
+    PointBox[NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+      2.598076211353316, -1.5}]]}}]], "Output",
+ CellChangeTimes->{3.7015401029216785`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{"Partition", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Graphics", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "4"}], ",", 
+              RowBox[{"-", "4"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"4", ",", "4"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"4", ",", 
+              RowBox[{"-", "4"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "4"}], ",", 
+              RowBox[{"-", "4"}]}], "}"}]}], "}"}], "]"}], ",", 
+         RowBox[{"Circle", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+         RowBox[{"PointSize", "[", "0.026", "]"}], ",", 
+         RowBox[{"Rotate", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"Arrow", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"2.8", 
+                   RowBox[{"Cos", "[", 
+                    RowBox[{"theta", "[", 
+                    RowBox[{"doremifasollasiChrom", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+                  RowBox[{"2.8", 
+                   RowBox[{"Sin", "[", 
+                    RowBox[{"theta", "[", 
+                    RowBox[{"doremifasollasiChrom", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}],
+                "}"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"k", ",", "2", ",", "7"}], "}"}]}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"-", 
+             FractionBox["\[Pi]", "600"]}], 
+            RowBox[{"noteschromatiques", "[", 
+             RowBox[{"[", "j", "]"}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Thickness", "[", "0.014", "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Rotate", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"Arrow", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"2.8", 
+                   RowBox[{"Cos", "[", 
+                    RowBox[{"theta", "[", 
+                    RowBox[{"doremifasollasiChrom", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}], ",", 
+                  RowBox[{"2.8", 
+                   RowBox[{"Sin", "[", 
+                    RowBox[{"theta", "[", 
+                    RowBox[{"doremifasollasiChrom", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}],
+                "}"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"k", ",", "2", ",", "7"}], "}"}]}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"-", 
+             FractionBox["\[Pi]", "600"]}], 
+            RowBox[{"noteschromatiques", "[", 
+             RowBox[{"[", "j", "]"}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{
+             RowBox[{"notes12", "[", 
+              RowBox[{"[", "k", "]"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"3.5", 
+                RowBox[{"Cos", "[", 
+                 RowBox[{"theta", "[", 
+                  RowBox[{"noteschromatiques", "[", 
+                   RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+               RowBox[{"3.5", 
+                RowBox[{"Sin", "[", 
+                 RowBox[{"theta", "[", 
+                  RowBox[{"noteschromatiques", "[", 
+                   RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}], 
+            "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"k", ",", "1", ",", "12"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Point", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"3", 
+               RowBox[{"Cos", "[", 
+                RowBox[{"theta", "[", 
+                 RowBox[{"noteschromatiques", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+              RowBox[{"3", 
+               RowBox[{"Sin", "[", 
+                RowBox[{"theta", "[", 
+                 RowBox[{"noteschromatiques", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], 
+            "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"k", ",", "1", ",", "12"}], "}"}]}], "]"}], ",", "Red", 
+         ",", 
+         RowBox[{"PointSize", "[", "0.015", "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Point", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"3", 
+               RowBox[{"Cos", "[", 
+                FractionBox[
+                 RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
+              RowBox[{"3", 
+               RowBox[{"Sin", "[", 
+                FractionBox[
+                 RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}], 
+            "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], "}"}], 
+       "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", "12"}], "}"}]}], "]"}], ",", "6"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7015159662200184`*^9, 3.7015160080571613`*^9}, 
+   3.7015160466102533`*^9, {3.701516114395795*^9, 3.7015161368831406`*^9}, {
+   3.7015161929750023`*^9, 3.7015161950185337`*^9}, {3.7015167759309587`*^9, 
+   3.7015168048494034`*^9}, {3.7015279401874886`*^9, 
+   3.7015279416275105`*^9}, {3.701528093911851*^9, 3.701528170523528*^9}, 
+   3.70152852923904*^9, {3.7015401748507833`*^9, 3.7015402158279133`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{1, 0}, {0, 
+           1}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{1, 0}, {0, 1}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {195.42857142857142`, -192.}, 
+      ImageScaled[{0.5, 0.5}], {359.99999999999994`, 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{
+           0.8660254037844386, 0.5}, {-0.5, 0.8660254037844386}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0.8660254037844386, 
+            0.5}, {-0.5, 0.8660254037844386}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {586.2857142857142, -192.}, 
+      ImageScaled[{0.5, 0.5}], {359.99999999999994`, 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{0.5, 
+           0.8660254037844386}, {-0.8660254037844386, 0.5}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0.5, 
+            0.8660254037844386}, {-0.8660254037844386, 0.5}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {977.1428571428571, -192.}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{0, 1}, {-1, 
+           0}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0, 1}, {-1, 0}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {1368., -192.}, 
+      ImageScaled[{0.5, 0.5}], {360.0000000000002, 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{-0.5, 
+           0.8660254037844386}, {-0.8660254037844386, -0.5}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{-0.5, 
+            0.8660254037844386}, {-0.8660254037844386, -0.5}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {1758.8571428571427`, -192.}, 
+      ImageScaled[{0.5, 0.5}], {360.0000000000002, 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 
+             2.424871130596428}}]}, {{{-0.8660254037844386, 
+           0.5}, {-0.5, -0.8660254037844386}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{-0.8660254037844386, 
+            0.5}, {-0.5, -0.8660254037844386}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {2149.7142857142853`, -192.}, 
+      ImageScaled[{0.5, 0.5}], {359.9999999999998, 360.}]}, {InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{-1, 0}, {
+           0, -1}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{-1, 0}, {0, -1}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {195.42857142857142`, -576.}, 
+      ImageScaled[{0.5, 0.5}], {359.99999999999994`, 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 
+             2.424871130596428}}]}, {{{-0.8660254037844386, -0.5}, {
+           0.5, -0.8660254037844386}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{-0.8660254037844386, -0.5}, {
+            0.5, -0.8660254037844386}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", 
+            {1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {586.2857142857142, -576.}, 
+      ImageScaled[{0.5, 0.5}], {359.99999999999994`, 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 
+             2.424871130596428}}]}, {{{-0.5, -0.8660254037844386}, {
+           0.8660254037844386, -0.5}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{-0.5, -0.8660254037844386}, {
+            0.8660254037844386, -0.5}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {977.1428571428571, -576.}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{0, -1}, {1, 
+           0}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0, -1}, {1, 0}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {1368., -576.}, 
+      ImageScaled[{0.5, 0.5}], {360.0000000000002, 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{
+           0.5, -0.8660254037844386}, {0.8660254037844386, 0.5}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0.5, -0.8660254037844386}, {
+            0.8660254037844386, 0.5}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {1758.8571428571427`, -576.}, 
+      ImageScaled[{0.5, 0.5}], {360.0000000000002, 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{
+           0.8660254037844386, -0.5}, {0.5, 0.8660254037844386}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0.8660254037844386, -0.5}, {
+            0.5, 0.8660254037844386}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {2149.7142857142853`, -576.}, 
+      ImageScaled[{0.5, 0.5}], {359.9999999999998, 360.}]}}, {}},
+  ContentSelectable->True,
+  ImageSize->{1477.2004716981132`, Automatic},
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{{3.7015401979366384`*^9, 3.701540216490423*^9}}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.6990926575297756`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["Gamme pythagoricienne :", "Subtitle",
+ CellChangeTimes->{{3.700293995693159*^9, 3.700294004101574*^9}, {
+  3.7015403747698555`*^9, 3.701540384896011*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   SuperscriptBox["3", "12"], ",", 
+   SuperscriptBox["2", "19"], ",", 
+   RowBox[{"N", "[", 
+    RowBox[{
+     SuperscriptBox["3", "12"], "/", 
+     SuperscriptBox["2", "19"]}], "]"}]}], "}"}]], "Input",
+ CellChangeTimes->{{3.7015419409194183`*^9, 3.701542030735798*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"531441", ",", "524288", ",", "1.0136432647705078`"}], 
+  "}"}]], "Output",
+ CellChangeTimes->{
+  3.7015419862601147`*^9, {3.7015420183946085`*^9, 3.7015420312858067`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sort", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"NestWhile", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "/", "2"}], "&"}], ",", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         FractionBox["3", "2"], ")"}], "k"], ",", 
+       RowBox[{
+        RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}], "]"}], "//", "N", 
+  "                 ", 
+  RowBox[{"(*", 
+   RowBox[{
+   "A", " ", "comparer", " ", "au", " ", "sch\[EAcute]ma", " ", "exactement", 
+    " ", "temp\[EAcute]r\[EAcute]"}], "*)"}]}]], "Input",
+ CellChangeTimes->{{3.7001591190066037`*^9, 3.700159119505805*^9}, {
+  3.700159161594679*^9, 3.7001591869603233`*^9}, {3.7001592229495864`*^9, 
+  3.7001592830876923`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1.`", ",", "1.0136432647705078`", ",", "1.06787109375`", ",", "1.125`", 
+   ",", "1.20135498046875`", ",", "1.265625`", ",", "1.3515243530273438`", 
+   ",", "1.423828125`", ",", "1.5`", ",", "1.601806640625`", ",", "1.6875`", 
+   ",", "1.802032470703125`", ",", "1.8984375`"}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.700159120145406*^9, {3.7001592233551874`*^9, 3.7001592570512466`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Sort", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"NestWhile", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "/", "2"}], "&"}], ",", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         FractionBox["3", "2"], ")"}], "k"], ",", 
+       RowBox[{
+        RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}], "]"}], "//", "N", 
+  "                  ", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+    "Observer", " ", "que", " ", "le", " ", "cycle", " ", "ne", " ", "se", 
+     " ", "referme", " ", "pas", " ", 
+     RowBox[{"exactement", " ", ":", " ", 
+      RowBox[{"on", " ", "d\[EAcute]passe", " ", "2"}]}]}], ",", " ", 
+    RowBox[{
+     RowBox[{"d", "'"}], "o\[UGrave]", " ", "la", " ", "pr\[EAcute]sence", 
+     " ", "de", " ", "1.01364"}]}], "*)"}]}]], "Input",
+ CellChangeTimes->{{3.7001596818399925`*^9, 3.700159732087681*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1.`", ",", "1.0136432647705078`", ",", "1.06787109375`", ",", "1.125`", 
+   ",", "1.20135498046875`", ",", "1.265625`", ",", "1.3515243530273438`", 
+   ",", "1.423828125`", ",", "1.5`", ",", "1.601806640625`", ",", "1.6875`", 
+   ",", "1.802032470703125`", ",", "1.8984375`"}], "}"}]], "Output",
+ CellChangeTimes->{3.7001596824327936`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Ratios", "[", 
+   RowBox[{"Sort", "[", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"NestWhile", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"#", "/", "2"}], "&"}], ",", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          FractionBox["3", "2"], ")"}], "k"], ",", 
+        RowBox[{
+         RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}], "]"}], "]"}], 
+  "          ", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"On", " ", "ne", " ", "trouve", " ", "que", " ", "deux", " ", 
+     RowBox[{"intervalles", " ", ":", " ", "tc"}]}], "=", 
+    RowBox[{
+     RowBox[{"1200", 
+      RowBox[{"Log", "[", 
+       RowBox[{"2", ",", 
+        RowBox[{"2187", "/", "2048"}]}], "]"}]}], "=", 
+     RowBox[{
+      RowBox[{"90.225", " ", "et", " ", "td"}], "=", 
+      RowBox[{
+       RowBox[{"1200", 
+        RowBox[{"Log", "[", 
+         RowBox[{"2", ",", 
+          RowBox[{"256", "/", "243"}]}], "]"}]}], "=", "113.685"}]}]}]}], 
+   "*)"}]}]], "Input",
+ CellChangeTimes->{{3.699509452039875*^9, 3.699509470111909*^9}, {
+  3.700159781898568*^9, 3.7001598815671434`*^9}, {3.7001599275404243`*^9, 
+  3.7001599461824565`*^9}, {3.7001603040314856`*^9, 3.700160308321493*^9}, {
+  3.7015411932354307`*^9, 3.70154120296658*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"]}], "}"}]], "Output",
+ CellChangeTimes->{
+  3.699509470389925*^9, {3.7015411940154424`*^9, 3.7015412035490885`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Ratios", "[", 
+  RowBox[{"Sort", "[", 
+   RowBox[{"Table", "[", 
+    RowBox[{
+     RowBox[{"NestWhile", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "/", "2"}], "&"}], ",", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         FractionBox["4", "3"], ")"}], "k"], ",", 
+       RowBox[{
+        RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.701541475353265*^9, 3.701541536795209*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   FractionBox["256", "243"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["2187", "2048"], ",", 
+   FractionBox["256", "243"], ",", 
+   FractionBox["256", "243"]}], "}"}]], "Output",
+ CellChangeTimes->{{3.701541482264371*^9, 3.701541537311217*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Table", "[", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"3", "/", "2"}], ")"}], "^", "k"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7015415791083593`*^9, 3.7015416019732103`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{"1", ",", 
+   FractionBox["3", "2"], ",", 
+   FractionBox["9", "4"], ",", 
+   FractionBox["27", "8"], ",", 
+   FractionBox["81", "16"], ",", 
+   FractionBox["243", "32"], ",", 
+   FractionBox["729", "64"], ",", 
+   FractionBox["2187", "128"], ",", 
+   FractionBox["6561", "256"], ",", 
+   FractionBox["19683", "512"], ",", 
+   FractionBox["59049", "1024"], ",", 
+   FractionBox["177147", "2048"], ",", 
+   FractionBox["531441", "4096"]}], "}"}]], "Output",
+ CellChangeTimes->{3.7015416028457236`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Log", "[", 
+  RowBox[{"2.", ",", 
+   SuperscriptBox["3", "12"]}], "]"}]], "Input",
+ CellChangeTimes->{{3.7015416761848507`*^9, 3.7015417060708094`*^9}}],
+
+Cell[BoxData["19.019550008653876`"], "Output",
+ CellChangeTimes->{{3.701541702960762*^9, 3.701541706425815*^9}}]
+}, Open  ]],
+
+Cell[BoxData["\[IndentingNewLine]"], "Input",
+ CellChangeTimes->{3.701541452659916*^9}],
 
 Cell[CellGroupData[{
 
@@ -1121,38 +2768,6 @@ Cell[BoxData[
       2.598076211353316, -1.5}]]}}]], "Output",
  CellChangeTimes->{3.700297914206155*^9, 3.7002979557500277`*^9, 
   3.7002980268237524`*^9, 3.700298101126683*^9, 3.700298716532164*^9}]
-}, Open  ]],
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"tc", "=", 
-   RowBox[{"1200", "  ", 
-    RowBox[{"Log", "[", 
-     RowBox[{"2", ",", 
-      RowBox[{"2187", "/", "2048"}]}], "]"}]}]}], ";", 
-  RowBox[{"td", "=", 
-   RowBox[{"1200", " ", 
-    RowBox[{"Log", "[", 
-     RowBox[{"2", ",", 
-      RowBox[{"256", "/", "243"}]}], "]"}]}]}], ";"}]], "Input",
- CellChangeTimes->{{3.699601672493411*^9, 3.699601675154563*^9}, {
-  3.6996017223592634`*^9, 3.6996017383181763`*^9}, {3.6996256556100893`*^9, 
-  3.6996256708669167`*^9}, {3.6996257712072926`*^9, 3.6996257749512997`*^9}, {
-  3.6996259273947673`*^9, 3.6996259292043705`*^9}, {3.699626152924363*^9, 
-  3.6996261625651803`*^9}, {3.6996264627877073`*^9, 3.699626468856118*^9}}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{
-   RowBox[{"5", "tc"}], "+", 
-   RowBox[{"7", "td"}]}], "//", "Simplify"}]], "Input",
- CellChangeTimes->{{3.700233476778385*^9, 3.7002334932208138`*^9}}],
-
-Cell[BoxData["1200"], "Output",
- CellChangeTimes->{{3.700233482253995*^9, 3.7002334941568155`*^9}, 
-   3.7002960640871925`*^9, 3.700298659482864*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3166,11 +4781,12 @@ Cell[BoxData["\[IndentingNewLine]"], "Input",
 Cell[CellGroupData[{
 
 Cell["\<\
-Quintes ascendantes tri\[EAcute]es et ramen\[EAcute]es \[AGrave] une octave \
-unique :\
+Quintes ascendantes ramen\[EAcute]es \[AGrave] une octave unique et tri\
+\[EAcute]es :\
 \>", "Subtitle",
  CellChangeTimes->{{3.6990926200429096`*^9, 3.699092651757766*^9}, {
-  3.700159078212532*^9, 3.7001590804277363`*^9}}],
+  3.700159078212532*^9, 3.7001590804277363`*^9}, {3.7015407565317206`*^9, 
+  3.7015407647253466`*^9}}],
 
 Cell[CellGroupData[{
 
@@ -3214,37 +4830,60 @@ Cell[BoxData[
 Cell[CellGroupData[{
 
 Cell[BoxData[
- RowBox[{"Table", "[", 
-  RowBox[{
-   RowBox[{"NestWhile", "[", 
+ RowBox[{
+  RowBox[{"Sort", "[", 
+   RowBox[{"Table", "[", 
     RowBox[{
-     RowBox[{
-      RowBox[{"#", "/", "2"}], "&"}], ",", 
-     SuperscriptBox[
-      RowBox[{"(", 
-       FractionBox["3", "2"], ")"}], "k"], ",", 
-     RowBox[{
-      RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
-   RowBox[{"{", 
-    RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}]], "Input",
- CellChangeTimes->{3.700235228614662*^9}],
+     RowBox[{"NestWhile", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"#", "/", "2"}], "&"}], ",", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         FractionBox["3", "2"], ")"}], "k"], ",", 
+       RowBox[{
+        RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}], "]"}], "//", 
+  "N"}]], "Input",
+ CellChangeTimes->{
+  3.700235228614662*^9, {3.701540845257084*^9, 3.701540850150659*^9}, {
+   3.701541016762719*^9, 3.701541017355228*^9}}],
 
 Cell[BoxData[
  RowBox[{"{", 
-  RowBox[{"1", ",", 
-   FractionBox["3", "2"], ",", 
-   FractionBox["9", "8"], ",", 
-   FractionBox["27", "16"], ",", 
-   FractionBox["81", "64"], ",", 
-   FractionBox["243", "128"], ",", 
-   FractionBox["729", "512"], ",", 
-   FractionBox["2187", "2048"], ",", 
-   FractionBox["6561", "4096"], ",", 
-   FractionBox["19683", "16384"], ",", 
-   FractionBox["59049", "32768"], ",", 
-   FractionBox["177147", "131072"], ",", 
-   FractionBox["531441", "524288"]}], "}"}]], "Output",
- CellChangeTimes->{{3.700235219005045*^9, 3.7002352289266624`*^9}}]
+  RowBox[{
+  "1.`", ",", "1.0136432647705078`", ",", "1.06787109375`", ",", "1.125`", 
+   ",", "1.20135498046875`", ",", "1.265625`", ",", "1.3515243530273438`", 
+   ",", "1.423828125`", ",", "1.5`", ",", "1.601806640625`", ",", "1.6875`", 
+   ",", "1.802032470703125`", ",", "1.8984375`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.700235219005045*^9, 3.7002352289266624`*^9}, 
+   3.701540851045673*^9, 3.701541018325243*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Ratios", "[", 
+  RowBox[{"{", 
+   RowBox[{
+   "1.`", ",", "1.0136432647705078`", ",", "1.06787109375`", ",", "1.125`", 
+    ",", "1.20135498046875`", ",", "1.265625`", ",", "1.3515243530273438`", 
+    ",", "1.423828125`", ",", "1.5`", ",", "1.601806640625`", ",", "1.6875`", 
+    ",", "1.802032470703125`", ",", "1.8984375`", ",", "2"}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.701541061639408*^9, 3.701541066404482*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "1.0136432647705078`", ",", "1.0534979423868314`", ",", 
+   "1.0534979423868314`", ",", "1.06787109375`", ",", "1.0534979423868314`", 
+   ",", "1.06787109375`", ",", "1.0534979423868314`", ",", 
+   "1.0534979423868314`", ",", "1.06787109375`", ",", "1.0534979423868314`", 
+   ",", "1.06787109375`", ",", "1.0534979423868314`", ",", 
+   "1.0534979423868314`"}], "}"}]], "Output",
+ CellChangeTimes->{3.701541066771987*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3347,143 +4986,6 @@ Cell[BoxData[
    "1.601806640625`", ",", "1.20135498046875`", ",", "1.802032470703125`", 
    ",", "1.3515243530273438`", ",", "1.0136432647705078`"}], "}"}]], "Output",
  CellChangeTimes->{3.7002337153496046`*^9, 3.7002337480784616`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Sort", "[", 
-   RowBox[{"Table", "[", 
-    RowBox[{
-     RowBox[{"NestWhile", "[", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"#", "/", "2"}], "&"}], ",", 
-       SuperscriptBox[
-        RowBox[{"(", 
-         FractionBox["3", "2"], ")"}], "k"], ",", 
-       RowBox[{
-        RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}], "]"}], "//", "N", 
-  "                 ", 
-  RowBox[{"(*", 
-   RowBox[{
-   "A", " ", "comparer", " ", "au", " ", "sch\[EAcute]ma", " ", "exactement", 
-    " ", "temp\[EAcute]r\[EAcute]"}], "*)"}]}]], "Input",
- CellChangeTimes->{{3.7001591190066037`*^9, 3.700159119505805*^9}, {
-  3.700159161594679*^9, 3.7001591869603233`*^9}, {3.7001592229495864`*^9, 
-  3.7001592830876923`*^9}}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-  "1.`", ",", "1.0136432647705078`", ",", "1.06787109375`", ",", "1.125`", 
-   ",", "1.20135498046875`", ",", "1.265625`", ",", "1.3515243530273438`", 
-   ",", "1.423828125`", ",", "1.5`", ",", "1.601806640625`", ",", "1.6875`", 
-   ",", "1.802032470703125`", ",", "1.8984375`"}], "}"}]], "Output",
- CellChangeTimes->{
-  3.700159120145406*^9, {3.7001592233551874`*^9, 3.7001592570512466`*^9}}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Sort", "[", 
-   RowBox[{"Table", "[", 
-    RowBox[{
-     RowBox[{"NestWhile", "[", 
-      RowBox[{
-       RowBox[{
-        RowBox[{"#", "/", "2"}], "&"}], ",", 
-       SuperscriptBox[
-        RowBox[{"(", 
-         FractionBox["3", "2"], ")"}], "k"], ",", 
-       RowBox[{
-        RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
-     RowBox[{"{", 
-      RowBox[{"k", ",", "0", ",", "12"}], "}"}]}], "]"}], "]"}], "//", "N", 
-  "                  ", 
-  RowBox[{"(*", 
-   RowBox[{
-    RowBox[{
-    "Observer", " ", "que", " ", "le", " ", "cycle", " ", "ne", " ", "se", 
-     " ", "referme", " ", "pas", " ", 
-     RowBox[{"exactement", " ", ":", " ", 
-      RowBox[{"on", " ", "d\[EAcute]passe", " ", "2"}]}]}], ",", " ", 
-    RowBox[{
-     RowBox[{"d", "'"}], "o\[UGrave]", " ", "la", " ", "pr\[EAcute]sence", 
-     " ", "de", " ", "1.01364"}]}], "*)"}]}]], "Input",
- CellChangeTimes->{{3.7001596818399925`*^9, 3.700159732087681*^9}}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-  "1.`", ",", "1.0136432647705078`", ",", "1.06787109375`", ",", "1.125`", 
-   ",", "1.20135498046875`", ",", "1.265625`", ",", "1.3515243530273438`", 
-   ",", "1.423828125`", ",", "1.5`", ",", "1.601806640625`", ",", "1.6875`", 
-   ",", "1.802032470703125`", ",", "1.8984375`"}], "}"}]], "Output",
- CellChangeTimes->{3.7001596824327936`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{
-  RowBox[{"Ratios", "[", 
-   RowBox[{"Sort", "[", 
-    RowBox[{"Table", "[", 
-     RowBox[{
-      RowBox[{"NestWhile", "[", 
-       RowBox[{
-        RowBox[{
-         RowBox[{"#", "/", "2"}], "&"}], ",", 
-        SuperscriptBox[
-         RowBox[{"(", 
-          FractionBox["3", "2"], ")"}], "k"], ",", 
-        RowBox[{
-         RowBox[{"#", "\[GreaterEqual]", "2"}], "&"}]}], "]"}], ",", 
-      RowBox[{"{", 
-       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}], "]"}], "]"}], 
-  "          ", 
-  RowBox[{"(*", 
-   RowBox[{
-    RowBox[{"On", " ", "ne", " ", "trouve", " ", "que", " ", "deux", " ", 
-     RowBox[{"intervalles", " ", ":", " ", "tc"}]}], "=", 
-    RowBox[{
-     RowBox[{"1200", 
-      RowBox[{"Log", "[", 
-       RowBox[{"2", ",", 
-        RowBox[{"2187", "/", "2048"}]}], "]"}]}], "=", 
-     RowBox[{
-      RowBox[{"90.225", " ", "et", " ", "td"}], "=", 
-      RowBox[{
-       RowBox[{"1200", 
-        RowBox[{"Log", "[", 
-         RowBox[{"2", ",", 
-          RowBox[{"256", "/", "243"}]}], "]"}]}], "=", "113.685"}]}]}]}], 
-   "*)"}]}]], "Input",
- CellChangeTimes->{{3.699509452039875*^9, 3.699509470111909*^9}, {
-  3.700159781898568*^9, 3.7001598815671434`*^9}, {3.7001599275404243`*^9, 
-  3.7001599461824565`*^9}, {3.7001603040314856`*^9, 3.700160308321493*^9}}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{
-   FractionBox["2187", "2048"], ",", 
-   FractionBox["256", "243"], ",", 
-   FractionBox["2187", "2048"], ",", 
-   FractionBox["256", "243"], ",", 
-   FractionBox["2187", "2048"], ",", 
-   FractionBox["256", "243"], ",", 
-   FractionBox["256", "243"], ",", 
-   FractionBox["2187", "2048"], ",", 
-   FractionBox["256", "243"], ",", 
-   FractionBox["2187", "2048"], ",", 
-   FractionBox["256", "243"]}], "}"}]], "Output",
- CellChangeTimes->{3.699509470389925*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3865,24 +5367,6 @@ Cell[CellGroupData[{
 Cell["En r\[EAcute]sum\[EAcute] :", "Subtitle",
  CellChangeTimes->{{3.7001602837826495`*^9, 3.7001602874174557`*^9}}],
 
-Cell[BoxData[
- RowBox[{
-  RowBox[{"tc", "=", 
-   RowBox[{"1200", "  ", 
-    RowBox[{"Log", "[", 
-     RowBox[{"2", ",", 
-      RowBox[{"2187", "/", "2048"}]}], "]"}]}]}], ";", 
-  RowBox[{"td", "=", 
-   RowBox[{"1200", " ", 
-    RowBox[{"Log", "[", 
-     RowBox[{"2", ",", 
-      RowBox[{"256", "/", "243"}]}], "]"}]}]}], ";"}]], "Input",
- CellChangeTimes->{{3.699601672493411*^9, 3.699601675154563*^9}, {
-  3.6996017223592634`*^9, 3.6996017383181763`*^9}, {3.6996256556100893`*^9, 
-  3.6996256708669167`*^9}, {3.6996257712072926`*^9, 3.6996257749512997`*^9}, {
-  3.6996259273947673`*^9, 3.6996259292043705`*^9}, {3.699626152924363*^9, 
-  3.6996261625651803`*^9}, {3.6996264627877073`*^9, 3.699626468856118*^9}}],
-
 Cell[CellGroupData[{
 
 Cell[BoxData[
@@ -3909,7 +5393,7 @@ Cell[BoxData[
    3.6996259313415737`*^9, {3.699626176714405*^9, 3.6996262054652557`*^9}, {
    3.6996264725533247`*^9, 3.6996264774361334`*^9}, 3.6996405318824406`*^9, 
    3.699676555868125*^9, 3.6998008623063583`*^9, 3.700233472207577*^9, 
-   3.700296063274991*^9}]
+   3.700296063274991*^9, 3.701514835186141*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3923,7 +5407,7 @@ Cell[BoxData[
 
 Cell[BoxData["1200"], "Output",
  CellChangeTimes->{{3.700233482253995*^9, 3.7002334941568155`*^9}, 
-   3.7002960640871925`*^9}]
+   3.7002960640871925`*^9, 3.7015148352211413`*^9}]
 }, Open  ]],
 
 Cell[BoxData[
@@ -3959,7 +5443,7 @@ Cell[BoxData[
  CellChangeTimes->{3.6996257448276463`*^9, 3.699625779896508*^9, 
   3.6996259370199842`*^9, 3.69962659521634*^9, 3.69964053734245*^9, 
   3.699676555882126*^9, 3.699800862337558*^9, 3.7001604670673714`*^9, 
-  3.7002960667235966`*^9}]
+  3.7002960667235966`*^9, 3.7015148352511415`*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -3985,7 +5469,7 @@ Cell[BoxData[
  CellChangeTimes->{{3.6996274288818045`*^9, 3.699627435012615*^9}, 
    3.699640008049121*^9, 3.699640538590452*^9, 3.699676555892127*^9, 
    3.699800862353158*^9, 3.7001604680189734`*^9, 3.700296067565998*^9, 
-   3.700297853818449*^9}]
+   3.700297853818449*^9, 3.701514835276142*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -8497,6 +9981,1367 @@ Cell[BoxData[
    ",", "\<\"si\[Flat]\"\>", ",", "\<\"la\[Sharp]\"\>", 
    ",", "\<\"do\[Flat]\"\>", ",", "\<\"si\"\>"}], "}"}]], "Output",
  CellChangeTimes->{3.6998060643142953`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"GraphicsGrid", "[", 
+  RowBox[{"Partition", "[", 
+   RowBox[{
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Graphics", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"Line", "[", 
+          RowBox[{"{", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "4"}], ",", 
+              RowBox[{"-", "4"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "4"}], ",", "4"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"4", ",", "4"}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{"4", ",", 
+              RowBox[{"-", "4"}]}], "}"}], ",", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"-", "4"}], ",", 
+              RowBox[{"-", "4"}]}], "}"}]}], "}"}], "]"}], ",", 
+         RowBox[{"Circle", "[", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+         RowBox[{"PointSize", "[", "0.026", "]"}], ",", 
+         RowBox[{"Rotate", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"Arrow", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"2.8", 
+                   RowBox[{"Cos", "[", 
+                    RowBox[{"theta", "[", 
+                    RowBox[{"doremifasollasi", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+                  RowBox[{"2.8", 
+                   RowBox[{"Sin", "[", 
+                    RowBox[{"theta", "[", 
+                    RowBox[{"doremifasollasi", "[", 
+                    RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}],
+                "}"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"k", ",", "2", ",", "7"}], "}"}]}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"-", 
+             FractionBox["\[Pi]", "600"]}], 
+            RowBox[{"noteschromatiques", "[", 
+             RowBox[{"[", "j", "]"}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Thickness", "[", "0.014", "]"}], ",", "\[IndentingNewLine]", 
+         RowBox[{"Rotate", "[", 
+          RowBox[{
+           RowBox[{"Table", "[", 
+            RowBox[{
+             RowBox[{"Arrow", "[", 
+              RowBox[{"{", 
+               RowBox[{
+                RowBox[{"{", 
+                 RowBox[{"0", ",", "0"}], "}"}], ",", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"2.8", 
+                   RowBox[{"Cos", "[", 
+                    RowBox[{"theta", "[", 
+                    RowBox[{"doremifasollasi", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}], ",", 
+                  RowBox[{"2.8", 
+                   RowBox[{"Sin", "[", 
+                    RowBox[{"theta", "[", 
+                    RowBox[{"doremifasollasi", "[", 
+                    RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}],
+                "}"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{"k", ",", "2", ",", "7"}], "}"}]}], "]"}], ",", 
+           RowBox[{
+            RowBox[{"-", 
+             FractionBox["\[Pi]", "600"]}], 
+            RowBox[{"noteschromatiques", "[", 
+             RowBox[{"[", "j", "]"}], "]"}]}], ",", 
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Text", "[", 
+            RowBox[{
+             RowBox[{"notes12", "[", 
+              RowBox[{"[", "k", "]"}], "]"}], ",", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"3.5", 
+                RowBox[{"Cos", "[", 
+                 RowBox[{"theta", "[", 
+                  RowBox[{"noteschromatiques", "[", 
+                   RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+               RowBox[{"3.5", 
+                RowBox[{"Sin", "[", 
+                 RowBox[{"theta", "[", 
+                  RowBox[{"noteschromatiques", "[", 
+                   RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}], 
+            "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"k", ",", "1", ",", "12"}], "}"}]}], "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Point", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"3", 
+               RowBox[{"Cos", "[", 
+                RowBox[{"theta", "[", 
+                 RowBox[{"noteschromatiques", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+              RowBox[{"3", 
+               RowBox[{"Sin", "[", 
+                RowBox[{"theta", "[", 
+                 RowBox[{"noteschromatiques", "[", 
+                  RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], 
+            "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"k", ",", "1", ",", "12"}], "}"}]}], "]"}], ",", "Red", 
+         ",", 
+         RowBox[{"PointSize", "[", "0.015", "]"}], ",", 
+         RowBox[{"Table", "[", 
+          RowBox[{
+           RowBox[{"Point", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"3", 
+               RowBox[{"Cos", "[", 
+                FractionBox[
+                 RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
+              RowBox[{"3", 
+               RowBox[{"Sin", "[", 
+                FractionBox[
+                 RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}], 
+            "]"}], ",", 
+           RowBox[{"{", 
+            RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], "}"}], 
+       "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"j", ",", "1", ",", "12"}], "}"}]}], "]"}], ",", "3"}], "]"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{{3.7015159662200184`*^9, 3.7015160080571613`*^9}, 
+   3.7015160466102533`*^9, {3.701516114395795*^9, 3.7015161368831406`*^9}, {
+   3.7015161929750023`*^9, 3.7015161950185337`*^9}, {3.7015167759309587`*^9, 
+   3.7015168048494034`*^9}, {3.7015279401874886`*^9, 
+   3.7015279416275105`*^9}, {3.701528093911851*^9, 3.701528170523528*^9}, 
+   3.70152852923904*^9}],
+
+Cell[BoxData[
+ GraphicsBox[{{}, {{InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{1, 0}, {0, 
+           1}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{1, 0}, {0, 1}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {193.5, -194.4}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.00000000000006`}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{
+           0.8660254037844386, 0.5}, {-0.5, 0.8660254037844386}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0.8660254037844386, 
+            0.5}, {-0.5, 0.8660254037844386}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {580.5, -194.4}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.00000000000006`}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{0.5, 
+           0.8660254037844386}, {-0.8660254037844386, 0.5}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0.5, 
+            0.8660254037844386}, {-0.8660254037844386, 0.5}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {967.5, -194.4}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.00000000000006`}]}, {InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{0, 1}, {-1, 
+           0}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0, 1}, {-1, 0}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {193.5, -583.2}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.00000000000006`}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{-0.5, 
+           0.8660254037844386}, {-0.8660254037844386, -0.5}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{-0.5, 
+            0.8660254037844386}, {-0.8660254037844386, -0.5}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {580.5, -583.2}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.00000000000006`}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 
+             2.424871130596428}}]}, {{{-0.8660254037844386, 
+           0.5}, {-0.5, -0.8660254037844386}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{-0.8660254037844386, 
+            0.5}, {-0.5, -0.8660254037844386}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {967.5, -583.2}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.00000000000006`}]}, {InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{-1, 0}, {
+           0, -1}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{-1, 0}, {0, -1}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {193.5, -972.}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 
+             2.424871130596428}}]}, {{{-0.8660254037844386, -0.5}, {
+           0.5, -0.8660254037844386}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{-0.8660254037844386, -0.5}, {
+            0.5, -0.8660254037844386}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {580.5, -972.}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 
+             2.424871130596428}}]}, {{{-0.5, -0.8660254037844386}, {
+           0.8660254037844386, -0.5}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{-0.5, -0.8660254037844386}, {
+            0.8660254037844386, -0.5}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {967.5, -972.}, 
+      ImageScaled[{0.5, 0.5}], {360., 360.}]}, {InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{0, -1}, {1, 
+           0}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0, -1}, {1, 0}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {193.5, -1360.8000000000002`}, 
+      ImageScaled[{0.5, 0.5}], {360., 359.9999999999998}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{
+           0.5, -0.8660254037844386}, {0.8660254037844386, 0.5}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0.5, -0.8660254037844386}, {
+            0.8660254037844386, 0.5}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {580.5, -1360.8000000000002`}, 
+      ImageScaled[{0.5, 0.5}], {360., 359.9999999999998}], InsetBox[
+      GraphicsBox[{LineBox[{{-4, -4}, {-4, 4}, {4, 4}, {4, -4}, {-4, -4}}], 
+        CircleBox[{0, 0}, 3], 
+        {PointSize[0.026], 
+         GeometricTransformationBox[{
+           ArrowBox[{{0, 0}, {2.424871130596428, 1.4}}], 
+           ArrowBox[{{0, 0}, {2.424871130596428, -1.4}}], 
+           ArrowBox[{{0, 0}, {1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-1.4, -2.424871130596428}}], 
+           ArrowBox[{{0, 0}, {-2.8, 0.}}], 
+           ArrowBox[{{0, 0}, {-1.4, 2.424871130596428}}]}, {{{
+           0.8660254037844386, -0.5}, {0.5, 0.8660254037844386}}, {0, 0}}], 
+         {Thickness[0.014], 
+          GeometricTransformationBox[{ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}], ArrowBox[{{0, 0}, {0., 2.8}}], 
+            ArrowBox[{{0, 0}, {0., 2.8}}]}, {{{0.8660254037844386, -0.5}, {
+            0.5, 0.8660254037844386}}, {0, 0}}], {
+           InsetBox["\<\"do=si\[Sharp]\"\>", {0., 3.5}], 
+           InsetBox["\<\"r\[EAcute]\[Flat]=do\[Sharp]\"\>", \
+{1.75, 3.031088913245535}], 
+           InsetBox["\<\"r\[EAcute]\"\>", {3.031088913245535, 1.75}], 
+           InsetBox["\<\"mi\[Flat]=r\[EAcute]\[Sharp]\"\>", {3.5, 0.}], 
+           InsetBox["\<\"fa\[Flat]=mi\"\>", {3.031088913245535, -1.75}], 
+           InsetBox["\<\"fa=mi\[Sharp]\"\>", {1.75, -3.031088913245535}], 
+           InsetBox["\<\"sol\[Flat]=fa\[Sharp]\"\>", {0., -3.5}], 
+           InsetBox["\<\"sol\"\>", {-1.75, -3.031088913245535}], 
+           InsetBox["\<\"la\[Flat]=sol\[Sharp]\"\>", \
+{-3.031088913245535, -1.75}], InsetBox["\<\"la\"\>", {-3.5, 0.}], 
+           InsetBox["\<\"si\[Flat]=la\[Sharp]\"\>", \
+{-3.031088913245535, 1.75}], 
+           InsetBox["\<\"do\[Flat]=si\"\>", {-1.75, 3.031088913245535}]}, {
+           PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]]}, 
+          {RGBColor[1, 0, 0], PointSize[0.015], PointBox[{3, 0}], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[3, 2]}, {
+             2.598076211353316, 1.5}]], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[3, 2] 3^Rational[1, 2]}, {1.5, 
+             2.598076211353316}]], PointBox[{0, 3}], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[3, 2] 3^Rational[1, 2]}, {-1.5, 
+             2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], Rational[
+              3, 2]}, {-2.598076211353316, 1.5}]], PointBox[{-3, 0}], 
+           PointBox[
+            NCache[{Rational[-3, 2] 3^Rational[1, 2], 
+              Rational[-3, 2]}, {-2.598076211353316, -1.5}]], 
+           PointBox[
+            NCache[{Rational[-3, 2], Rational[-3, 2] 
+              3^Rational[1, 2]}, {-1.5, -2.598076211353316}]], 
+           PointBox[{0, -3}], 
+           PointBox[
+            NCache[{Rational[3, 2], Rational[-3, 2] 3^Rational[1, 2]}, {
+             1.5, -2.598076211353316}]], 
+           PointBox[
+            NCache[{Rational[3, 2] 3^Rational[1, 2], Rational[-3, 2]}, {
+             2.598076211353316, -1.5}]]}}}}], {967.5, -1360.8000000000002`}, 
+      ImageScaled[{0.5, 0.5}], {360., 359.9999999999998}]}}, {}},
+  ContentSelectable->True,
+  ImageSize->{1342., Automatic},
+  PlotRangePadding->{6, 5}]], "Output",
+ CellChangeTimes->{3.701528141080076*^9, 3.7015281712460394`*^9, 
+  3.701528529854049*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["12", 
+   RowBox[{"2", "\[Pi]"}]], 
+  RowBox[{"Table", "[", 
+   RowBox[{
+    RowBox[{"theta", "[", 
+     RowBox[{"noteschromatiques", "[", 
+      RowBox[{"[", "k", "]"}], "]"}], "]"}], ",", 
+    RowBox[{"{", 
+     RowBox[{"k", ",", "1", ",", "12"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.7015163124123373`*^9, {3.701516389329019*^9, 3.7015164051062613`*^9}, {
+   3.701516445108376*^9, 3.7015164516444764`*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "3", ",", "2", ",", "1", ",", "0", ",", "11", ",", "10", ",", "9", ",", "8",
+    ",", "7", ",", "6", ",", "5", ",", "4"}], "}"}]], "Output",
+ CellChangeTimes->{3.7015163129373455`*^9, 3.701516408388812*^9, 
+  3.7015164522469854`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"Graphics", "[", 
+  RowBox[{"{", 
+   RowBox[{
+    RowBox[{"Line", "[", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", "3.5"}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"3.5", ",", 
+         RowBox[{"-", "3.5"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"-", "3.5"}], ",", 
+         RowBox[{"-", "3.5"}]}], "}"}]}], "}"}], "]"}], ",", 
+    RowBox[{"Circle", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}], ",", "3"}], "]"}], ",", 
+    RowBox[{"PointSize", "[", "0.026", "]"}], ",", 
+    RowBox[{"Rotate", "[", 
+     RowBox[{
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"Arrow", "[", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"0", ",", "0"}], "}"}], ",", 
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{"2.9", 
+              RowBox[{"Cos", "[", 
+               RowBox[{"theta", "[", 
+                RowBox[{"notesdebase", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+             RowBox[{"2.9", 
+              RowBox[{"Sin", "[", 
+               RowBox[{"theta", "[", 
+                RowBox[{"notesdebase", "[", 
+                 RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}], 
+          "}"}], "]"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "2", ",", "7"}], "}"}]}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["\[Pi]", "600"]}], 
+       RowBox[{"touteslesnotes", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", 
+    RowBox[{"Thickness", "[", "0.014", "]"}], ",", 
+    RowBox[{"Rotate", "[", 
+     RowBox[{
+      RowBox[{"Arrow", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{"0", ",", "0"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"2.9", 
+            RowBox[{"Cos", "[", 
+             RowBox[{"theta", "[", 
+              RowBox[{"notesdebase", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}], ",", 
+           RowBox[{"2.9", 
+            RowBox[{"Sin", "[", 
+             RowBox[{"theta", "[", 
+              RowBox[{"notesdebase", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], "]"}], "]"}]}]}], "}"}]}], 
+        "}"}], "]"}], ",", 
+      RowBox[{
+       RowBox[{"-", 
+        FractionBox["\[Pi]", "600"]}], 
+       RowBox[{"touteslesnotes", "[", 
+        RowBox[{"[", "3", "]"}], "]"}]}], ",", 
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], "}"}]}], "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", 
+          RowBox[{"Cos", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"touteslesnotes", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}], ",", 
+         RowBox[{"3", 
+          RowBox[{"Sin", "[", 
+           RowBox[{"theta", "[", 
+            RowBox[{"touteslesnotes", "[", 
+             RowBox[{"[", "k", "]"}], "]"}], "]"}], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "1", ",", "21"}], "}"}]}], "]"}], ",", "Red", ",", 
+    RowBox[{"PointSize", "[", "0.015", "]"}], ",", 
+    RowBox[{"Table", "[", 
+     RowBox[{
+      RowBox[{"Point", "[", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"3", 
+          RowBox[{"Cos", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}], ",", 
+         RowBox[{"3", 
+          RowBox[{"Sin", "[", 
+           FractionBox[
+            RowBox[{"2", "k", " ", "\[Pi]"}], "12"], "]"}]}]}], "}"}], "]"}], 
+      ",", 
+      RowBox[{"{", 
+       RowBox[{"k", ",", "0", ",", "11"}], "}"}]}], "]"}]}], "}"}], 
+  "]"}]], "Input",
+ CellChangeTimes->{
+  3.701515735551474*^9, {3.701515800715475*^9, 3.7015158253478537`*^9}, 
+   3.7015159049305763`*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"1200", 
+     RowBox[{"Log", "[", 
+      RowBox[{"2", ",", "#"}], "]"}]}], "&"}], "/@", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"3", "/", "2"}], ",", 
+     RowBox[{"4", "/", "3"}], ",", 
+     RowBox[{"5", "/", "4"}], ",", 
+     RowBox[{"6", "/", "5"}], ",", 
+     RowBox[{"5", "/", "3"}]}], "}"}]}], "//", "N"}]], "Input",
+ CellChangeTimes->{{3.7015333090536947`*^9, 3.701533372286311*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+  "701.9550008653874`", ",", "498.04499913461245`", ",", "386.3137138648348`",
+    ",", "315.64128700055255`", ",", "884.3587129994474`"}], "}"}]], "Output",
+ CellChangeTimes->{{3.7015333441387014`*^9, 3.701533373387374*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
@@ -8517,260 +11362,296 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[567, 22, 215, 4, 49, "Subtitle"],
-Cell[CellGroupData[{
-Cell[807, 30, 363, 10, 31, "Input"],
-Cell[1173, 42, 471, 9, 30, "Output"]
+Cell[567, 22, 120, 1, 49, "Subtitle"],
+Cell[690, 25, 2355, 62, 167, "Input"],
+Cell[3048, 89, 86, 1, 52, "Input"]
 }, Open  ]],
-Cell[1659, 54, 89, 1, 52, "Input"],
-Cell[1751, 57, 783, 18, 47, "Input"],
 Cell[CellGroupData[{
-Cell[2559, 79, 300, 7, 31, "Input"],
-Cell[2862, 88, 238, 6, 47, "Output"]
+Cell[3171, 95, 286, 6, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[3482, 105, 696, 13, 31, "Input"],
+Cell[4181, 120, 530, 9, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[4748, 134, 3847, 111, 94, "Input"],
+Cell[8598, 247, 3341, 65, 374, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11976, 317, 6420, 162, 214, "Input"],
+Cell[18399, 481, 52047, 1012, 491, "Output"]
+}, Open  ]],
+Cell[70461, 1496, 89, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[70587, 1502, 160, 2, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[70772, 1508, 312, 9, 33, "Input"],
+Cell[71087, 1519, 211, 5, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[71335, 1529, 834, 23, 47, "Input"],
+Cell[72172, 1554, 433, 8, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[72642, 1567, 981, 27, 47, "Input"],
+Cell[73626, 1596, 382, 7, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[74045, 1608, 1362, 38, 47, "Input"],
+Cell[75410, 1648, 554, 15, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[76001, 1668, 561, 17, 47, "Input"],
+Cell[76565, 1687, 559, 15, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[77161, 1707, 286, 8, 31, "Input"],
+Cell[77450, 1717, 539, 15, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[78026, 1737, 176, 4, 33, "Input"],
+Cell[78205, 1743, 112, 1, 30, "Output"]
+}, Open  ]],
+Cell[78332, 1747, 87, 1, 52, "Input"],
+Cell[CellGroupData[{
+Cell[78444, 1752, 1022, 27, 47, "Input"],
+Cell[79469, 1781, 506, 10, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[80012, 1796, 756, 21, 47, "Input"],
+Cell[80771, 1819, 2115, 66, 57, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[82923, 1890, 720, 20, 47, "Input"],
+Cell[83646, 1912, 2071, 64, 57, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[85754, 1981, 5528, 153, 160, "Input"],
+Cell[91285, 2136, 8747, 183, 374, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[100069, 2324, 3069, 89, 74, "Input"],
+Cell[103141, 2415, 4522, 91, 374, "Output"]
+}, Open  ]],
+Cell[107678, 2509, 87, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[107802, 2515, 116, 1, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[107943, 2520, 2292, 67, 74, "Input"],
+Cell[110238, 2589, 8181, 180, 374, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[118456, 2774, 741, 16, 31, "Input"],
+Cell[119200, 2792, 2327, 72, 57, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[121564, 2869, 549, 14, 31, "Input"],
+Cell[122116, 2885, 6688, 212, 157, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[128841, 3102, 315, 7, 31, "Input"],
+Cell[129159, 3111, 833, 16, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[130029, 3132, 294, 6, 31, "Input"],
+Cell[130326, 3140, 878, 15, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[131241, 3160, 126, 2, 31, "Input"],
+Cell[131370, 3164, 73, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[131480, 3170, 615, 14, 31, "Input"],
+Cell[132098, 3186, 10457, 341, 257, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[142592, 3532, 127, 2, 31, "Input"],
+Cell[142722, 3536, 118, 2, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[142877, 3543, 2116, 64, 74, "Input"],
+Cell[144996, 3609, 12773, 286, 374, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[157806, 3900, 561, 14, 31, "Input"],
+Cell[158370, 3916, 12456, 407, 307, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[170863, 4328, 125, 2, 31, "Input"],
+Cell[170991, 4332, 97, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[171125, 4338, 2114, 64, 74, "Input"],
+Cell[173242, 4404, 15010, 334, 374, "Output"]
+}, Open  ]],
+Cell[188267, 4741, 89, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[188393, 4747, 160, 4, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[188578, 4755, 315, 9, 47, "Input"],
+Cell[188896, 4766, 324, 7, 30, "Output"]
+}, Open  ]],
+Cell[189235, 4776, 89, 1, 52, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[189361, 4782, 286, 6, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[189672, 4792, 563, 16, 47, "Input"],
+Cell[190238, 4810, 622, 16, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[190897, 4831, 627, 19, 47, "Input"],
+Cell[191527, 4852, 454, 8, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[192018, 4865, 454, 9, 31, "Input"],
+Cell[192475, 4876, 462, 9, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[192974, 4890, 638, 16, 47, "Input"],
+Cell[193615, 4908, 561, 15, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[194213, 4928, 403, 13, 47, "Input"],
+Cell[194619, 4943, 507, 14, 47, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[195163, 4962, 535, 16, 47, "Input"],
+Cell[195701, 4980, 406, 7, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[196144, 4992, 647, 19, 47, "Input"],
+Cell[196794, 5013, 1715, 38, 83, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[198546, 5056, 557, 17, 47, "Input"],
+Cell[199106, 5075, 184, 5, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[199327, 5085, 442, 13, 31, "Input"],
+Cell[199772, 5100, 189, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[199998, 5109, 444, 13, 47, "Input"],
+Cell[200445, 5124, 223, 4, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[200705, 5133, 202, 3, 31, "Input"],
+Cell[200910, 5138, 142, 2, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[201089, 5145, 1035, 30, 47, "Input"],
+Cell[202127, 5177, 447, 9, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[202611, 5191, 614, 12, 52, "Input"],
+Cell[203228, 5205, 215, 3, 30, "Output"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3149, 100, 126, 1, 49, "Subtitle"],
+Cell[203492, 5214, 212, 4, 49, "Subtitle"],
 Cell[CellGroupData[{
-Cell[3300, 105, 1022, 27, 47, "Input"],
-Cell[4325, 134, 506, 10, 30, "Output"]
+Cell[203729, 5222, 420, 12, 47, "Input"],
+Cell[204152, 5236, 470, 9, 30, "Output"]
+}, Open  ]],
+Cell[204637, 5248, 113, 1, 52, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4868, 149, 756, 21, 47, "Input"],
-Cell[5627, 172, 2115, 66, 57, "Output"]
+Cell[204787, 5254, 216, 4, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[205028, 5262, 853, 22, 47, "Input"],
+Cell[205884, 5286, 736, 17, 47, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7779, 243, 720, 20, 47, "Input"],
-Cell[8502, 265, 2071, 64, 57, "Output"]
+Cell[206657, 5308, 628, 19, 47, "Input"],
+Cell[207288, 5329, 501, 14, 47, "Output"]
+}, Open  ]],
+Cell[207804, 5346, 574, 15, 68, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10610, 334, 5528, 153, 160, "Input"],
-Cell[16141, 489, 8747, 183, 374, "Output"]
+Cell[208415, 5366, 117, 1, 49, "Subtitle"],
+Cell[CellGroupData[{
+Cell[208557, 5371, 492, 11, 31, "Input"],
+Cell[209052, 5384, 567, 11, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[24925, 677, 3069, 89, 74, "Input"],
-Cell[27997, 768, 4522, 91, 374, "Output"]
+Cell[209656, 5400, 188, 5, 31, "Input"],
+Cell[209847, 5407, 151, 2, 30, "Output"]
 }, Open  ]],
-Cell[32534, 862, 87, 1, 52, "Input"]
-}, Open  ]],
+Cell[210013, 5412, 707, 14, 31, "Input"],
 Cell[CellGroupData[{
-Cell[32658, 868, 116, 1, 49, "Subtitle"],
-Cell[CellGroupData[{
-Cell[32799, 873, 2292, 67, 74, "Input"],
-Cell[35094, 942, 8181, 180, 374, "Output"]
-}, Open  ]],
-Cell[43290, 1125, 711, 16, 31, "Input"],
-Cell[CellGroupData[{
-Cell[44026, 1145, 188, 5, 31, "Input"],
-Cell[44217, 1152, 149, 2, 30, "Output"]
+Cell[210745, 5430, 196, 4, 31, "Input"],
+Cell[210944, 5436, 521, 9, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[44403, 1159, 741, 16, 31, "Input"],
-Cell[45147, 1177, 2327, 72, 57, "Output"]
+Cell[211502, 5450, 448, 10, 31, "Input"],
+Cell[211953, 5462, 495, 9, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[47511, 1254, 549, 14, 31, "Input"],
-Cell[48063, 1270, 6688, 212, 157, "Output"]
+Cell[212485, 5476, 499, 13, 31, "Input"],
+Cell[212987, 5491, 982, 16, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[54788, 1487, 315, 7, 31, "Input"],
-Cell[55106, 1496, 833, 16, 30, "Output"]
+Cell[214006, 5512, 138, 2, 31, "Input"],
+Cell[214147, 5516, 95, 1, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[55976, 1517, 294, 6, 31, "Input"],
-Cell[56273, 1525, 878, 15, 30, "Output"]
+Cell[214279, 5522, 276, 6, 31, "Input"],
+Cell[214558, 5530, 764, 15, 30, "Output"]
+}, Open  ]],
+Cell[215337, 5548, 264, 9, 47, "Input"],
+Cell[CellGroupData[{
+Cell[215626, 5561, 3483, 97, 110, "Input"],
+Cell[219112, 5660, 3602, 63, 374, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[57188, 1545, 126, 2, 31, "Input"],
-Cell[57317, 1549, 73, 1, 30, "Output"]
+Cell[222751, 5728, 4010, 113, 94, "Input"],
+Cell[226764, 5843, 4824, 89, 374, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[57427, 1555, 615, 14, 31, "Input"],
-Cell[58045, 1571, 10457, 341, 257, "Output"]
+Cell[231625, 5937, 4590, 129, 139, "Input"],
+Cell[236218, 6068, 3597, 65, 374, "Output"]
+}, Open  ]],
+Cell[239830, 6136, 343, 9, 31, "Input"],
+Cell[240176, 6147, 379, 11, 47, "Input"],
+Cell[CellGroupData[{
+Cell[240580, 6162, 156, 3, 31, "Input"],
+Cell[240739, 6167, 114, 1, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[68539, 1917, 127, 2, 31, "Input"],
-Cell[68669, 1921, 118, 2, 30, "Output"]
+Cell[240890, 6173, 285, 4, 31, "Input"],
+Cell[241178, 6179, 191, 3, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[68824, 1928, 2116, 64, 74, "Input"],
-Cell[70943, 1994, 12773, 286, 374, "Output"]
+Cell[241406, 6187, 5100, 134, 193, "Input"],
+Cell[246509, 6323, 78177, 1396, 647, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[83753, 2285, 561, 14, 31, "Input"],
-Cell[84317, 2301, 12456, 407, 307, "Output"]
+Cell[324723, 7724, 5493, 138, 220, "Input"],
+Cell[330219, 7864, 101985, 2048, 633, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[96810, 2713, 125, 2, 31, "Input"],
-Cell[96938, 2717, 97, 1, 30, "Output"]
+Cell[432241, 9917, 1069, 18, 52, "Input"],
+Cell[433313, 9937, 862, 14, 50, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[97072, 2723, 2114, 64, 74, "Input"],
-Cell[99189, 2789, 15010, 334, 374, "Output"]
-}, Open  ]],
-Cell[114214, 3126, 89, 1, 52, "Input"]
+Cell[434212, 9956, 726, 13, 31, "Input"],
+Cell[434941, 9971, 660, 11, 30, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[114340, 3132, 160, 4, 49, "Subtitle"],
-Cell[CellGroupData[{
-Cell[114525, 3140, 315, 9, 47, "Input"],
-Cell[114843, 3151, 324, 7, 30, "Output"]
-}, Open  ]],
-Cell[115182, 3161, 89, 1, 52, "Input"]
+Cell[435638, 9987, 6350, 162, 214, "Input"],
+Cell[441991, 10151, 51959, 1013, 1821, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[115308, 3167, 233, 5, 49, "Subtitle"],
-Cell[CellGroupData[{
-Cell[115566, 3176, 563, 16, 47, "Input"],
-Cell[116132, 3194, 622, 16, 47, "Output"]
+Cell[493987, 11169, 462, 13, 48, "Input"],
+Cell[494452, 11184, 275, 6, 30, "Output"]
 }, Open  ]],
+Cell[494742, 11193, 4196, 125, 139, "Input"],
 Cell[CellGroupData[{
-Cell[116791, 3215, 445, 14, 47, "Input"],
-Cell[117239, 3231, 575, 15, 47, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[117851, 3251, 638, 16, 47, "Input"],
-Cell[118492, 3269, 561, 15, 47, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[119090, 3289, 403, 13, 47, "Input"],
-Cell[119496, 3304, 507, 14, 47, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[120040, 3323, 535, 16, 47, "Input"],
-Cell[120578, 3341, 406, 7, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[121021, 3353, 834, 23, 47, "Input"],
-Cell[121858, 3378, 433, 8, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[122328, 3391, 981, 27, 47, "Input"],
-Cell[123312, 3420, 382, 7, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[123731, 3432, 1312, 37, 47, "Input"],
-Cell[125046, 3471, 501, 14, 47, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[125584, 3490, 647, 19, 47, "Input"],
-Cell[126234, 3511, 1715, 38, 83, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[127986, 3554, 557, 17, 47, "Input"],
-Cell[128546, 3573, 184, 5, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[128767, 3583, 442, 13, 31, "Input"],
-Cell[129212, 3598, 189, 4, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[129438, 3607, 444, 13, 47, "Input"],
-Cell[129885, 3622, 223, 4, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[130145, 3631, 202, 3, 31, "Input"],
-Cell[130350, 3636, 142, 2, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[130529, 3643, 1035, 30, 47, "Input"],
-Cell[131567, 3675, 447, 9, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[132051, 3689, 614, 12, 52, "Input"],
-Cell[132668, 3703, 215, 3, 30, "Output"]
-}, Open  ]]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[132932, 3712, 212, 4, 49, "Subtitle"],
-Cell[CellGroupData[{
-Cell[133169, 3720, 420, 12, 47, "Input"],
-Cell[133592, 3734, 470, 9, 30, "Output"]
-}, Open  ]],
-Cell[134077, 3746, 113, 1, 52, "Input"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[134227, 3752, 216, 4, 49, "Subtitle"],
-Cell[CellGroupData[{
-Cell[134468, 3760, 853, 22, 47, "Input"],
-Cell[135324, 3784, 736, 17, 47, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[136097, 3806, 628, 19, 47, "Input"],
-Cell[136728, 3827, 501, 14, 47, "Output"]
-}, Open  ]],
-Cell[137244, 3844, 574, 15, 68, "Input"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[137855, 3864, 117, 1, 49, "Subtitle"],
-Cell[137975, 3867, 711, 16, 31, "Input"],
-Cell[CellGroupData[{
-Cell[138711, 3887, 492, 11, 31, "Input"],
-Cell[139206, 3900, 545, 11, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[139788, 3916, 188, 5, 31, "Input"],
-Cell[139979, 3923, 127, 2, 30, "Output"]
-}, Open  ]],
-Cell[140121, 3928, 707, 14, 31, "Input"],
-Cell[CellGroupData[{
-Cell[140853, 3946, 196, 4, 31, "Input"],
-Cell[141052, 3952, 497, 9, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[141586, 3966, 448, 10, 31, "Input"],
-Cell[142037, 3978, 473, 9, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[142547, 3992, 499, 13, 31, "Input"],
-Cell[143049, 4007, 982, 16, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[144068, 4028, 138, 2, 31, "Input"],
-Cell[144209, 4032, 95, 1, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[144341, 4038, 276, 6, 31, "Input"],
-Cell[144620, 4046, 764, 15, 30, "Output"]
-}, Open  ]],
-Cell[145399, 4064, 264, 9, 47, "Input"],
-Cell[CellGroupData[{
-Cell[145688, 4077, 3483, 97, 110, "Input"],
-Cell[149174, 4176, 3602, 63, 374, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[152813, 4244, 4010, 113, 94, "Input"],
-Cell[156826, 4359, 4824, 89, 374, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[161687, 4453, 4590, 129, 139, "Input"],
-Cell[166280, 4584, 3597, 65, 374, "Output"]
-}, Open  ]],
-Cell[169892, 4652, 343, 9, 31, "Input"],
-Cell[170238, 4663, 379, 11, 47, "Input"],
-Cell[CellGroupData[{
-Cell[170642, 4678, 156, 3, 31, "Input"],
-Cell[170801, 4683, 114, 1, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[170952, 4689, 285, 4, 31, "Input"],
-Cell[171240, 4695, 191, 3, 30, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[171468, 4703, 5100, 134, 193, "Input"],
-Cell[176571, 4839, 78177, 1396, 647, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[254785, 6240, 5493, 138, 220, "Input"],
-Cell[260281, 6380, 101985, 2048, 633, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[362303, 8433, 1069, 18, 52, "Input"],
-Cell[363375, 8453, 862, 14, 50, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[364274, 8472, 726, 13, 31, "Input"],
-Cell[365003, 8487, 660, 11, 30, "Output"]
+Cell[498963, 11322, 453, 14, 31, "Input"],
+Cell[499419, 11338, 265, 5, 30, "Output"]
 }, Open  ]]
 }, Open  ]]
 }
